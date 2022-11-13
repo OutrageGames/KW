@@ -1,6 +1,7 @@
 ﻿using FirstGearGames.LobbyAndWorld.Global.Canvases;
 using System.Collections;
 using System.Collections.Generic;
+using FishNet;
 using UnityEngine;
 
 namespace FirstGearGames.LobbyAndWorld.Global
@@ -15,6 +16,7 @@ namespace FirstGearGames.LobbyAndWorld.Global
         [Tooltip("GlobalCanvases reference.")]
         [SerializeField]
         private CanvasesManager _canvasesManager;
+        
         /// <summary>
         /// GlobalCanvases reference.
         /// </summary>

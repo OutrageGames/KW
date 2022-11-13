@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
+
 public class NetworkHudCanvases : MonoBehaviour
 {
     #region Types.
@@ -20,6 +21,8 @@ public class NetworkHudCanvases : MonoBehaviour
     #endregion
 
     #region Serialized.
+
+    
     /// <summary>
     /// What connections to automatically start on play.
     /// </summary>
@@ -57,6 +60,7 @@ public class NetworkHudCanvases : MonoBehaviour
     [Tooltip("Indicator for client state.")]
     [SerializeField]
     private Image _clientIndicator;
+
     #endregion
 
     #region Private.
@@ -224,6 +228,11 @@ public class NetworkHudCanvases : MonoBehaviour
             _networkManager.ClientManager.StartConnection();
 
         DeselectButtons();
+    }
+
+    public void WaitFor_Client()
+    {
+        Invoke(nameof(OnClick_Client), 1f);
     }
 
 
