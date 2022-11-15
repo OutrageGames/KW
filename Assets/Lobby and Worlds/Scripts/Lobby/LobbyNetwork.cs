@@ -695,6 +695,26 @@ namespace FirstGearGames.LobbyAndWorld.Lobbies
             }
         }
 
+        [Client]
+        public static void ChooseWarrior(int value)
+        {
+            _instance.ChooseWarriorInternal(value);
+        }
+        private void ChooseWarriorInternal(int value)
+        {
+            CmdChooseWarrior(value);
+        }
+
+        [ServerRpc(RequireOwnership = false)]
+        private void CmdChooseWarrior(int value, NetworkConnection sender = null)
+        {
+            ClientInstance ci;
+            if (!FindClientInstance(sender, out ci))
+                return;
+            
+            ci.GetComponent<PlayerSettings>().SetWarriorIndex(value);
+        }
+
         /// <summary>
         /// Returns if the roomName may be joined.
         /// </summary>

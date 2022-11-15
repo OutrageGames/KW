@@ -61,6 +61,11 @@ namespace FirstGearGames.LobbyAndWorld.Clients
             base.OnStartClient();
             if (base.IsOwner)
                 CmdVerifyVersion(VERSION_CODE);
+
+            // if(base.IsOwner)
+            //     gameObject.tag = "MyInstance";
+
+            
         }
 
         /// <summary>
@@ -69,6 +74,8 @@ namespace FirstGearGames.LobbyAndWorld.Clients
         private void FirstInitialize()
         {
             PlayerSettings = GetComponent<PlayerSettings>();
+            // if(IsOwner)
+            //     gameObject.tag = "MyInstance";
         }
 
         /// <summary>

@@ -5,6 +5,7 @@ using FishNet.Object;
 
 public class GunRotation : NetworkBehaviour
 {
+    [SerializeField] private Transform _warriorSprite;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,13 +27,13 @@ public class GunRotation : NetworkBehaviour
         if ((rotZ > 90 && rotZ <= 180) || (rotZ > -180 && rotZ <= -90))
         {
             transform.localScale = new Vector2(transform.localScale.x, -gunY);
-            //_spriteTransform.localScale = new Vector2(-1f, _spriteTransform.localScale.y);
+            _warriorSprite.localScale = new Vector2(-1f, _warriorSprite.localScale.y);
             //_lookDirection = -1f;
         }
         else
         {
             transform.localScale = new Vector2(transform.localScale.x, gunY);
-            //_spriteTransform.localScale = new Vector2(1f, _spriteTransform.localScale.y);
+            _warriorSprite.localScale = new Vector2(1f, _warriorSprite.localScale.y);
             //_lookDirection = 1f;
         }
     }

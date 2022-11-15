@@ -1,0 +1,73 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bf72df2023cd664c8dab56ed6fd020c, type: 3}
+  m_Name: Loker
+  m_EditorClassIdentifier: 
+  name: Loker
+  priceKW: 2000
+  priceO: 960
+  splashArt: {fileID: 5391509491839537004, guid: 2c1715df8cc5d104a8b38ecf3aecc98d, type: 3}
+  warriorSprite: {fileID: -2593572779518371039, guid: 21dda2ac3ff3652469e53e3529594db4, type: 3}
+  skillImages:
+  - {fileID: 729924755895458546, guid: 0db6b18dc1c42a345b5791d8244ee494, type: 3}
+  - {fileID: -1198321888542958605, guid: 0db6b18dc1c42a345b5791d8244ee494, type: 3}
+  skill1: 'Loker creates a trampoline at his mouse. Anyone can use it.
+
+    level
+    1 : low bounciness (for x seconds)
+
+    level 2 : normal bounciness (for y seconds)
+
+    level
+    3 : high bounciness (for z seconds)'
+  skill2: 'Loker runs faster and jumps higher.
+
+    level 1 : high speed for 4 seconds
+
+    level
+    2 : higher speed for 5 seconds
+
+    level 3 : highest speed for 7 seconds'
+  skillSet: LokerSkills
+  dripIndexes: 030000000f00000010000000
+  warriorColor:
+  - {r: 0, g: 1, b: 0.04411769, a: 0.39215687}
+  - {r: 1, g: 1, b: 0, a: 0.39215687}
+  - {r: 1, g: 0.45490196, b: 0, a: 0.39215687}
+  startCooldown1:
+  - 15
+  - 12
+  - 10
+  startCooldown2:
+  - 15
+  - 12
+  - 10
+  skillDamages1:
+  - 35
+  - 50
+  - 80
+  skillDamages2:
+  - 7
+  - 10
+  - 15
+  startDuration1:
+  - 4
+  - 6
+  - 8
+  startDuration2:
+  - 4
+  - 5
+  - 7
+  skillObjects:
+  - {fileID: 4407775118014437591, guid: 263e1f70d44a9064787a27811ce948b1, type: 3}
+  - {fileID: 7006253050249420380, guid: 474959458d70f06438e3c890d3bd46cf, type: 3}
+  - {fileID: 2238858307553287696, guid: ff019ddd28f56b84ea98f139245b53b6, type: 3}

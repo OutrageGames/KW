@@ -1,0 +1,567 @@
+fileFormatVersion: 2
+guid: 9aa3af580f28c7b46bfb2d526e443ea6
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 954377588520673193
+    second: karReload_0
+  - first:
+      213: -146257070371481572
+    second: karReload_1
+  - first:
+      213: 7388046062190321155
+    second: karReload_2
+  - first:
+      213: -6971806629000050349
+    second: karReload_3
+  - first:
+      213: 1891477214347545713
+    second: karReload_4
+  - first:
+      213: 3631001337029953772
+    second: karReload_5
+  - first:
+      213: -31138309703041996
+    second: karReload_6
+  - first:
+      213: -244338406173253582
+    second: karReload_7
+  - first:
+      213: 4088426535652879296
+    second: karReload_8
+  - first:
+      213: 5616887812957717208
+    second: karReload_9
+  - first:
+      213: -4952485964565952204
+    second: karReload_10
+  - first:
+      213: -4591656749660825396
+    second: karReload_11
+  - first:
+      213: 6015383576994026471
+    second: karReload_12
+  - first:
+      213: -7316363085019203839
+    second: karReload_13
+  - first:
+      213: -1180462687645123126
+    second: karReload_14
+  - first:
+      213: -4244837338866941198
+    second: karReload_15
+  - first:
+      213: 5028738348732120236
+    second: karReload_16
+  - first:
+      213: 7430052213609061347
+    second: karReload_17
+  - first:
+      213: 2219873904863697791
+    second: karReload_18
+  - first:
+      213: 5459903404560518694
+    second: karReload_0
+  - first:
+      213: -4381779425485184661
+    second: karReload_1
+  - first:
+      213: 3773884103805737290
+    second: karReload_2
+  - first:
+      213: 6550226390111413972
+    second: karReload_3
+  - first:
+      213: -6349515603937136320
+    second: karReload_4
+  - first:
+      213: -6446764376383893320
+    second: karReload_5
+  - first:
+      213: -5034551976349506731
+    second: karReload_6
+  - first:
+      213: 3593137634171521750
+    second: karReload_7
+  - first:
+      213: 2015261454664815924
+    second: karReload_8
+  - first:
+      213: 6376939210129746692
+    second: karReload_9
+  - first:
+      213: 1659528467315927959
+    second: karReload_10
+  - first:
+      213: -213266380683166736
+    second: karReload_11
+  - first:
+      213: 300542108431293737
+    second: karReload_12
+  - first:
+      213: 3879079711385208703
+    second: karReload_13
+  - first:
+      213: 4988191578520677859
+    second: karReload_14
+  - first:
+      213: 41122145651440035
+    second: karReload_15
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: karReload_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 123
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62e86c8f73975cb40800000000000000
+      internalID: 954377588520673193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: karReload_1
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 0
+        width: 123
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6127d304dac033c0800000000000000
+      internalID: -146257070371481572
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: karReload_2
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 0
+        width: 123
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4995d6f8978f5430800000000000000
+      internalID: 7388046062190321155
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: karReload_3
+      rect:
+        serializedVersion: 2
+        x: 369
+        y: 0
+        width: 123
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d6eafc723417ea50800000000000000
+      internalID: -6971806629000050349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: karReload_4
+      rect:
+        serializedVersion: 2
+        x: 492
+        y: 0
+        width: 123
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 041f68b033df1e7a0800000000000000
+      internalID: 1891477214347545713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: karReload_5
+      rect:
+        serializedVersion: 2
+        x: 615
+        y: 0
+        width: 123
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b0def2c4fd7886a0800000000000000
+      internalID: 3631001337029953772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: karReload_6
+      rect:
+        serializedVersion: 2
+        x: 738
+        y: 0
+        width: 123
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5536276d6ada12ab0800000000000000
+      internalID: -31138309703041996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: karReload_7
+      rect:
+        serializedVersion: 2
+        x: 861
+        y: 0
+        width: 123
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6da81e914a36dd130800000000000000
+      internalID: -244338406173253582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: karReload_8
+      rect:
+        serializedVersion: 2
+        x: 984
+        y: 0
+        width: 123
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43555de9d95a7fb10800000000000000
+      internalID: 4088426535652879296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: karReload_9
+      rect:
+        serializedVersion: 2
+        x: 1107
+        y: 0
+        width: 123
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40b2b06dc607f7850800000000000000
+      internalID: 5616887812957717208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: karReload_10
+      rect:
+        serializedVersion: 2
+        x: 1230
+        y: 0
+        width: 123
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79ba3053954d70710800000000000000
+      internalID: -4952485964565952204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: karReload_11
+      rect:
+        serializedVersion: 2
+        x: 1353
+        y: 0
+        width: 123
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0fbb8d05b535a0df0800000000000000
+      internalID: -4591656749660825396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: karReload_12
+      rect:
+        serializedVersion: 2
+        x: 1476
+        y: 0
+        width: 123
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92d181d847dbb2400800000000000000
+      internalID: 6015383576994026471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: karReload_13
+      rect:
+        serializedVersion: 2
+        x: 1599
+        y: 0
+        width: 123
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f774a8cf17245d530800000000000000
+      internalID: -7316363085019203839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: karReload_14
+      rect:
+        serializedVersion: 2
+        x: 1722
+        y: 0
+        width: 123
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ede155efcd993540800000000000000
+      internalID: -1180462687645123126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: karReload_15
+      rect:
+        serializedVersion: 2
+        x: 1845
+        y: 0
+        width: 123
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a9b4f3af58129000800000000000000
+      internalID: -4244837338866941198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      karReload_2: 7388046062190321155
+      karReload_10: -4952485964565952204
+      karReload_15: -4244837338866941198
+      karReload_0: 954377588520673193
+      karReload_1: -146257070371481572
+      karReload_14: -1180462687645123126
+      karReload_3: -6971806629000050349
+      karReload_9: 5616887812957717208
+      karReload_12: 6015383576994026471
+      karReload_6: -31138309703041996
+      karReload_5: 3631001337029953772
+      karReload_8: 4088426535652879296
+      karReload_11: -4591656749660825396
+      karReload_13: -7316363085019203839
+      karReload_7: -244338406173253582
+      karReload_4: 1891477214347545713
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

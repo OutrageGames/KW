@@ -81,6 +81,13 @@ MonoBehaviour:
   _componentIndexCache: 2
   _addedNetworkObject: {fileID: 8302329928824072530}
   _networkObjectCache: {fileID: 8302329928824072530}
+  _warriorIndex: 0
+  _allWarriors:
+  - {fileID: 11400000, guid: b52090f0a3a0880489a2a3105c66b0ba, type: 2}
+  - {fileID: 11400000, guid: 8b9a88b45d35dcb4a936419064eaa093, type: 2}
+  - {fileID: 11400000, guid: 2e77f2ffab807d345aba081f98260891, type: 2}
+  - {fileID: 11400000, guid: 5a7e6a5d469e86e4d8f5d81be0dd5f09, type: 2}
+  - {fileID: 11400000, guid: 773deed983da48a41bd13c1b94337ce9, type: 2}
 --- !u!114 &8302329928824072530
 MonoBehaviour:
   m_ObjectHideFlags: 0

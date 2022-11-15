@@ -24,8 +24,7 @@ namespace FirstGearGames.LobbyAndWorld.Demos.KingOfTheHill
         /// Region players may spawn.
         /// </summary>
         [Tooltip("Region players may spawn.")]
-        [SerializeField]
-        private Vector3 _spawnRegion = Vector3.one;
+        public Vector3 SpawnRegion = Vector3.one;
         /// <summary>
         /// Prefab to spawn.
         /// </summary>
@@ -38,6 +37,10 @@ namespace FirstGearGames.LobbyAndWorld.Demos.KingOfTheHill
         [Tooltip("DeathDummy to spawn.")]
         [SerializeField]
         private GameObject _deathDummy = null;
+        // [SerializeField]
+        // public WarriorObject[] _allWarriors;
+        // [SerializeField]
+        // private Sprite _warriorSprite;
         #endregion
 
         /// <summary>
@@ -130,6 +133,13 @@ namespace FirstGearGames.LobbyAndWorld.Demos.KingOfTheHill
              * is the same as roomDetails.MemberIds.Count. A member is considered
              * started AFTER they have loaded all of the scenes. */
             SpawnPlayer(client.Owner);
+
+            ClientInstance ci = ClientInstance.ReturnClientInstance(client.Owner);
+            string playerName = ci.PlayerSettings.GetUsername();
+            int playerWarriorIndex = ci.PlayerSettings.GetWarriorIndex();
+            //_warriorSprite = _allWarriors[ci.PlayerSettings.GetWarriorIndex()].warriorSprite;
+            Debug.Log(playerName);
+            Debug.Log(playerWarriorIndex);
         }
         #endregion
 
@@ -230,6 +240,7 @@ namespace FirstGearGames.LobbyAndWorld.Demos.KingOfTheHill
             //Send out winner text.
             ClientInstance ci = ClientInstance.ReturnClientInstance(winner.Owner);
             string playerName = ci.PlayerSettings.GetUsername();
+
             foreach (NetworkObject item in _roomDetails.StartedMembers)
             {
                 if (item != null && item.Owner != null)
@@ -271,25 +282,31 @@ namespace FirstGearGames.LobbyAndWorld.Demos.KingOfTheHill
         private void SpawnPlayer(NetworkConnection conn)
         {
             //Move the player randomly within spawn region.
-            float x = Random.Range(-_spawnRegion.x / 2f, _spawnRegion.x / 2f);
-            float y = Random.Range(-_spawnRegion.y / 2f, _spawnRegion.y / 2f);
-            float z = Random.Range(-_spawnRegion.z / 2f, _spawnRegion.z / 2f);
-            Vector3 next = transform.position + new Vector3(x, y, z);
+            float x = Random.Range(-SpawnRegion.x, SpawnRegion.x);
+            float y = Random.Range(-SpawnRegion.y, SpawnRegion.y);
+            //float z = Random.Range(-_spawnRegion.z / 2f, _spawnRegion.z / 2f);
+            Vector2 next = new Vector2(transform.position.x + x, transform.position.y + y);
 
             //Make object and move it to proper scene.
+            //ClientInstance ci = ClientInstance.ReturnClientInstance(conn);
             NetworkObject nob = Instantiate<NetworkObject>(_playerPrefab, next, Quaternion.identity);
+            
             UnitySceneManager.MoveGameObjectToScene(nob.gameObject, gameObject.scene);
 
             _spawnedPlayerObjects.Add(nob);
             //Subscriber to kingtimer so we know when a player reaches 0.
             //KingTimer kt = nob.GetComponentInChildren<KingTimer>();
             //kt.OnTimerComplete += KingTimer_OnTimerComplete;
+            //SpriteRenderer asd = nob.GetComponentInChildren<SpriteRenderer>();
+            //asd.sprite = null;
             base.Spawn(nob.gameObject, conn);
-
+            //nob.gameObject.GetComponentInChildren<SpriteRenderer>().sprite = null;
             //NetworkObject netIdent = conn.identity;            
             nob.transform.position = next;
             ObserversTeleport(nob, next);
         }
+        
+
         /// <summary>
         /// teleports a NetworkObject to a position.
         /// </summary>
@@ -306,7 +323,7 @@ namespace FirstGearGames.LobbyAndWorld.Demos.KingOfTheHill
         /// </summary>
         private void OnDrawGizmosSelected()
         {
-            Gizmos.DrawWireCube(transform.position, _spawnRegion);
+            Gizmos.DrawWireCube(transform.position, SpawnRegion);
         }
         #endregion
     }

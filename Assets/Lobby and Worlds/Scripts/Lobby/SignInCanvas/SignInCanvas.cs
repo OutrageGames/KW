@@ -18,6 +18,8 @@ namespace FirstGearGames.LobbyAndWorld.Lobbies.SignInCanvases
         [Tooltip("SignInMenu reference.")]
         [SerializeField]
         private SignInMenu _signInMenu;
+        [SerializeField]
+        private GameObject _warriorMenu;
         /// <summary>
         /// SignInMenu reference.
         /// </summary>
@@ -33,6 +35,20 @@ namespace FirstGearGames.LobbyAndWorld.Lobbies.SignInCanvases
             LobbyCanvases = lobbyCanvases;
             SignInMenu.FirstInitialize(this);
             Reset();
+        }
+
+        public void OpenWarriorMenu()
+        {
+            _warriorMenu.GetComponent<CanvasGroup>().alpha = 1;
+            _warriorMenu.GetComponent<CanvasGroup>().interactable = true;
+            _warriorMenu.GetComponent<CanvasGroup>().blocksRaycasts = true;
+        }
+
+        public void CloseWarriorMenu()
+        {
+            _warriorMenu.GetComponent<CanvasGroup>().alpha = 0;
+            _warriorMenu.GetComponent<CanvasGroup>().interactable = false;
+            _warriorMenu.GetComponent<CanvasGroup>().blocksRaycasts = false;
         }
 
         /// <summary>

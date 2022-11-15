@@ -1,0 +1,554 @@
+fileFormatVersion: 2
+guid: 5ed71f7e4f5b034459210e08c69a34a7
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1838085961597742099
+    second: akReload_0
+  - first:
+      213: 3247444026393847931
+    second: akReload_1
+  - first:
+      213: -1041535172678666823
+    second: akReload_2
+  - first:
+      213: 9099562194590328493
+    second: akReload_3
+  - first:
+      213: 1362685519885066778
+    second: akReload_4
+  - first:
+      213: -1478177142479139668
+    second: akReload_5
+  - first:
+      213: -8607612091235634274
+    second: akReload_6
+  - first:
+      213: 5709814694887930432
+    second: akReload_7
+  - first:
+      213: -9195364751269204863
+    second: akReload_8
+  - first:
+      213: -1514717929821945629
+    second: akReload_9
+  - first:
+      213: 5201282969791796371
+    second: akReload_10
+  - first:
+      213: -1358936485086445612
+    second: akReload_11
+  - first:
+      213: 7649036610423552413
+    second: akReload_12
+  - first:
+      213: 4742439671839620389
+    second: akReload_13
+  - first:
+      213: 3583918327530655144
+    second: akReload_14
+  - first:
+      213: 9106110874672667563
+    second: akReload_15
+  - first:
+      213: 2732599727153230775
+    second: akReload_16
+  - first:
+      213: 8585157119551402912
+    second: akReload_17
+  - first:
+      213: 4040840009369753645
+    second: akReload_18
+  - first:
+      213: -8223686273601723636
+    second: akReload_0
+  - first:
+      213: -6901869545975449513
+    second: akReload_1
+  - first:
+      213: 6540016957741263985
+    second: akReload_2
+  - first:
+      213: -5783799978775633586
+    second: akReload_3
+  - first:
+      213: -609392213804720319
+    second: akReload_4
+  - first:
+      213: -682862022099205260
+    second: akReload_5
+  - first:
+      213: -8540689841351467239
+    second: akReload_6
+  - first:
+      213: 2406468975134978747
+    second: akReload_7
+  - first:
+      213: -3505071385019399990
+    second: akReload_8
+  - first:
+      213: -504994585250742143
+    second: akReload_9
+  - first:
+      213: -6737247715104167809
+    second: akReload_10
+  - first:
+      213: -6182118141695873644
+    second: akReload_11
+  - first:
+      213: -9107471737237093944
+    second: akReload_12
+  - first:
+      213: 7694675696918441488
+    second: akReload_13
+  - first:
+      213: -4053731121040053235
+    second: akReload_14
+  - first:
+      213: -6862294534669484411
+    second: akReload_15
+  - first:
+      213: 3592818061852800922
+    second: akReload_16
+  - first:
+      213: -5704297080429674462
+    second: akReload_17
+  - first:
+      213: -7842842831008869827
+    second: akReload_18
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: akReload_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 89
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c03a6b5b7e89fdd80800000000000000
+      internalID: -1838085961597742099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: akReload_1
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 0
+        width: 89
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 758fb023732a730a0800000000000000
+      internalID: 3247444026393847931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: akReload_2
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 0
+        width: 89
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17ce237c5cec2ca50800000000000000
+      internalID: -1041535172678666823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: akReload_3
+      rect:
+        serializedVersion: 2
+        x: 267
+        y: 0
+        width: 89
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e41aa2d2090dbbfa0800000000000000
+      internalID: 9099562194590328493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: akReload_4
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 0
+        width: 89
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14fd74f92010b87f0800000000000000
+      internalID: 1362685519885066778
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: akReload_5
+      rect:
+        serializedVersion: 2
+        x: 445
+        y: 0
+        width: 89
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4730c2edb9cf586f0800000000000000
+      internalID: -1478177142479139668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: akReload_6
+      rect:
+        serializedVersion: 2
+        x: 534
+        y: 0
+        width: 89
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91f557df6df597980800000000000000
+      internalID: -8607612091235634274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: akReload_7
+      rect:
+        serializedVersion: 2
+        x: 623
+        y: 0
+        width: 89
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb23be968ce756120800000000000000
+      internalID: 5709814694887930432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: akReload_8
+      rect:
+        serializedVersion: 2
+        x: 712
+        y: 0
+        width: 89
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac0488f552c7b5fc0800000000000000
+      internalID: -9195364751269204863
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: akReload_9
+      rect:
+        serializedVersion: 2
+        x: 801
+        y: 0
+        width: 89
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18042aca916edf8f0800000000000000
+      internalID: -1514717929821945629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: akReload_10
+      rect:
+        serializedVersion: 2
+        x: 890
+        y: 0
+        width: 89
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f78676906ec7082a0800000000000000
+      internalID: 5201282969791796371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: akReload_11
+      rect:
+        serializedVersion: 2
+        x: 979
+        y: 0
+        width: 89
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49d28bced44b43aa0800000000000000
+      internalID: -1358936485086445612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: akReload_12
+      rect:
+        serializedVersion: 2
+        x: 1068
+        y: 0
+        width: 89
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c1c21c55b2cb9180800000000000000
+      internalID: 7649036610423552413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: akReload_13
+      rect:
+        serializedVersion: 2
+        x: 1157
+        y: 0
+        width: 89
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01ea7a837caf8ca60800000000000000
+      internalID: 4742439671839620389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: akReload_14
+      rect:
+        serializedVersion: 2
+        x: 1246
+        y: 0
+        width: 89
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0c2673e5014eb7c0800000000000000
+      internalID: 3583918327530655144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      akReload_6: -8607612091235634274
+      akReload_11: -1358936485086445612
+      akReload_0: -1838085961597742099
+      akReload_9: -1514717929821945629
+      akReload_8: -9195364751269204863
+      akReload_14: 3583918327530655144
+      akReload_7: 5709814694887930432
+      akReload_12: 7649036610423552413
+      akReload_13: 4742439671839620389
+      akReload_4: 1362685519885066778
+      akReload_1: 3247444026393847931
+      akReload_2: -1041535172678666823
+      akReload_3: 9099562194590328493
+      akReload_10: 5201282969791796371
+      akReload_5: -1478177142479139668
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

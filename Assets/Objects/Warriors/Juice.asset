@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bf72df2023cd664c8dab56ed6fd020c, type: 3}
+  m_Name: Juice
+  m_EditorClassIdentifier: 
+  name: Juice
+  priceKW: 9000
+  priceO: 1250
+  splashArt: {fileID: -3203442385496515645, guid: 91e5a237865aed24a8e50bd6eadcdb95, type: 3}
+  warriorSprite: {fileID: -6909095210558811487, guid: 21dda2ac3ff3652469e53e3529594db4, type: 3}
+  skillImages:
+  - {fileID: 4279253293763080454, guid: 0db6b18dc1c42a345b5791d8244ee494, type: 3}
+  - {fileID: 4955117428869917756, guid: 0db6b18dc1c42a345b5791d8244ee494, type: 3}
+  skill1: "Juice throws a spell that enlarges whoever touches it.\nlevel 1 : \nSize
+    of enlargement -> x1.2\nDuration -> x seconds\nlevel 2 :\nSize of enlargement
+    -> x1.5\nDuration -> y seconds\nlevel 3 :\nSize of enlargement -> x2\nDuration
+    -> z seconds"
+  skill2: 'Juice casts a spell that makes him tiny.
+
+    level 1 : Size divided by
+    2 for x seconds
+
+    level 2 : Size divided by 3 for y seconds
+
+    level 3 :
+    Size divided by 4 for z seconds'
+  skillSet: JuiceSkills
+  dripIndexes: 040000000d0000000e000000
+  warriorColor:
+  - {r: 0.9245283, g: 0.30962977, b: 0.30962977, a: 0.39215687}
+  - {r: 0.8396226, g: 0.46605697, b: 0.03564434, a: 0.39215687}
+  - {r: 0.82745105, g: 0.43137258, b: 0.43137258, a: 0.39215687}
+  startCooldown1:
+  - 5
+  - 4
+  - 5
+  startCooldown2:
+  - 25
+  - 20
+  - 15
+  skillDamages1:
+  - 1.2
+  - 1.5
+  - 2
+  skillDamages2:
+  - 2
+  - 3
+  - 4
+  startDuration1:
+  - 2
+  - 3
+  - 5
+  startDuration2:
+  - 4
+  - 7
+  - 10
+  skillObjects:
+  - {fileID: 8574872813051278163, guid: 25737b5130615184b94e19562faafef0, type: 3}
+  - {fileID: 7006253050249420380, guid: 474959458d70f06438e3c890d3bd46cf, type: 3}

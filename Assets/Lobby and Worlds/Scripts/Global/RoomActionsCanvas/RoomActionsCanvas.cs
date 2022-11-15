@@ -60,7 +60,8 @@ namespace FirstGearGames.LobbyAndWorld.Global.Canvases
         /// <param name="username"></param>
         private void SetCurrentRoom(string username)
         {
-            _currentRoomText.text = CURRENT_ROOM_PREFIX + username;
+            //_currentRoomText.text = CURRENT_ROOM_PREFIX + username;
+            _currentRoomText.text = username;
         }
 
         /// <summary>
