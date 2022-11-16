@@ -8,15 +8,15 @@ public class OutrageSkills : Skills
 {
     public override void Ability1()
     {
-        // Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        // GameObject skill = Instantiate(playerVars.WarriorObject.skillObjects[0], new Vector3(mousePos.x, mousePos.y, 0f), Quaternion.identity);
-        // skill.GetComponentInChildren<damager>().damage = playerVars.WarriorObject.skillDamages1[playerVars.skillLevel1 - 1];
-        // skill.GetComponentInChildren<SpriteRenderer>().color = playerVars.WarriorColor;
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        GameObject skill = Instantiate(PlayerVariables.Warrior.skillObjects[0], new Vector3(mousePos.x, mousePos.y, 0f), Quaternion.identity);
+        skill.GetComponentInChildren<damager>().Damage = PlayerVariables.Warrior.skillDamages1[PlayerVariables.skillLevel1 - 1];
+        //skill.GetComponentInChildren<SpriteRenderer>().color = PlayerVariables.WarriorColor;
 
         // ParticleSystem ps = skill.GetComponentInChildren<ParticleSystem>();
         // ps.Stop();
         // var main = ps.main;
-        // main.startColor = playerVars.WarriorColor;
+        //main.startColor = PlayerVariables.WarriorColor;
         // ps.Play();
     }
 

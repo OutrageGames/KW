@@ -3,7 +3,7 @@
 public class DestroyAfterDelay : MonoBehaviour
 {
     [SerializeField]
-    private float _delay = 1f;
+    private float _delay;
 
     private void Awake()
     {

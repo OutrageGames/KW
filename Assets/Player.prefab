@@ -18,9 +18,9 @@ GameObject:
   - component: {fileID: 125339651165439917}
   - component: {fileID: 8497980323334782894}
   - component: {fileID: 918081279647885209}
-  - component: {fileID: 7422712775108736152}
   - component: {fileID: 7947371392377551223}
   - component: {fileID: 8056585155754955769}
+  - component: {fileID: 2494923580805457293}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -67,7 +67,6 @@ MonoBehaviour:
   - {fileID: 793421296944063529}
   - {fileID: 125339651165439917}
   - {fileID: 918081279647885209}
-  - {fileID: 7422712775108736152}
   - {fileID: 8056585155754955769}
   - {fileID: 2093514203700350266}
   - {fileID: 7395536407661862128}
@@ -158,19 +157,7 @@ MonoBehaviour:
     m_ActionId: 75d07084-e962-49e7-90d7-e5409af9e008
     m_ActionName: Player/Shoot[/Mouse/leftButton]
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7422712775108736152}
-        m_TargetAssemblyTypeName: PlayerAbilities, Assembly-CSharp
-        m_MethodName: Ability1Callback
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: e0666c2f-6e55-4a50-b7d5-cb04817de79c
     m_ActionName: Player/Ability1[/Keyboard/q]
   m_NeverAutoSwitchControlSchemes: 0
@@ -344,23 +331,9 @@ MonoBehaviour:
   _networkObjectCache: {fileID: 7825201556846537441}
   Health: 100
   _healthText: {fileID: 4912055718684377187}
-  _spawnRegion: {x: 1, y: 1, z: 1}
---- !u!114 &7422712775108736152
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3168379132310689486}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7165075e6ac99f74280597195d94cbef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _componentIndexCache: 5
-  _addedNetworkObject: {fileID: 7825201556846537441}
-  _networkObjectCache: {fileID: 7825201556846537441}
-  _bomb: {fileID: 2016260182495394823, guid: b147ca996227c4f4e9019995b862a518, type: 3}
+  Warrior: {fileID: 0}
+  skillLevel1: 1
+  skillLevel2: 0
 --- !u!70 &7947371392377551223
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -389,12 +362,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e55fae64cf3bd6082a3559d5273757f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 6
+  _componentIndexCache: 5
   _addedNetworkObject: {fileID: 7825201556846537441}
   _networkObjectCache: {fileID: 7825201556846537441}
   _cmCam: {fileID: 3706944347753075680}
   _headUI: {fileID: 0}
   _fow: {fileID: 0}
+--- !u!114 &2494923580805457293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3168379132310689486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1abf2acc129efaf48b48b19a3043c1df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4001437366844327312
 GameObject:
   m_ObjectHideFlags: 0
@@ -576,7 +561,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2836e36774ca1c4bbbee976e17b649c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 7
+  _componentIndexCache: 6
   _addedNetworkObject: {fileID: 7825201556846537441}
   _networkObjectCache: {fileID: 7825201556846537441}
   _synchronizeParent: 0
@@ -861,7 +846,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44ae42c8f0b3ced4bb5541a318f1209d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 8
+  _componentIndexCache: 7
   _addedNetworkObject: {fileID: 7825201556846537441}
   _networkObjectCache: {fileID: 7825201556846537441}
   _warriorSprite: {fileID: 1249903745926525053}
@@ -877,7 +862,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2836e36774ca1c4bbbee976e17b649c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 9
+  _componentIndexCache: 8
   _addedNetworkObject: {fileID: 7825201556846537441}
   _networkObjectCache: {fileID: 7825201556846537441}
   _synchronizeParent: 0

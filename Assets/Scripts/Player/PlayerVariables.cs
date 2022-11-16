@@ -11,9 +11,10 @@ using FirstGearGames.LobbyAndWorld.Demos.KingOfTheHill;
 
 public class PlayerVariables : NetworkBehaviour
 {
-    [SyncVar] public int Health;
+    [SyncVar] public float Health;
     [SerializeField] public TMP_Text _healthText;
-    //[SyncVar] public int health = 10;
+    [SerializeField] public WarriorObject Warrior;
+    [SerializeField] public int skillLevel1, skillLevel2;
 
     public override void OnStartClient()
     {
@@ -26,8 +27,8 @@ public class PlayerVariables : NetworkBehaviour
         ClientInstance ci = ClientInstance.ReturnClientInstance(client.Owner);
         PlayerSettings ciSettings = ci.GetComponent<PlayerSettings>();
 
-        SetSprite(client, ciSettings);
-        ServerSetSprite(client, ciSettings);
+        SetWarrior(client, ciSettings);
+        ServerSetWarrior(client, ciSettings);
     }
     void Start()
     {
@@ -35,29 +36,30 @@ public class PlayerVariables : NetworkBehaviour
     }
     
     [ServerRpc]
-    public void ServerSetSprite(NetworkObject client, PlayerSettings ciSettings)
+    public void ServerSetWarrior(NetworkObject client, PlayerSettings ciSettings)
     {
-        ClientSetSprite(client, ciSettings);
+        ClientSetWarrior(client, ciSettings);
     }
 
     [ObserversRpc]
-    public void ClientSetSprite(NetworkObject client, PlayerSettings ciSettings)
+    public void ClientSetWarrior(NetworkObject client, PlayerSettings ciSettings)
     {
         if(!IsOwner)
         {
-            SetSprite(client, ciSettings);
+            SetWarrior(client, ciSettings);
         }
     }
 
-    private void SetSprite(NetworkObject client, PlayerSettings ciSettings)
+    private void SetWarrior(NetworkObject client, PlayerSettings ciSettings)
     {
-        GetComponentInChildren<SpriteRenderer>().sprite = ciSettings.GetAllWarriors()[ciSettings.GetWarriorIndex()].warriorSprite;
+        Warrior = ciSettings.GetAllWarriors()[ciSettings.GetWarriorIndex()];
     }
+
+    
 
     void Update()
     {
         _healthText.text = Health.ToString();
-        //Debug.Log(TimeManager.RoundTripTime);
         if(Health <= 0)
         {
             float x = Random.Range(3, 60);
@@ -70,13 +72,13 @@ public class PlayerVariables : NetworkBehaviour
     }
     
     [ServerRpc]
-    public void ServerUpdateHealth(PlayerVariables script, int changeAmmount)
+    public void ServerUpdateHealth(PlayerVariables script, float changeAmmount)
     {
         ClientUpdateHealth(this, changeAmmount);
     }
 
     [ObserversRpc]
-    public void ClientUpdateHealth(PlayerVariables script, int changeAmmount)
+    public void ClientUpdateHealth(PlayerVariables script, float changeAmmount)
     {
         if(!IsOwner)
         {
@@ -85,7 +87,7 @@ public class PlayerVariables : NetworkBehaviour
     }
     
     [ServerRpc]
-    public void UpdateHealth(PlayerVariables script, int changeAmmount)
+    public void UpdateHealth(PlayerVariables script, float changeAmmount)
     {
         Health += changeAmmount;
         _healthText.text = Health.ToString();

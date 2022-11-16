@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bomb : MonoBehaviour
+public class damager : MonoBehaviour
 {
-    void Start()
+    private float _damage;
+    public float Damage { get => _damage; set => _damage = value; }
+
+    private void Start()
     {
-        Destroy(gameObject, .2f);
+
     }
 
     void OnTriggerEnter2D(Collider2D collider)
@@ -14,7 +17,7 @@ public class Bomb : MonoBehaviour
         if(collider.tag == "Player")
         {
             var enemyVars = collider.gameObject.GetComponent<PlayerVariables>();
-            enemyVars.UpdateHealth(enemyVars, -20);
+            enemyVars.UpdateHealth(enemyVars, -_damage);
             Destroy(gameObject);
         }
     }

@@ -1,16 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FishNet.Object;
 using UnityEngine.InputSystem;
 
-public class Skills : MonoBehaviour
+
+public class Skills : NetworkBehaviour
 {
     // private InputMaster controls;
     public float cooldown1, cooldown2, duration1, duration2;
     public bool active1, active2;
+    public PlayerVariables PlayerVariables;
     //public GameObject[] skillObjects;
     //public float[] actualCooldown1, actualCooldown2, skillDamages1, skillDamages2, startDuration1, startDuration2;
-    // public playerVariables playerVars;
+    
     // public PlayerStatsController _playerStatsController;
     // Animator skillAnimator1, skillAnimator2;
 
@@ -18,9 +21,20 @@ public class Skills : MonoBehaviour
 
     // public PlayerCameraController PlayerCameraController { get => _cameraController; }
 
+    public override void OnStartClient()
+    {
+        base.OnStartClient();
+
+        PlayerVariables = GetComponent<PlayerVariables>();
+        if(!base.IsOwner)
+        {
+            PlayerVariables.enabled = false;
+        }
+    }
+
     private void Awake()
     {
-        // playerVars = GetComponent<playerVariables>();
+        
         // _cameraController = GetComponent<PlayerCameraController>();
 
         // if (playerVars.IsOwner)
@@ -35,42 +49,42 @@ public class Skills : MonoBehaviour
         // controls.Player.Ability2.performed += DoAbility2;
     }
 
-    public virtual void DoAbility1(InputAction.CallbackContext context)
+    public virtual void Ability1Callback(InputAction.CallbackContext context)
     {
-        // if (playerVars.skillLevel1 >= 1 && cooldown1 <= 0)
-        // {
-        //     StartCoroutine(Stop1());
-        //     Ability1();
-        //     duration1 = playerVars.WarriorObject.startDuration1[playerVars.skillLevel1 - 1];
-        //     cooldown1 = playerVars.WarriorObject.startCooldown1[playerVars.skillLevel1 - 1];
-        //     skillAnimator1.SetBool("lock", true);
-        // }
+        if (PlayerVariables.skillLevel1 >= 1 && cooldown1 <= 0)
+        {
+            StartCoroutine(Stop1());
+            Ability1();
+            duration1 = PlayerVariables.Warrior.startDuration1[PlayerVariables.skillLevel1 - 1];
+            cooldown1 = PlayerVariables.Warrior.startCooldown1[PlayerVariables.skillLevel1 - 1];
+            //skillAnimator1.SetBool("lock", true);
+        }
     }
 
-    public virtual void DoAbility2(InputAction.CallbackContext context)
+    public virtual void Ability2Callback(InputAction.CallbackContext context)
     {
-        // if (playerVars.skillLevel2 >= 1 && cooldown2 <= 0)
-        // {
-        //     StartCoroutine(Stop2());
-        //     Ability2();
-        //     duration2 = playerVars.WarriorObject.startDuration2[playerVars.skillLevel2 - 1];
-        //     cooldown2 = playerVars.WarriorObject.startCooldown2[playerVars.skillLevel2 - 1];
-        //     skillAnimator2.SetBool("lock", true);
-        // }
+        if (PlayerVariables.skillLevel2 >= 1 && cooldown2 <= 0)
+        {
+            StartCoroutine(Stop2());
+            Ability2();
+            duration2 = PlayerVariables.Warrior.startDuration2[PlayerVariables.skillLevel2 - 1];
+            cooldown2 = PlayerVariables.Warrior.startCooldown2[PlayerVariables.skillLevel2 - 1];
+            //skillAnimator2.SetBool("lock", true);
+        }
     }
 
-    // public IEnumerator Stop1()
-    // {
-    //     active1 = true;
-    //     yield return new WaitForSeconds(playerVars.WarriorObject.startDuration1[playerVars.skillLevel1 - 1]);
-    //     active1 = false;
-    // }
-    // public IEnumerator Stop2()
-    // {
-    //     active2 = true;
-    //     yield return new WaitForSeconds(playerVars.WarriorObject.startDuration2[playerVars.skillLevel2 - 1]);
-    //     active2 = false;
-    // }
+    public IEnumerator Stop1()
+    {
+        active1 = true;
+        yield return new WaitForSeconds(PlayerVariables.Warrior.startDuration1[PlayerVariables.skillLevel1 - 1]);
+        active1 = false;
+    }
+    public IEnumerator Stop2()
+    {
+        active2 = true;
+        yield return new WaitForSeconds(PlayerVariables.Warrior.startDuration2[PlayerVariables.skillLevel2 - 1]);
+        active2 = false;
+    }
 
     public virtual void Ability1()
     {
@@ -102,14 +116,5 @@ public class Skills : MonoBehaviour
         {
             duration2 -= Time.deltaTime;
         }
-    }
-
-    private void OnEnable()
-    {
-        // controls.Enable();
-    }
-    private void OnDisable()
-    {
-        // controls.Disable();
     }
 }
