@@ -13,7 +13,6 @@ public class PlayerVariables : NetworkBehaviour
 {
     [SyncVar] public int Health;
     [SerializeField] public TMP_Text _healthText;
-    [SerializeField] private Vector3 _spawnRegion = Vector3.one;
     //[SyncVar] public int health = 10;
 
     public override void OnStartClient()
@@ -61,10 +60,10 @@ public class PlayerVariables : NetworkBehaviour
         //Debug.Log(TimeManager.RoundTripTime);
         if(Health <= 0)
         {
-            GameplayManager gpm = GameObject.Find("GameplayManager").GetComponent<GameplayManager>();
-            float x = Random.Range(-gpm.SpawnRegion.x, gpm.SpawnRegion.x);
-            float y = Random.Range(-gpm.SpawnRegion.y, gpm.SpawnRegion.y);
-            transform.position = new Vector2(transform.position.x + x, transform.position.y + y);
+            float x = Random.Range(3, 60);
+            float y = 25;
+            Vector2 next = new Vector2(x, y);
+            transform.position = next;
 
             Health = 100;
         }

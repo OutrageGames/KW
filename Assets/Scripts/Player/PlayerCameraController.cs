@@ -7,7 +7,8 @@ using FishNet.Object;
 
 public class PlayerCameraController : NetworkBehaviour
 {
-    private CinemachineVirtualCamera _camera;
+    [SerializeField] private CinemachineVirtualCamera _cmCam;
+    private CinemachineBrain _mainCamera;
     private CinemachineBasicMultiChannelPerlin _cameraPerlin;
 
     [SerializeField]
@@ -19,14 +20,16 @@ public class PlayerCameraController : NetworkBehaviour
     {
         base.OnStartClient();
 
-        _camera = GetComponentInChildren<CinemachineVirtualCamera>();
-        _camera.gameObject.GetComponent<CinemachineConfiner>().m_BoundingShape2D = GameObject.Find("Confiner").GetComponent<CompositeCollider2D>();
+        _cmCam.gameObject.GetComponent<CinemachineConfiner>().m_BoundingShape2D = GameObject.Find("Confiner").GetComponent<CompositeCollider2D>();
         _cameraPerlin = GetComponentInChildren<CinemachineBasicMultiChannelPerlin>();
 
         if (IsOwner)
         {
             //Instantiate(allObjects.FOW, transform.position, Quaternion.identity, transform);
-            //_camera.Follow = gameObject.transform;
+
+            
+            _cmCam.Follow = gameObject.transform;
+
             // tag = "Player";
             //_headUI.GetComponent<SortingGroup>().sortingOrder = 1000;
             // foreach (Transform child in transform)
@@ -51,6 +54,7 @@ public class PlayerCameraController : NetworkBehaviour
         }
         else
         {
+            _cmCam.gameObject.SetActive(false);
             //_fow.SetActive(false);
             //tag = "Enemy";
             //gameObject.layer = 17;

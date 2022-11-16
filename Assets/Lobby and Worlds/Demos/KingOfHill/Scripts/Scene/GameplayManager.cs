@@ -23,8 +23,8 @@ namespace FirstGearGames.LobbyAndWorld.Demos.KingOfTheHill
         /// <summary>
         /// Region players may spawn.
         /// </summary>
-        [Tooltip("Region players may spawn.")]
-        public Vector3 SpawnRegion = Vector3.one;
+        // [Tooltip("Region players may spawn.")]
+        // public Vector2 SpawnRegion = Vector2.one;
         /// <summary>
         /// Prefab to spawn.
         /// </summary>
@@ -282,10 +282,10 @@ namespace FirstGearGames.LobbyAndWorld.Demos.KingOfTheHill
         private void SpawnPlayer(NetworkConnection conn)
         {
             //Move the player randomly within spawn region.
-            float x = Random.Range(-SpawnRegion.x, SpawnRegion.x);
-            float y = Random.Range(-SpawnRegion.y, SpawnRegion.y);
+            float x = Random.Range(3, 60);
+            float y = 25;
             //float z = Random.Range(-_spawnRegion.z / 2f, _spawnRegion.z / 2f);
-            Vector2 next = new Vector2(transform.position.x + x, transform.position.y + y);
+            Vector2 next = new Vector2(x, y);
 
             //Make object and move it to proper scene.
             //ClientInstance ci = ClientInstance.ReturnClientInstance(conn);
@@ -321,10 +321,10 @@ namespace FirstGearGames.LobbyAndWorld.Demos.KingOfTheHill
         /// <summary>
         /// Draw spawn region.
         /// </summary>
-        private void OnDrawGizmosSelected()
-        {
-            Gizmos.DrawWireCube(transform.position, SpawnRegion);
-        }
+        // private void OnDrawGizmosSelected()
+        // {
+        //     Gizmos.DrawWireCube(Vector2.zero, new Vector2(SpawnRegion.x, SpawnRegion.y));
+        // }
         #endregion
     }
 

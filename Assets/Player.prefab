@@ -344,6 +344,7 @@ MonoBehaviour:
   _networkObjectCache: {fileID: 7825201556846537441}
   Health: 100
   _healthText: {fileID: 4912055718684377187}
+  _spawnRegion: {x: 1, y: 1, z: 1}
 --- !u!114 &7422712775108736152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -391,6 +392,7 @@ MonoBehaviour:
   _componentIndexCache: 6
   _addedNetworkObject: {fileID: 7825201556846537441}
   _networkObjectCache: {fileID: 7825201556846537441}
+  _cmCam: {fileID: 3706944347753075680}
   _headUI: {fileID: 0}
   _fow: {fileID: 0}
 --- !u!1 &4001437366844327312
