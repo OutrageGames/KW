@@ -21,6 +21,8 @@ GameObject:
   - component: {fileID: 7947371392377551223}
   - component: {fileID: 8056585155754955769}
   - component: {fileID: 2494923580805457293}
+  - component: {fileID: 7302890418435005994}
+  - component: {fileID: 8847758818195471746}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -68,6 +70,9 @@ MonoBehaviour:
   - {fileID: 125339651165439917}
   - {fileID: 918081279647885209}
   - {fileID: 8056585155754955769}
+  - {fileID: 2494923580805457293}
+  - {fileID: 7302890418435005994}
+  - {fileID: 8847758818195471746}
   - {fileID: 2093514203700350266}
   - {fileID: 7395536407661862128}
   - {fileID: 4158225608431535971}
@@ -157,7 +162,19 @@ MonoBehaviour:
     m_ActionId: 75d07084-e962-49e7-90d7-e5409af9e008
     m_ActionName: Player/Shoot[/Mouse/leftButton]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7302890418435005994}
+        m_TargetAssemblyTypeName: Skills, Assembly-CSharp
+        m_MethodName: Ability1Callback
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: e0666c2f-6e55-4a50-b7d5-cb04817de79c
     m_ActionName: Player/Ability1[/Keyboard/q]
   m_NeverAutoSwitchControlSchemes: 0
@@ -329,11 +346,9 @@ MonoBehaviour:
   _componentIndexCache: 4
   _addedNetworkObject: {fileID: 7825201556846537441}
   _networkObjectCache: {fileID: 7825201556846537441}
-  Health: 100
-  _healthText: {fileID: 4912055718684377187}
   Warrior: {fileID: 0}
   skillLevel1: 1
-  skillLevel2: 0
+  skillLevel2: 1
 --- !u!70 &7947371392377551223
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -380,6 +395,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1abf2acc129efaf48b48b19a3043c1df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _componentIndexCache: 6
+  _addedNetworkObject: {fileID: 7825201556846537441}
+  _networkObjectCache: {fileID: 7825201556846537441}
+  _playerVariables: {fileID: 0}
+  _spriteRenderer: {fileID: 0}
+--- !u!114 &7302890418435005994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3168379132310689486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a82fa297df09729488ad56fd36fe4182, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _componentIndexCache: 7
+  _addedNetworkObject: {fileID: 7825201556846537441}
+  _networkObjectCache: {fileID: 7825201556846537441}
+  cooldown1: 0
+  cooldown2: 0
+  duration1: 0
+  duration2: 0
+  active1: 0
+  active2: 0
+  PlayerVariables: {fileID: 918081279647885209}
+--- !u!114 &8847758818195471746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3168379132310689486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20670662cd638884da2a0594f0eb71ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _componentIndexCache: 8
+  _addedNetworkObject: {fileID: 7825201556846537441}
+  _networkObjectCache: {fileID: 7825201556846537441}
+  Health: 0
+  HealthText: {fileID: 4912055718684377187}
 --- !u!1 &4001437366844327312
 GameObject:
   m_ObjectHideFlags: 0
@@ -561,7 +620,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2836e36774ca1c4bbbee976e17b649c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 6
+  _componentIndexCache: 9
   _addedNetworkObject: {fileID: 7825201556846537441}
   _networkObjectCache: {fileID: 7825201556846537441}
   _synchronizeParent: 0
@@ -703,7 +762,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6563703212727205893}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.369, y: 0.227, z: 0}
+  m_LocalPosition: {x: 1.675, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -846,7 +905,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44ae42c8f0b3ced4bb5541a318f1209d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 7
+  _componentIndexCache: 10
   _addedNetworkObject: {fileID: 7825201556846537441}
   _networkObjectCache: {fileID: 7825201556846537441}
   _warriorSprite: {fileID: 1249903745926525053}
@@ -862,7 +921,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2836e36774ca1c4bbbee976e17b649c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 8
+  _componentIndexCache: 11
   _addedNetworkObject: {fileID: 7825201556846537441}
   _networkObjectCache: {fileID: 7825201556846537441}
   _synchronizeParent: 0

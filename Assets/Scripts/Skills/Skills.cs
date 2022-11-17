@@ -26,10 +26,10 @@ public class Skills : NetworkBehaviour
         base.OnStartClient();
 
         PlayerVariables = GetComponent<PlayerVariables>();
-        if(!base.IsOwner)
-        {
-            PlayerVariables.enabled = false;
-        }
+        // if(!base.IsOwner)
+        // {
+        //     PlayerVariables.enabled = false;
+        // }
     }
 
     private void Awake()
@@ -51,13 +51,19 @@ public class Skills : NetworkBehaviour
 
     public virtual void Ability1Callback(InputAction.CallbackContext context)
     {
-        if (PlayerVariables.skillLevel1 >= 1 && cooldown1 <= 0)
+        if(IsOwner)
         {
-            StartCoroutine(Stop1());
-            Ability1();
-            duration1 = PlayerVariables.Warrior.startDuration1[PlayerVariables.skillLevel1 - 1];
-            cooldown1 = PlayerVariables.Warrior.startCooldown1[PlayerVariables.skillLevel1 - 1];
-            //skillAnimator1.SetBool("lock", true);
+            if(context.performed)
+            {
+                // if (PlayerVariables.skillLevel1 >= 1 && cooldown1 <= 0)
+                // {
+                    StartCoroutine(Stop1());
+                    Ability1();
+                    //duration1 = PlayerVariables.Warrior.startDuration1[PlayerVariables.skillLevel1 - 1];
+                    //cooldown1 = PlayerVariables.Warrior.startCooldown1[PlayerVariables.skillLevel1 - 1];
+                    //skillAnimator1.SetBool("lock", true);
+                // }
+            }
         }
     }
 
@@ -86,10 +92,15 @@ public class Skills : NetworkBehaviour
         active2 = false;
     }
 
+    
     public virtual void Ability1()
     {
         Debug.Log("gab1");
     }
+
+
+
+
     public virtual void Ability2()
     {
         Debug.Log("gab2");

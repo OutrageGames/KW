@@ -2,15 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using FishNet.Object;
+
 using UnityEngine.InputSystem;
 
 public class OutrageSkills : Skills
 {
     public override void Ability1()
     {
-        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        GameObject skill = Instantiate(PlayerVariables.Warrior.skillObjects[0], new Vector3(mousePos.x, mousePos.y, 0f), Quaternion.identity);
-        skill.GetComponentInChildren<damager>().Damage = PlayerVariables.Warrior.skillDamages1[PlayerVariables.skillLevel1 - 1];
+        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        float dmg = PlayerVariables.Warrior.skillDamages1[PlayerVariables.skillLevel1 - 1];
+
+        ServerAb1(mousePos, dmg);
+        Ab1(mousePos, dmg);
+
         //skill.GetComponentInChildren<SpriteRenderer>().color = PlayerVariables.WarriorColor;
 
         // ParticleSystem ps = skill.GetComponentInChildren<ParticleSystem>();
@@ -19,6 +24,27 @@ public class OutrageSkills : Skills
         //main.startColor = PlayerVariables.WarriorColor;
         // ps.Play();
     }
+
+    [ServerRpc]
+    void ServerAb1(Vector2 pos, float dmg)
+    {
+        ClientAb1(pos, dmg);
+    }
+    [ObserversRpc]
+    void ClientAb1(Vector2 pos, float dmg)
+    {
+        if(!IsOwner)
+        {
+            Ab1(pos, dmg);
+        }
+    }
+    void Ab1(Vector2 pos, float dmg)
+    {
+        GameObject skill = Instantiate(PlayerVariables.Warrior.skillObjects[0], new Vector2(pos.x, pos.y), Quaternion.identity);
+        skill.GetComponentInChildren<damager>().Damage = dmg;
+    }
+
+
 
     public override void Ability2()
     {

@@ -6,6 +6,7 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField] private float _speed;
     [SerializeField] private LayerMask _hitLayerMask;
+    [SerializeField] private float _damage;
 
 
     void Update()
@@ -20,7 +21,6 @@ public class Bullet : MonoBehaviour
             {
                 _speed = 0f;
                 transform.position += (transform.right * hit.distance);
-                Destroy(gameObject, 0.1f);
             }
             else
             {
@@ -37,8 +37,8 @@ public class Bullet : MonoBehaviour
         }
         else if ((collider.tag == "Player"))
         {
-            var enemyVars = collider.gameObject.GetComponent<PlayerVariables>();
-            enemyVars.UpdateHealth(enemyVars, -5);
+            var enemyVars = collider.gameObject.GetComponent<PlayerHealth>();
+            enemyVars.UpdateHealth(enemyVars, -_damage);
             Destroy(gameObject);
             return true;
         }

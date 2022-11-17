@@ -58,9 +58,9 @@ MonoBehaviour:
   - 18
   - 15
   skillDamages1:
+  - 20
   - 30
   - 40
-  - 60
   skillDamages2:
   - 1.2
   - 1.5
@@ -75,5 +75,3 @@ MonoBehaviour:
   - 5
   skillObjects:
   - {fileID: 1850898430217239303, guid: 5ae4aa3b5a5bafb449dd4cca76caf2ef, type: 3}
-  - {fileID: 7006253050249420380, guid: f0da9d9536ea0e34bbb4cca3964b4f55, type: 3}
-  - {fileID: 7006253050249420380, guid: 474959458d70f06438e3c890d3bd46cf, type: 3}
