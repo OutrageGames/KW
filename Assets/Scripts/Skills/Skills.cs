@@ -12,7 +12,7 @@ public class Skills : NetworkBehaviour
     public bool active1, active2;
     public PlayerVariables PlayerVariables;
     //public GameObject[] skillObjects;
-    //public float[] actualCooldown1, actualCooldown2, skillDamages1, skillDamages2, startDuration1, startDuration2;
+    public float[] actualCooldown1, actualCooldown2, skillDamages1, skillDamages2, startDuration1, startDuration2;
     
     // public PlayerStatsController _playerStatsController;
     // Animator skillAnimator1, skillAnimator2;
@@ -65,42 +65,37 @@ public class Skills : NetworkBehaviour
         //     skillAnimator1 = GameObject.Find("skillAnimator1").GetComponent<Animator>();
         //     skillAnimator2 = GameObject.Find("skillAnimator2").GetComponent<Animator>();
         // }
-
-        // controls = new InputMaster();
-
-        // controls.Player.Ability1.performed += DoAbility1;
-        // controls.Player.Ability2.performed += DoAbility2;
     }
 
     public virtual void Skill1Callback(InputAction.CallbackContext context)
     {
-        // if (PlayerVariables.skillLevel1 >= 1 && cooldown1 <= 0)
-        // {
+        if (PlayerVariables.skillLevel1 >= 1 && cooldown1 <= 0)
+        {
             if(IsOwner)
             {
-                StartCoroutine(Stop1());
                 Skill1();
-                //duration1 = PlayerVariables.Warrior.startDuration1[PlayerVariables.skillLevel1 - 1];
-                //cooldown1 = PlayerVariables.Warrior.startCooldown1[PlayerVariables.skillLevel1 - 1];
+                duration1 = PlayerVariables.Warrior.startDuration1[PlayerVariables.skillLevel1 - 1];
+                cooldown1 = PlayerVariables.Warrior.startCooldown1[PlayerVariables.skillLevel1 - 1];
+                StartCoroutine(Stop1());
                 //skillAnimator1.SetBool("lock", true);
             }
-        // }
+        }
         
     }
 
     public virtual void Skill2Callback(InputAction.CallbackContext context)
     {
-        // if (PlayerVariables.skillLevel2 >= 1 && cooldown2 <= 0)
-        // {
+        if (PlayerVariables.skillLevel2 >= 1 && cooldown2 <= 0)
+        {
             if(IsOwner)
             {
-                StartCoroutine(Stop2());
                 Skill2();
-            // duration2 = PlayerVariables.Warrior.startDuration2[PlayerVariables.skillLevel2 - 1];
-            // cooldown2 = PlayerVariables.Warrior.startCooldown2[PlayerVariables.skillLevel2 - 1];
-            //skillAnimator2.SetBool("lock", true);
+                duration2 = PlayerVariables.Warrior.startDuration2[PlayerVariables.skillLevel2 - 1];
+                cooldown2 = PlayerVariables.Warrior.startCooldown2[PlayerVariables.skillLevel2 - 1];
+                StartCoroutine(Stop2());
+                //skillAnimator2.SetBool("lock", true);
             }
-        // }
+        }
     }
 
     public IEnumerator Stop1()
@@ -112,7 +107,7 @@ public class Skills : NetworkBehaviour
     public IEnumerator Stop2()
     {
         active2 = true;
-        yield return new WaitForSeconds(PlayerVariables.Warrior.startDuration2[PlayerVariables.skillLevel2 - 1]);
+        yield return new WaitForSeconds(duration2);
         active2 = false;
     }
 
@@ -121,9 +116,6 @@ public class Skills : NetworkBehaviour
     {
         Debug.Log("gab1");
     }
-
-
-
 
     public virtual void Skill2()
     {

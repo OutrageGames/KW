@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3927346923365841843}
   - component: {fileID: 398728377144808979}
   - component: {fileID: 202543665664134061}
-  - component: {fileID: 3610036452745217712}
+  - component: {fileID: 1148880525152238379}
   m_Layer: 0
   m_Name: KAR
   m_TagString: Untagged
@@ -112,7 +112,7 @@ MonoBehaviour:
   _networkBehaviours:
   - {fileID: 3927346923365841843}
   - {fileID: 398728377144808979}
-  - {fileID: 3610036452745217712}
+  - {fileID: 0}
   <ParentNetworkObject>k__BackingField: {fileID: 0}
   <ChildNetworkObjects>k__BackingField: []
   _isNetworked: 1
@@ -125,7 +125,7 @@ MonoBehaviour:
   <AssetPathHash>k__BackingField: 4578451012340677145
   _sceneNetworkObjects:
   - {fileID: 202543665664134061}
---- !u!114 &3610036452745217712
+--- !u!114 &1148880525152238379
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -134,14 +134,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 891395486753981208}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c765f9bbf14f6344aa4046198d23d38c, type: 3}
+  m_Script: {fileID: 11500000, guid: 93a8d24e92786194294733d982147dd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 2
+  _componentIndexCache: 255
   _addedNetworkObject: {fileID: 202543665664134061}
-  _networkObjectCache: {fileID: 202543665664134061}
-  _shootPoint: {fileID: 134870834719415927}
-  _bullet: {fileID: 2016260182495394823, guid: c02d9a6653729f94b9c41f99c0e595b8, type: 3}
+  _networkObjectCache: {fileID: 0}
+  fireRate: 0
+  spreadRate: 0
+  spread: 0
+  _bulletPrefab: {fileID: 0}
+  particleEffect: {fileID: 0}
+  oneMagBullets: 0
+  currentBullets: 0
+  spawnPoint: {fileID: 0}
+  efePoint: {fileID: 0}
+  ReloadTime: 0
+  ReloadStartTime: 2
 --- !u!1 &1901463225609188523
 GameObject:
   m_ObjectHideFlags: 0

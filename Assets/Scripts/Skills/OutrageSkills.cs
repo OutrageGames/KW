@@ -50,7 +50,8 @@ public class OutrageSkills : Skills
 
     public override void Skill2()
     {
-        
+        GetComponentInChildren<Gun>().DamageMultiplier = PlayerVariables.Warrior.skillDamages2[PlayerVariables.skillLevel2 - 1];
+        StartCoroutine(ResetDmg());
         // GameObject fire = Instantiate(PlayerVariables.Warrior.skillObjects[1], transform.position, Quaternion.identity, transform);
         // GameObject dmgText = Instantiate(PlayerVariables.Warrior.skillObjects[2], transform.position, Quaternion.identity, transform);
         // dmgText.GetComponentInChildren<Canvas>().GetComponentInChildren<TMP_Text>().text = "x" + PlayerVariables.Warrior.skillDamages2[PlayerVariables.skillLevel2 - 1] + " DMG";
@@ -63,5 +64,11 @@ public class OutrageSkills : Skills
         // ps.Play();
         //text
         //dmgText.GetComponent<destroyAfter>().timer = PlayerVariables.Warrior.startDuration2[PlayerVariables.skillLevel2 - 1];
+    }
+
+    public IEnumerator ResetDmg()
+    {
+        yield return new WaitForSeconds(PlayerVariables.Warrior.startDuration2[PlayerVariables.skillLevel2 - 1]);
+        GetComponentInChildren<Gun>().DamageMultiplier = 1;
     }
 }

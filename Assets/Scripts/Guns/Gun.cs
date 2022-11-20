@@ -6,6 +6,9 @@ using UnityEngine.InputSystem;
 
 public abstract class Gun : NetworkBehaviour
 {
+    [SerializeField] private float _damageMultiplier;
+    public float DamageMultiplier { get => _damageMultiplier; set => _damageMultiplier = value; }
+    
     public bool IsShooting { get => _isShooting; set => _isShooting = value; }
     public bool IsReloading { get => _isReloading; }
     // public bool IsOwner { get => _isOwner; }

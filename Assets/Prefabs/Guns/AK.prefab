@@ -170,6 +170,7 @@ MonoBehaviour:
   _componentIndexCache: 2
   _addedNetworkObject: {fileID: 1400210952860977099}
   _networkObjectCache: {fileID: 1400210952860977099}
+  _damageMultiplier: 1
   fireRate: 0.1
   spreadRate: 5
   spread: 0

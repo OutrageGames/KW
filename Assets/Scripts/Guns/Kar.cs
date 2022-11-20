@@ -5,7 +5,7 @@ using FishNet.Object;
 using UnityEngine.InputSystem;
 
 
-public class Ak : Gun
+public class Kar : Gun
 {
     public override IEnumerator Shooting()
     {
@@ -22,8 +22,8 @@ public class Ak : Gun
                 // audioSource.PlayOneShot(shootSound);
                 float bulletRot = transform.eulerAngles.z + Random.Range(-spread, spread);
                 Vector2 bulletPos = spawnPoint.position;
-                ServerShoot(bulletPos, bulletRot, DamageMultiplier);
-                Shoot(bulletPos, bulletRot, DamageMultiplier);
+                ServerShoot(bulletPos, bulletRot);
+                Shoot(bulletPos, bulletRot);
 
                 //b.GetComponent<TrailRenderer>().startColor = GetComponentInChildren<SpriteRenderer>().color;
                 //Instantiate(particleEffect, efePoint.position, Quaternion.identity, transform);
@@ -34,23 +34,22 @@ public class Ak : Gun
     }
 
     [ServerRpc]
-    void ServerShoot(Vector2 pos, float rot, float dmg)
+    void ServerShoot(Vector2 pos, float rot)
     {
-        ClientsShoot(pos, rot, dmg);        
+        ClientsShoot(pos, rot);        
     }
 
     [ObserversRpc]
-    void ClientsShoot(Vector2 pos, float rot, float dmg)
+    void ClientsShoot(Vector2 pos, float rot)
     {
         if(!IsOwner)
         {
-            Shoot(pos, rot, dmg);
+            Shoot(pos, rot);
         }
     }
 
-    void Shoot(Vector2 pos, float rot, float dmg)
+    void Shoot(Vector2 pos, float rot)
     {
-        GameObject bullet = Instantiate(_bulletPrefab, spawnPoint.position, Quaternion.Euler(0f, 0f, rot));
-        bullet.GetComponent<Bullet>().Damage *= dmg;
+        Instantiate(_bulletPrefab, spawnPoint.position, Quaternion.Euler(0f, 0f, rot));
     }
 }
