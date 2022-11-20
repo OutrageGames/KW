@@ -7,23 +7,49 @@ using UnityEngine.InputSystem;
 
 public class Ak : Gun
 {
-    protected override void Shooting()
+    public override IEnumerator Shooting()
     {
-        if ((currentBullets > 0 || !IsOwner) && !IsReloading)
+        while(true)
         {
-            if (spread < spreadRate)
+            if (currentBullets > 0 && !IsReloading)
             {
-                spread += 0.4f;
-            }
-            audioSource.pitch = Random.Range(0.99f, 1.01f);
-            audioSource.PlayOneShot(shootSound);
+                IsShooting = true;
+                if (spread < spreadRate)
+                {
+                    spread += 0.4f;
+                }
+                // audioSource.pitch = Random.Range(0.99f, 1.01f);
+                // audioSource.PlayOneShot(shootSound);
+                float bulletRot = transform.eulerAngles.z + Random.Range(-spread, spread);
+                Vector2 bulletPos = spawnPoint.position;
+                ServerShoot(bulletPos, bulletRot);
+                Shoot(bulletPos, bulletRot);
 
-            GameObject b = Instantiate(_bulletPrefab, spawnPoint.position, Quaternion.identity);
-            Bullet bullet = b.GetComponent<Bullet>();
-            //bullet.Initialize(transform.rotation.eulerAngles.z + Random.Range(-spread, spread), OwnerClientId, 1, _immediateDestroyBullet);
-            b.GetComponent<TrailRenderer>().startColor = GetComponentInChildren<SpriteRenderer>().color;
-            Instantiate(particleEffect, efePoint.position, Quaternion.identity, transform);
-            currentBullets -= 1;
+                //b.GetComponent<TrailRenderer>().startColor = GetComponentInChildren<SpriteRenderer>().color;
+                //Instantiate(particleEffect, efePoint.position, Quaternion.identity, transform);
+                currentBullets -= 1;
+            }
+            yield return new WaitForSeconds(fireRate);
         }
+    }
+
+    [ServerRpc]
+    void ServerShoot(Vector2 pos, float rot)
+    {
+        ClientsShoot(pos, rot);        
+    }
+
+    [ObserversRpc]
+    void ClientsShoot(Vector2 pos, float rot)
+    {
+        if(!IsOwner)
+        {
+            Shoot(pos, rot);
+        }
+    }
+
+    void Shoot(Vector2 pos, float rot)
+    {
+        Instantiate(_bulletPrefab, spawnPoint.position, Quaternion.Euler(0f, 0f, rot));
     }
 }

@@ -6,31 +6,33 @@ using UnityEngine.InputSystem;
 
 public abstract class Gun : NetworkBehaviour
 {
-    public bool IsShooting { get => _isShooting; }
+    public bool IsShooting { get => _isShooting; set => _isShooting = value; }
     public bool IsReloading { get => _isReloading; }
     // public bool IsOwner { get => _isOwner; }
     // public ulong OwnerClientId { get => _ownerId; }
 
-    private bool _isShooting, _isReloading, _isOwner;
+    private bool _isShooting, _isReloading;
     // private ulong _ownerId;
     public float fireRate, spreadRate, spread;
     public GameObject _bulletPrefab, particleEffect;
     public int oneMagBullets, currentBullets;
     public Transform spawnPoint, efePoint;
-    public Vector2 spawnPointPos;
-    private Animator anim;
+    // public Vector2 spawnPointPos;
+    // private Animator anim;
     private string currentState;
-    public string idleAnimation, shootAnimation, reloadAnimation;
-    public AudioClip shootSound;
-    public AudioSource audioSource;
-    private float _rotZ;
-    private PlayerVariables playerVars;
-    [SerializeField] private float shakeAmount;
-    private PlayerCameraController _cameraController;
+    // public string idleAnimation, shootAnimation, reloadAnimation;
+    // public AudioClip shootSound;
+    // public AudioSource audioSource;
+    // private float _rotZ;
+    // private PlayerVariables playerVars;
+    // [SerializeField] private float shakeAmount;
+    // private PlayerCameraController _cameraController;
+    public InputMaster controls;
 
 
     private float _shootTimer;
     protected bool _immediateDestroyBullet;
+    public float ReloadTime, ReloadStartTime = 2f;
 
     public void Initialize(bool isOwner, ulong ownerId)
     {
@@ -39,10 +41,30 @@ public abstract class Gun : NetworkBehaviour
         // Debug.Log($"IsOwner: {_isOwner}, OwnerID: {_ownerId}");
     }
 
+    public override void OnStartClient()
+    {
+        base.OnStartClient();
+        if(!base.IsOwner)
+        {
+            GetComponent<Gun>().enabled = false;
+        }
+    }
+
+    private void OnEnable()
+    {
+        controls.Enable();
+    }
+    private void OnDisable()
+    {
+        controls.Disable();
+    }
+
     private void Awake()
     {
-        playerVars = GetComponentInParent<PlayerVariables>();
-        _cameraController = transform.parent.GetComponent<PlayerCameraController>();
+        controls = new InputMaster(); 
+        
+        // playerVars = GetComponentInParent<PlayerVariables>();
+        // _cameraController = transform.parent.GetComponent<PlayerCameraController>();
 
         //userController con = GameObject.FindGameObjectWithTag("controller").GetComponent<userController>();
 
@@ -54,13 +76,19 @@ public abstract class Gun : NetworkBehaviour
 
         currentBullets = oneMagBullets;
 
-        audioSource = GetComponent<AudioSource>();
+        //audioSource = GetComponent<AudioSource>();
 
-        anim = GetComponentInChildren<Animator>();
-        audioSource = GetComponent<AudioSource>();
+        // anim = GetComponentInChildren<Animator>();
+        //audioSource = GetComponent<AudioSource>();
 
-        spawnPoint.localPosition = spawnPointPos;
-        efePoint.localPosition = spawnPointPos;
+        // spawnPoint.localPosition = spawnPointPos;
+        // efePoint.localPosition = spawnPointPos;
+    }
+
+    void Start()
+    {
+        controls.Player.Shoot.performed += ShootCallback;
+        controls.Player.Shoot.canceled += ShootCallback;
     }
 
     public virtual void Reload()
@@ -72,36 +100,70 @@ public abstract class Gun : NetworkBehaviour
         // }
     }
 
-    public virtual void StartShoot(bool start)
-    {
-        _isShooting = start;
+    // public virtual void StartShoot()
+    // {
+    //     _isShooting = start;
 
-        if (!start)
+    //     if (!start)
+    //     {
+    //         spread = 0.0f;
+    //     }
+    // }
+
+    public void ShootCallback(InputAction.CallbackContext context)
+    {
+        if(!base.IsOwner)
+            return;
+
+        if (context.performed)
         {
-            spread = 0.0f;
+            // Shoot();
+            // ServerShoot();
+            // Shooting();
+            StartCoroutine(Shooting());
+        }
+        if (context.canceled)
+        {
+            spread = 0;
+            _isShooting = false;
+            StopAllCoroutines();
         }
     }
 
-    protected abstract void Shooting();
+    public virtual IEnumerator Shooting()
+    {
+        yield return new WaitForSeconds(.1f);
+    }
 
     public void Update()
     {
-        if (anim.GetCurrentAnimatorStateInfo(0).IsName(reloadAnimation) && anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f)
+        if(_isReloading)
+        {
+            ReloadTime -= Time.deltaTime;
+        }
+
+        if(ReloadTime <= 0)
         {
             _isReloading = false;
+            ReloadTime = ReloadStartTime;
             currentBullets = oneMagBullets;
         }
+        // if (anim.GetCurrentAnimatorStateInfo(0).IsName(reloadAnimation) && anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f)
+        // {
+        //     _isReloading = false;
+        //     currentBullets = oneMagBullets;
+        // }
 
-        if (_isReloading)
-        {
-            PlayAnim(reloadAnimation);
-        }
-        else if (!_isShooting)
-        {
-            PlayAnim(idleAnimation);
-        }
+        // if (_isReloading)
+        // {
+        //     PlayAnim(reloadAnimation);
+        // }
+        // else if (!_isShooting)
+        // {
+        //     PlayAnim(idleAnimation);
+        // }
 
-        if (currentBullets <= 0 && _isOwner && !_isReloading)
+        if (currentBullets <= 0 && !_isReloading)
         {
             _isReloading = true;
             spread = 0;
@@ -112,12 +174,12 @@ public abstract class Gun : NetworkBehaviour
             Shooting();
             _shootTimer = fireRate;
 
-            if (_isOwner)
-            {
-                _cameraController.CameraShake(shakeAmount, 0.1f);
-            }
+            // if (_isOwner)
+            // {
+            //     _cameraController.CameraShake(shakeAmount, 0.1f);
+            // }
 
-            PlayAnim(shootAnimation);
+            // PlayAnim(shootAnimation);
         }
         else if (_shootTimer > 0.0f)
         {
@@ -125,38 +187,29 @@ public abstract class Gun : NetworkBehaviour
         }
     }
 
-    void PlayAnim(string newState)
-    {
-        if (currentState == newState) return;
-        anim.Play(newState);
-        currentState = newState;
-    }
+    // void PlayAnim(string newState)
+    // {
+    //     if (currentState == newState) return;
+    //     anim.Play(newState);
+    //     currentState = newState;
+    // }
 
-    void LateUpdate()
-    {
-        transform.rotation = Quaternion.Euler(0f, 0f, _rotZ);
-    }
 
-    public void FixRotation(float rotZ)
-    {
-        _rotZ = rotZ;
-    }
+    // private void OnTriggerEnter2D(Collider2D collision)
+    // {
+    //     if (collision.gameObject.layer == 16 || collision.gameObject.layer == 17)
+    //     {
+    //         _immediateDestroyBullet = true;
+    //         spawnPoint.localPosition = efePoint.transform.localPosition;
+    //     }
+    // }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.layer == 16 || collision.gameObject.layer == 17)
-        {
-            _immediateDestroyBullet = true;
-            spawnPoint.localPosition = efePoint.transform.localPosition;
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.layer == 16 || collision.gameObject.layer == 17)
-        {
-            _immediateDestroyBullet = false;
-            spawnPoint.localPosition = spawnPointPos;
-        }
-    }
+    // private void OnTriggerExit2D(Collider2D collision)
+    // {
+    //     if (collision.gameObject.layer == 16 || collision.gameObject.layer == 17)
+    //     {
+    //         _immediateDestroyBullet = false;
+    //         spawnPoint.localPosition = spawnPointPos;
+    //     }
+    // }
 }
