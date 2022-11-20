@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using FishNet.Object;
 using UnityEngine.InputSystem;
-
+using System;
 
 public class Skills : NetworkBehaviour
 {
-    // private InputMaster controls;
+    public InputMaster controls;
     public float cooldown1, cooldown2, duration1, duration2;
     public bool active1, active2;
     public PlayerVariables PlayerVariables;
@@ -25,16 +25,39 @@ public class Skills : NetworkBehaviour
     {
         base.OnStartClient();
 
-        PlayerVariables = GetComponent<PlayerVariables>();
+        
         // if(!base.IsOwner)
         // {
-        //     PlayerVariables.enabled = false;
+        //     GetComponent<Skills>().enabled = false;
         // }
+
+        //gameObject.AddComponent(Type.GetType(PlayerVariables.Warrior.skillSet)); 
+    }
+
+    private void OnEnable()
+    {
+        controls.Enable();
+    }
+    private void OnDisable()
+    {
+        controls.Disable();
     }
 
     private void Awake()
     {
-        
+        controls = new InputMaster(); 
+    }
+
+    private void Start()
+    {
+        controls.Player.Skill1.performed += Skill1Callback;
+        controls.Player.Skill2.performed += Skill2Callback;
+        PlayerVariables = GetComponent<PlayerVariables>();
+
+        //controls.actions.get["Player"].Ability1.performed += Ability1Callback;
+        //controls.Player.Ability2.performed += Ability2Callback;
+        // InputAction asd = controls.currentActionMap.actions[3];
+        // asd += Ability1Callback;
         // _cameraController = GetComponent<PlayerCameraController>();
 
         // if (playerVars.IsOwner)
@@ -49,34 +72,35 @@ public class Skills : NetworkBehaviour
         // controls.Player.Ability2.performed += DoAbility2;
     }
 
-    public virtual void Ability1Callback(InputAction.CallbackContext context)
+    public virtual void Skill1Callback(InputAction.CallbackContext context)
     {
-        if(IsOwner)
-        {
-            if(context.performed)
+        // if (PlayerVariables.skillLevel1 >= 1 && cooldown1 <= 0)
+        // {
+            if(IsOwner)
             {
-                // if (PlayerVariables.skillLevel1 >= 1 && cooldown1 <= 0)
-                // {
-                    StartCoroutine(Stop1());
-                    Ability1();
-                    //duration1 = PlayerVariables.Warrior.startDuration1[PlayerVariables.skillLevel1 - 1];
-                    //cooldown1 = PlayerVariables.Warrior.startCooldown1[PlayerVariables.skillLevel1 - 1];
-                    //skillAnimator1.SetBool("lock", true);
-                // }
+                StartCoroutine(Stop1());
+                Skill1();
+                //duration1 = PlayerVariables.Warrior.startDuration1[PlayerVariables.skillLevel1 - 1];
+                //cooldown1 = PlayerVariables.Warrior.startCooldown1[PlayerVariables.skillLevel1 - 1];
+                //skillAnimator1.SetBool("lock", true);
             }
-        }
+        // }
+        
     }
 
-    public virtual void Ability2Callback(InputAction.CallbackContext context)
+    public virtual void Skill2Callback(InputAction.CallbackContext context)
     {
-        if (PlayerVariables.skillLevel2 >= 1 && cooldown2 <= 0)
-        {
-            StartCoroutine(Stop2());
-            Ability2();
-            duration2 = PlayerVariables.Warrior.startDuration2[PlayerVariables.skillLevel2 - 1];
-            cooldown2 = PlayerVariables.Warrior.startCooldown2[PlayerVariables.skillLevel2 - 1];
+        // if (PlayerVariables.skillLevel2 >= 1 && cooldown2 <= 0)
+        // {
+            if(IsOwner)
+            {
+                StartCoroutine(Stop2());
+                Skill2();
+            // duration2 = PlayerVariables.Warrior.startDuration2[PlayerVariables.skillLevel2 - 1];
+            // cooldown2 = PlayerVariables.Warrior.startCooldown2[PlayerVariables.skillLevel2 - 1];
             //skillAnimator2.SetBool("lock", true);
-        }
+            }
+        // }
     }
 
     public IEnumerator Stop1()
@@ -93,7 +117,7 @@ public class Skills : NetworkBehaviour
     }
 
     
-    public virtual void Ability1()
+    public virtual void Skill1()
     {
         Debug.Log("gab1");
     }
@@ -101,7 +125,7 @@ public class Skills : NetworkBehaviour
 
 
 
-    public virtual void Ability2()
+    public virtual void Skill2()
     {
         Debug.Log("gab2");
     }

@@ -8,6 +8,7 @@ using TMPro;
 using FishNet.Connection;
 using FirstGearGames.LobbyAndWorld.Clients;
 using FirstGearGames.LobbyAndWorld.Demos.KingOfTheHill;
+using System;
 
 public class PlayerVariables : NetworkBehaviour
 {
@@ -27,7 +28,9 @@ public class PlayerVariables : NetworkBehaviour
         PlayerSettings ciSettings = ci.GetComponent<PlayerSettings>();
 
         SetWarrior(client, ciSettings);
-        ServerSetWarrior(client, ciSettings);        
+        ServerSetWarrior(client, ciSettings);      
+
+        //gameObject.AddComponent(Type.GetType(Warrior.skillSet));  
     }
     
     [ServerRpc]

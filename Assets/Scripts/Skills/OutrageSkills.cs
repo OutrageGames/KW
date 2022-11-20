@@ -8,10 +8,12 @@ using UnityEngine.InputSystem;
 
 public class OutrageSkills : Skills
 {
-    public override void Ability1()
+    public override void Skill1()
     {
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
         float dmg = PlayerVariables.Warrior.skillDamages1[PlayerVariables.skillLevel1 - 1];
+        Debug.Log("gab?");
 
         ServerAb1(mousePos, dmg);
         Ab1(mousePos, dmg);
@@ -46,19 +48,20 @@ public class OutrageSkills : Skills
 
 
 
-    public override void Ability2()
+    public override void Skill2()
     {
-        // GameObject fire = Instantiate(playerVars.WarriorObject.skillObjects[1], transform.position, Quaternion.identity, transform);
-        // GameObject dmgText = Instantiate(playerVars.WarriorObject.skillObjects[2], transform.position, Quaternion.identity, transform);
-        // dmgText.GetComponentInChildren<Canvas>().GetComponentInChildren<TMP_Text>().text = "x" + playerVars.WarriorObject.skillDamages2[playerVars.skillLevel2 - 1] + " DMG";
-        // //fire
+        
+        // GameObject fire = Instantiate(PlayerVariables.Warrior.skillObjects[1], transform.position, Quaternion.identity, transform);
+        // GameObject dmgText = Instantiate(PlayerVariables.Warrior.skillObjects[2], transform.position, Quaternion.identity, transform);
+        // dmgText.GetComponentInChildren<Canvas>().GetComponentInChildren<TMP_Text>().text = "x" + PlayerVariables.Warrior.skillDamages2[PlayerVariables.skillLevel2 - 1] + " DMG";
+        //fire
         // ParticleSystem ps = fire.GetComponent<ParticleSystem>();
         // ps.Stop();
         // var main = ps.main;
-        // main.duration = playerVars.WarriorObject.startDuration2[playerVars.skillLevel2 - 1];
-        // main.startColor = playerVars.WarriorColor;
+        // main.duration = PlayerVariables.Warrior.startDuration2[PlayerVariables.skillLevel2 - 1];
+        // main.startColor = PlayerVariables.Warrior.warriorColor;
         // ps.Play();
-        // //text
-        // dmgText.GetComponent<destroyAfter>().timer = playerVars.WarriorObject.startDuration2[playerVars.skillLevel2 - 1];
+        //text
+        //dmgText.GetComponent<destroyAfter>().timer = PlayerVariables.Warrior.startDuration2[PlayerVariables.skillLevel2 - 1];
     }
 }

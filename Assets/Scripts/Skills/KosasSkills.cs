@@ -9,7 +9,7 @@ public class KosasSkills : Skills
     public GameObject abilityText, invParticle;
     private Animator anim;
 
-    public override void Ability1()
+    public override void Skill1()
     {
         // Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         // GameObject skill = Instantiate(playerVars.WarriorObject.skillObjects[0], new Vector3(mousePos.x, mousePos.y, 0f), Quaternion.identity);
@@ -25,7 +25,7 @@ public class KosasSkills : Skills
         anim.SetTrigger("goto");
     }
 
-    public override void Ability2()
+    public override void Skill2()
     {
         // if (!playerVars.IsOwner)
         // {
