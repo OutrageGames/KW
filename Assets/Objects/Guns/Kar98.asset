@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Kar98
   m_EditorClassIdentifier: 
   name: kar 98
+  prefab: {fileID: 891395486753981208, guid: 0c1bb275f2834cb489f53894f35477d3, type: 3}
   UIImage: {fileID: -326976666729940600, guid: 10c2e7e22f230924d95d3695efaa88b6, type: 3}
   gun: {fileID: 6522528383696961237, guid: 9bc3715c641eb5f42a5109374a6e740b, type: 3}
   magBullets: 1

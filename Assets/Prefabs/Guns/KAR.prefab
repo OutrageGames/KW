@@ -9,13 +9,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7975288521560628932}
-  - component: {fileID: 1213546750654850053}
-  - component: {fileID: 6166064349090622888}
-  - component: {fileID: 1400210952860977099}
-  - component: {fileID: 450013891512142764}
-  - component: {fileID: 7787489553437518031}
+  - component: {fileID: 3927346923365841843}
+  - component: {fileID: 398728377144808979}
+  - component: {fileID: 202543665664134061}
+  - component: {fileID: 3610036452745217712}
   m_Layer: 0
-  m_Name: AK
+  m_Name: KAR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -38,7 +37,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1213546750654850053
+--- !u!114 &3927346923365841843
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -47,28 +46,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 891395486753981208}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Script: {fileID: 11500000, guid: 44ae42c8f0b3ced4bb5541a318f1209d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 1ad9492de8ca40247a76b1bd87454f94, type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: Player
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
---- !u!114 &6166064349090622888
+  _componentIndexCache: 0
+  _addedNetworkObject: {fileID: 202543665664134061}
+  _networkObjectCache: {fileID: 202543665664134061}
+  _warriorSprite: {fileID: 0}
+--- !u!114 &398728377144808979
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -80,13 +65,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2836e36774ca1c4bbbee976e17b649c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 0
-  _addedNetworkObject: {fileID: 1400210952860977099}
-  _networkObjectCache: {fileID: 1400210952860977099}
+  _componentIndexCache: 1
+  _addedNetworkObject: {fileID: 202543665664134061}
+  _networkObjectCache: {fileID: 202543665664134061}
   _synchronizeParent: 0
   _packing:
     Position: 1
-    Rotation: 1
+    Rotation: 0
     Scale: 0
   _interpolation: 2
   _extrapolation: 2
@@ -104,13 +89,13 @@ MonoBehaviour:
   _rotationSnapping:
     X: 0
     Y: 0
-    Z: 0
+    Z: 1
   _synchronizeScale: 1
   _scaleSnapping:
     X: 0
     Y: 0
     Z: 0
---- !u!114 &1400210952860977099
+--- !u!114 &202543665664134061
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -125,9 +110,9 @@ MonoBehaviour:
   <IsNested>k__BackingField: 0
   <ComponentIndex>k__BackingField: 0
   _networkBehaviours:
-  - {fileID: 6166064349090622888}
-  - {fileID: 450013891512142764}
-  - {fileID: 7787489553437518031}
+  - {fileID: 3927346923365841843}
+  - {fileID: 398728377144808979}
+  - {fileID: 3610036452745217712}
   <ParentNetworkObject>k__BackingField: {fileID: 0}
   <ChildNetworkObjects>k__BackingField: []
   _isNetworked: 1
@@ -137,25 +122,10 @@ MonoBehaviour:
   <PrefabId>k__BackingField: -1
   _scenePathHash: 0
   <SceneId>k__BackingField: 0
-  <AssetPathHash>k__BackingField: 12306067166630318113
-  _sceneNetworkObjects: []
---- !u!114 &450013891512142764
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 891395486753981208}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44ae42c8f0b3ced4bb5541a318f1209d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _componentIndexCache: 1
-  _addedNetworkObject: {fileID: 1400210952860977099}
-  _networkObjectCache: {fileID: 1400210952860977099}
-  _warriorSprite: {fileID: 0}
---- !u!114 &7787489553437518031
+  <AssetPathHash>k__BackingField: 4578451012340677145
+  _sceneNetworkObjects:
+  - {fileID: 202543665664134061}
+--- !u!114 &3610036452745217712
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -168,8 +138,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _componentIndexCache: 2
-  _addedNetworkObject: {fileID: 1400210952860977099}
-  _networkObjectCache: {fileID: 1400210952860977099}
+  _addedNetworkObject: {fileID: 202543665664134061}
+  _networkObjectCache: {fileID: 202543665664134061}
   _shootPoint: {fileID: 134870834719415927}
   _bullet: {fileID: 2016260182495394823, guid: c02d9a6653729f94b9c41f99c0e595b8, type: 3}
 --- !u!1 &1901463225609188523
@@ -196,7 +166,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1901463225609188523}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.675, y: 0, z: 0}
+  m_LocalPosition: {x: 1.797, y: -0.064, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -276,8 +246,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: -3953392710612138364, guid: 10c2e7e22f230924d95d3695efaa88b6, type: 3}
-  m_Color: {r: 0.26111352, g: 0.20906018, b: 0.5471698, a: 1}
+  m_Sprite: {fileID: -326976666729940600, guid: 10c2e7e22f230924d95d3695efaa88b6, type: 3}
+  m_Color: {r: 0.4433962, g: 0.20175523, b: 0.13594696, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

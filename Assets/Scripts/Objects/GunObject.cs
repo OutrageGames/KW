@@ -6,6 +6,7 @@ using UnityEngine;
 public class GunObject : ScriptableObject
 {
     public new string name;
+    public GameObject prefab;
     public Sprite UIImage;
     public GameObject gun;
     public int magBullets;

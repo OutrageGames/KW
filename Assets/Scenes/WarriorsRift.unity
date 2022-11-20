@@ -561,6 +561,9 @@ MonoBehaviour:
   - {fileID: 7825201556846537441, guid: e368700635c242a41a52a70cc4cb5ac0, type: 3}
   - {fileID: 7825201556846537441, guid: 88e28e6b28a7ae84aadfda2bfce973b6, type: 3}
   - {fileID: 7825201556846537441, guid: bd3ea652813231c49ab19b04e4169d26, type: 3}
+  _gunPrefab:
+  - {fileID: 202543665664134061, guid: 2e4773909d24fc145b333eca48ed5b0b, type: 3}
+  - {fileID: 202543665664134061, guid: 0c1bb275f2834cb489f53894f35477d3, type: 3}
   _deathDummy: {fileID: 1065909917182841894, guid: 567026d111c9c7c45b95157fc5ae09a8, type: 3}
 --- !u!4 &717890317
 Transform:

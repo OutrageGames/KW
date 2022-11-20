@@ -8,7 +8,31 @@ using UnityEngine.InputSystem;
 public class PlayerShoot : NetworkBehaviour
 {
     [SerializeField] private Transform _shootPoint;
-    [SerializeField] private GameObject _bullet, _gun;
+    [SerializeField] private GameObject _bullet;
+    public InputMaster controls;
+    private PlayerVariables _playerVariables;
+
+    private void OnEnable()
+    {
+        controls.Enable();
+    }
+    private void OnDisable()
+    {
+        controls.Disable();
+    }
+
+    private void Awake()
+    {
+        controls = new InputMaster(); 
+    }
+
+    void Start()
+    {
+        gameObject.SetActive(true);
+        controls.Player.Shoot.performed += ShootCallback;
+        controls.Player.Shoot.canceled += ShootCallback;
+        _playerVariables = GetComponentInParent<PlayerVariables>();
+    }
 
     public override void OnStartClient()
     {
@@ -37,7 +61,7 @@ public class PlayerShoot : NetworkBehaviour
     void Shoot()
     {
         GameObject asd = Instantiate(_bullet, _shootPoint.transform.position, Quaternion.identity);
-        asd.transform.Rotate(0.0f, 0.0f, _gun.transform.eulerAngles.z);
+        asd.transform.Rotate(0.0f, 0.0f, transform.eulerAngles.z);
     }
     public void ShootCallback(InputAction.CallbackContext context)
     {

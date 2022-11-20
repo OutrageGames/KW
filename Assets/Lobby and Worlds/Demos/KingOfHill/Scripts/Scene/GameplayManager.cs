@@ -31,6 +31,8 @@ namespace FirstGearGames.LobbyAndWorld.Demos.KingOfTheHill
         [Tooltip("Prefab to spawn.")]
         [SerializeField]
         private NetworkObject[] _playerPrefab = null;
+        [SerializeField]
+        private NetworkObject[] _gunPrefab = null;
         /// <summary>
         /// DeathDummy to spawn.
         /// </summary>
@@ -291,6 +293,7 @@ namespace FirstGearGames.LobbyAndWorld.Demos.KingOfTheHill
             ClientInstance ci = ClientInstance.ReturnClientInstance(conn);
             PlayerSettings ps = ci.GetComponent<PlayerSettings>();
             NetworkObject nob = Instantiate<NetworkObject>(_playerPrefab[ps.GetWarriorIndex()], next, Quaternion.identity);
+            //NetworkObject gun = Instantiate<NetworkObject>(_gunPrefab[ps.GetGunIndex()], nob.transform.position, Quaternion.identity, nob.transform);
             
             UnitySceneManager.MoveGameObjectToScene(nob.gameObject, gameObject.scene);
 

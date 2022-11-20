@@ -695,6 +695,8 @@ namespace FirstGearGames.LobbyAndWorld.Lobbies
             }
         }
 
+        ///warrior choosing
+
         [Client]
         public static void ChooseWarrior(int value)
         {
@@ -713,6 +715,28 @@ namespace FirstGearGames.LobbyAndWorld.Lobbies
                 return;
             
             ci.GetComponent<PlayerSettings>().SetWarriorIndex(value);
+        }
+
+        ///gun choosing
+
+        [Client]
+        public static void ChooseGun(int value)
+        {
+            _instance.ChooseGunInternal(value);
+        }
+        private void ChooseGunInternal(int value)
+        {
+            CmdChooseGun(value);
+        }
+
+        [ServerRpc(RequireOwnership = false)]
+        private void CmdChooseGun(int value, NetworkConnection sender = null)
+        {
+            ClientInstance ci;
+            if (!FindClientInstance(sender, out ci))
+                return;
+            
+            ci.GetComponent<PlayerSettings>().SetGunIndex(value);
         }
 
         /// <summary>

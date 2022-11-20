@@ -89,6 +89,13 @@ namespace FirstGearGames.LobbyAndWorld.Lobbies.JoinCreateRoomCanvases
             LobbyNetwork.ChooseWarrior(value);
         }
 
+        public void ChooseGun(int value)
+        {
+            // ClientInstance ci = GameObject.FindGameObjectWithTag("MyInstance").GetComponent<ClientInstance>();
+            // ci.PlayerSettings._warriorIndex = value;
+            LobbyNetwork.ChooseGun(value);
+        }
+
 
         /// <summary>
         /// Resets canvases as though first login.

@@ -17,8 +17,9 @@ namespace FirstGearGames.LobbyAndWorld.Clients
         /// </summary>
         [SyncVar]
         private string _username;
-        [SerializeField] [SyncVar] private int _warriorIndex;
+        [SerializeField] [SyncVar] private int _warriorIndex, _gunIndex;
         [SerializeField] private WarriorObject[] _allWarriors;
+        [SerializeField] private GunObject[] _allGuns;
         #endregion
 
         /// <summary>
@@ -53,6 +54,19 @@ namespace FirstGearGames.LobbyAndWorld.Clients
         public WarriorObject[] GetAllWarriors() 
         {
             return _allWarriors; 
+        }
+
+        public int GetGunIndex() 
+        {
+            return _gunIndex; 
+        }
+        public void SetGunIndex(int value) 
+        {
+            _gunIndex = value;
+        }
+        public GunObject[] GetAllGuns() 
+        {
+            return _allGuns; 
         }
 
     }
