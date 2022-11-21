@@ -12,7 +12,7 @@ using FirstGearGames.LobbyAndWorld.Demos.KingOfTheHill;
 public class PlayerHealth : NetworkBehaviour
 {
     [SyncVar] public float Health;
-    [SerializeField] private TMP_Text HealthText;
+    [SerializeField] private PlayerUI _playerUI;
 
     public override void OnStartClient()
     {
@@ -34,7 +34,7 @@ public class PlayerHealth : NetworkBehaviour
 
     void ShowHealth()
     {
-        HealthText.text = Health.ToString();
+        _playerUI.HealthBar.transform.localScale = new Vector2(Health / 100f, transform.localScale.y);
         ChangeHealth();
     }
 
@@ -43,7 +43,7 @@ public class PlayerHealth : NetworkBehaviour
     {
         if(!IsOwner)
         {
-            HealthText.text = Health.ToString();
+            _playerUI.HealthBar.transform.localScale = new Vector2(Health / 100f, transform.localScale.y);
         }        
     }
 

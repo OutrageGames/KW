@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1063801527146309949}
   - component: {fileID: 5570416443491769451}
   m_Layer: 0
-  m_Name: Bullet
+  m_Name: KarBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2016260182495394823}
   m_LocalRotation: {x: 0, y: 0, z: 0.8840903, w: -0.46731618}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.223, y: 0.139, z: 0}
   m_LocalScale: {x: 0.07, y: 0.07, z: 0.07}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -154,7 +154,7 @@ TrailRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.47058773
+        value: 0.8352957
         inSlope: 0
         outSlope: 0
         tangentMode: 0

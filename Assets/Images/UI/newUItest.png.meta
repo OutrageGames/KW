@@ -1,10 +1,28 @@
 fileFormatVersion: 2
-guid: 4bc6ed9270bac0d4da925a4622094672
+guid: ebf4da5c5d7b4b947ba0f3bba208c51c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1469531397570622141
-    second: cursorpart_0
+      213: 5765767311751052275
+    second: newUItest_0
+  - first:
+      213: -8416584578571347608
+    second: newUItest_1
+  - first:
+      213: 5282521266376740220
+    second: newUItest_2
+  - first:
+      213: -7164961157714583364
+    second: newUItest_3
+  - first:
+      213: 5722607480415083965
+    second: newUItest_4
+  - first:
+      213: 2592470070434535047
+    second: newUItest_5
+  - first:
+      213: 6818541449690088355
+    second: newUItest_6
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -45,12 +63,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -69,7 +87,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 8192
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -81,7 +99,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
-    maxTextureSize: 8192
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -95,22 +113,85 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: cursorpart_0
+      name: newUItest_5
       rect:
         serializedVersion: 2
-        x: 0
-        y: 6
-        width: 5
-        height: 4
+        x: 15
+        y: 102
+        width: 73
+        height: 11
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 34d0585dafc2b9be0800000000000000
-      internalID: -1469531397570622141
+      spriteID: 78615172bcd4af320800000000000000
+      internalID: 2592470070434535047
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: newUItest_0
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 93
+        width: 61
+        height: 2
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3fbfa7a52de140050800000000000000
+      internalID: 5765767311751052275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: newUItest_1
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 88
+        width: 60
+        height: 1
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86959343be8423b80800000000000000
+      internalID: -8416584578571347608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: newUItest_2
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 82
+        width: 46
+        height: 1
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7d05d09a194f4940800000000000000
+      internalID: 5282521266376740220
       vertices: []
       indices: 
       edges: []
@@ -126,7 +207,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      cursorpart_0: -1469531397570622141
+      newUItest_2: 5282521266376740220
+      newUItest_0: 5765767311751052275
+      newUItest_1: -8416584578571347608
+      newUItest_5: 2592470070434535047
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

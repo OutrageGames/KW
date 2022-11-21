@@ -112,7 +112,7 @@ MonoBehaviour:
   _networkBehaviours:
   - {fileID: 3927346923365841843}
   - {fileID: 398728377144808979}
-  - {fileID: 0}
+  - {fileID: 1148880525152238379}
   <ParentNetworkObject>k__BackingField: {fileID: 0}
   <ChildNetworkObjects>k__BackingField: []
   _isNetworked: 1
@@ -137,17 +137,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93a8d24e92786194294733d982147dd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 255
+  _componentIndexCache: 2
   _addedNetworkObject: {fileID: 202543665664134061}
-  _networkObjectCache: {fileID: 0}
-  fireRate: 0
+  _networkObjectCache: {fileID: 202543665664134061}
+  _damageMultiplier: 1
+  fireRate: 5
   spreadRate: 0
   spread: 0
-  _bulletPrefab: {fileID: 0}
+  _bulletPrefab: {fileID: 2016260182495394823, guid: a43b6c9c56bb60c408efe01afde8bb2d, type: 3}
   particleEffect: {fileID: 0}
-  oneMagBullets: 0
+  oneMagBullets: 1
   currentBullets: 0
-  spawnPoint: {fileID: 0}
+  spawnPoint: {fileID: 134870834719415927}
   efePoint: {fileID: 0}
   ReloadTime: 0
   ReloadStartTime: 2

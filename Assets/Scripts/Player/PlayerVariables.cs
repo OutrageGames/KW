@@ -15,23 +15,31 @@ public class PlayerVariables : NetworkBehaviour
 {
     
     [SerializeField] public WarriorObject Warrior;
+    [SerializeField] private PlayerUI _playerUI;
     [SerializeField] public GunObject Gun;
-    [SerializeField] public int skillLevel1, skillLevel2;
+    [SerializeField] public int skillLevel1, skillLevel2, level;
+    [SerializeField] public int currentXp, nextXp;
+    [SerializeField] private string _userName;
 
     public override void OnStartClient()
     {
         base.OnStartClient();
+
+        _playerUI = GetComponent<PlayerUI>();
         
         if(!base.IsOwner)
             return;
         
+        
         NetworkObject client = GetComponent<NetworkObject>();
         ClientInstance ci = ClientInstance.ReturnClientInstance(client.Owner);
         PlayerSettings ciSettings = ci.GetComponent<PlayerSettings>();
+        
 
         SetWarrior(client, ciSettings);
         ServerSetWarrior(client, ciSettings); 
 
+        
 
         //ServerSpawnGun();
         SpawnGun();      
@@ -99,5 +107,7 @@ public class PlayerVariables : NetworkBehaviour
     {
         Warrior = ciSettings.GetAllWarriors()[ciSettings.GetWarriorIndex()];
         Gun = ciSettings.GetAllGuns()[ciSettings.GetGunIndex()];
+        _userName = ciSettings.GetUsername();
+        _playerUI.Username.text = _userName.ToString();
     }
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class cursorController : MonoBehaviour
+public class CursorController : MonoBehaviour
 {
     void Start()
     {
@@ -12,6 +12,6 @@ public class cursorController : MonoBehaviour
     void Update()
     {
         Cursor.visible = false;
-        transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        transform.position = Input.mousePosition;
     }
 }
