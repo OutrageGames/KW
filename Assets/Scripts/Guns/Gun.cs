@@ -124,6 +124,7 @@ public abstract class Gun : NetworkBehaviour
             // ServerShoot();
             // Shooting();
             StartCoroutine(Shooting());
+            
         }
         if (context.canceled)
         {
@@ -135,7 +136,7 @@ public abstract class Gun : NetworkBehaviour
 
     public virtual IEnumerator Shooting()
     {
-        yield return new WaitForSeconds(.1f);
+        yield return new WaitForSeconds(0f);
     }
 
     public void Update()
@@ -174,7 +175,7 @@ public abstract class Gun : NetworkBehaviour
 
         if (_isShooting && _shootTimer <= 0.0f && !_isReloading)
         {
-            Shooting();
+            //Shooting();
             _shootTimer = fireRate;
 
             // if (_isOwner)

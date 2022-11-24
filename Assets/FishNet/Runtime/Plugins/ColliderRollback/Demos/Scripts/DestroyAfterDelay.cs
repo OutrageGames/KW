@@ -3,11 +3,11 @@
 public class DestroyAfterDelay : MonoBehaviour
 {
     [SerializeField]
-    private float _delay;
+    public float Delay;
 
-    private void Awake()
+    private void Start()
     {
-        Destroy(gameObject, _delay);
+        Destroy(gameObject, Delay);
     }
 
 }

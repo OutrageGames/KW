@@ -12,19 +12,22 @@ public class PlayerUI : NetworkBehaviour
 {
     [Header("Head UI")]
     [SerializeField] public Transform HealthBar;
-    [SerializeField] private Transform _experienceBar;
-    [SerializeField] private TMP_Text _nameText, _levelText, _bullets;
+    [SerializeField] public Transform ExperienceBar;
+    [SerializeField] private TMP_Text _nameText, _bullets;
+    [SerializeField] public TMP_Text LevelText;
     public TMP_Text Username { get => _nameText; set => _nameText = value; }
     [SerializeField] private SpriteRenderer _bulletsImage;
-    [SerializeField] private GameObject _skillUpParticle;
+    // [SerializeField] private GameObject _skillUpParticle;
     [Space(10)]
 
     private Image _skillBar1, _skillBar2, _skillbarBG1, _skillbarBG2, _skillCooldownBar1, _skillCooldownBar2, _skillLock1, _skillLock2, _skillImage1, _skillImage2;
     private Image _durationBar1, _durationBar2;
     private TMP_Text _skillCooldownText1, _skillCooldownText2;
-    private Animator _skillAnimator1, _skillAnimator2;
+    [SerializeField] private Animator _skillAnimator1, _skillAnimator2;
     private PlayerVariables _playerVars;
-    private Skills _playerSkills;
+    [SerializeField] private Skills _playerSkills;
+    private PlayerExperience _playerExperience;
+    
 
  
 
@@ -38,11 +41,9 @@ public class PlayerUI : NetworkBehaviour
         }
 
         _playerVars = GetComponent<PlayerVariables>();
+        _playerExperience = GetComponent<PlayerExperience>();
 
-        if (GetComponent<Skills>())
-        {
-            _playerSkills = GetComponent<Skills>();
-        }
+        
 
 
         _skillBar1 = GameObject.Find("skillbar1").GetComponent<Image>();
@@ -75,57 +76,51 @@ public class PlayerUI : NetworkBehaviour
 
             //userController con = GameObject.FindGameObjectWithTag("controller").GetComponent<userController>();
 
-            // _durationBar2.GetComponent<Image>().color = _playerVars.Warrior.warriorColor[0];
-            // _durationBar2.GetComponent<Image>().color = new Color(_playerVars.WarriorColor.r, _playerVars.WarriorColor.g,
-            //     _playerVars.WarriorColor.b, 0.2f);
-            // _durationBar1.GetComponent<Image>().color = _playerVars.WarriorColor;
-            // _durationBar1.GetComponent<Image>().color = new Color(_playerVars.WarriorColor.r, _playerVars.WarriorColor.g,
-            //     _playerVars.WarriorColor.b, 0.2f);
+            _durationBar2.GetComponent<Image>().color = _playerVars.Warrior.warriorColor[0];
+            _durationBar2.GetComponent<Image>().color = new Color(_playerVars.WarriorColor.r, _playerVars.WarriorColor.g,
+                _playerVars.WarriorColor.b, 0.2f);
+            _durationBar1.GetComponent<Image>().color = _playerVars.WarriorColor;
+            _durationBar1.GetComponent<Image>().color = new Color(_playerVars.WarriorColor.r, _playerVars.WarriorColor.g,
+                _playerVars.WarriorColor.b, 0.2f);
 
-            // _skillImage1.GetComponent<Image>().color = new Color(_playerVars.WarriorColor.r, _playerVars.WarriorColor.g,
-            //     _playerVars.WarriorColor.b, 0.5f);
-            // _skillImage2.GetComponent<Image>().color = new Color(_playerVars.WarriorColor.r, _playerVars.WarriorColor.g,
-            //     _playerVars.WarriorColor.b, 0.5f);
+            _skillImage1.GetComponent<Image>().color = new Color(_playerVars.WarriorColor.r, _playerVars.WarriorColor.g,
+                _playerVars.WarriorColor.b, 0.5f);
+            _skillImage2.GetComponent<Image>().color = new Color(_playerVars.WarriorColor.r, _playerVars.WarriorColor.g,
+                _playerVars.WarriorColor.b, 0.5f);
 
-            // _skillbarBG1.GetComponent<Image>().color = new Color(_playerVars.WarriorColor.r, _playerVars.WarriorColor.g,
-            //     _playerVars.WarriorColor.b, 0.5f);
-            // _skillbarBG2.GetComponent<Image>().color = new Color(_playerVars.WarriorColor.r, _playerVars.WarriorColor.g,
-            //     _playerVars.WarriorColor.b, 0.5f);
+            _skillbarBG1.GetComponent<Image>().color = new Color(_playerVars.WarriorColor.r, _playerVars.WarriorColor.g,
+                _playerVars.WarriorColor.b, 0.5f);
+            _skillbarBG2.GetComponent<Image>().color = new Color(_playerVars.WarriorColor.r, _playerVars.WarriorColor.g,
+                _playerVars.WarriorColor.b, 0.5f);
         }
 
         
     }
 
+    void Start()
+    {
+        if (GetComponent<Skills>())
+        {
+            _playerSkills = GetComponent<Skills>();
+        }
+    }
+
     private void Update()
     {
-        // _levelText.text = _playerVars.level.ToString();
-        //levelBar.fillAmount = Mathf.Lerp(0.22f, 0.488f, (playerVars.currentXp / 100f) / (playerVars.nextXp / 100f));
-        //levelBar.fillAmount = (playerVars.currentXp / 100f) / (playerVars.nextXp / 100f);
-        // if (_playerVars.level < 7)
-        // {
-        //     _experienceBar.localScale = new Vector2(_playerVars.currentXp / _playerVars.nextXp, _experienceBar.localScale.y);
-        // }
-        // else
-        // {
-        //     _experienceBar.localScale = new Vector2(1f, _experienceBar.localScale.y);
-        // }
+        
+        // levelBar.fillAmount = Mathf.Lerp(0.22f, 0.488f, (_playerVars.currentXp / 100f) / (_playerVars.nextXp / 100f));
+        // levelBar.fillAmount = (_playerVars.currentXp / 100f) / (_playerVars.nextXp / 100f);
+        
 
         if (IsOwner)
         {
+            UpdateSkillset();
             _bullets.text = GetComponentInChildren<Gun>().currentBullets.ToString();
         }
+        
         //hpBar.fillAmount = Mathf.Lerp(0.22f, 1f, playerVars.hp / 100f) / (playerVars.fullHp / 100f);
 
-        // if (_healthBar.localScale.x <= 0)
-        // {
-        //     _healthBar.localScale = new Vector2(0f, _healthBar.localScale.y);
-        // }
-        // else
-        // {
-        //     _healthBar.localScale = new Vector2(_playerStatsController.CurrentPlayerHealth / _playerStatsController.MaxPlayerHealth,
-        //         _healthBar.localScale.y);
-        // }
-
+        
         //if (playerVars.ccDuration <= 0)
         //{
         //    ccBar.localScale = new Vector2(0f, ccBar.localScale.y);
@@ -140,7 +135,7 @@ public class PlayerUI : NetworkBehaviour
 
         //ccText.text = playerVars.currentCC;
 
-        if (IsOwner && GetComponent<Skills>())
+        if (IsOwner)
         {
             if (_playerVars.skillLevel1 > 0)
             {
@@ -151,32 +146,32 @@ public class PlayerUI : NetworkBehaviour
                 _skillAnimator2.SetTrigger("start");
             }
 
-            if (_playerSkills.cooldown1 <= 0.1f && _playerSkills.cooldown1 > 0f)
+            if (_playerSkills.cooldown1 > 0f)
+            {
+                _skillLock1.enabled = true;
+                _skillCooldownText1.enabled = true;
+                _skillAnimator1.SetBool("lock", true);
+            }
+
+            if (_playerSkills.cooldown1 < 0.1f)
             {
                 _skillLock1.enabled = false;
                 _skillCooldownText1.enabled = false;
                 _skillAnimator1.SetBool("lock", false);
-                //playerSkills.actualCooldown1 = 0;
             }
 
-            if (_playerSkills.cooldown1 > 0.1f)
+            if (_playerSkills.cooldown2 > 0f)
             {
-                _skillLock1.enabled = true;
-                _skillCooldownText1.enabled = true;
+                _skillLock2.enabled = true;
+                _skillCooldownText2.enabled = true;
+                _skillAnimator2.SetBool("lock", true);
             }
 
-            if (_playerSkills.cooldown2 <= 0.1f && _playerSkills.cooldown2 > 0f)
+            if (_playerSkills.cooldown2 < 0.1f)
             {
                 _skillLock2.enabled = false;
                 _skillCooldownText2.enabled = false;
                 _skillAnimator2.SetBool("lock", false);
-                //playerSkills.actualCooldown2 = 0;
-            }
-
-            if (_playerSkills.cooldown2 > 0.1f)
-            {
-                _skillLock2.enabled = true;
-                _skillCooldownText2.enabled = true;
             }
 
             _skillCooldownText1.text = _playerSkills.cooldown1.ToString("f1");
@@ -194,9 +189,9 @@ public class PlayerUI : NetworkBehaviour
             }
         }
     }
-    public void updateSkillset()
+    public void UpdateSkillset()
     {
-        switch (_playerVars.level)
+        switch (_playerExperience.Level)
         {
             case 1:
                 _skillBar1.fillAmount = 0f;
@@ -205,32 +200,32 @@ public class PlayerUI : NetworkBehaviour
             case 2:
                 _playerVars.skillLevel1 = 1;
                 _skillBar1.fillAmount = 0.35f;
-                Instantiate(_skillUpParticle, Camera.main.ScreenToWorldPoint(_skillAnimator1.transform.position), Quaternion.identity, Camera.main.transform);
+                // Instantiate(_skillUpParticle, Camera.main.ScreenToWorldPoint(_skillAnimator1.transform.position), Quaternion.identity, Camera.main.transform);
                 break;
             case 3:
                 _playerVars.skillLevel1 = 2;
                 _skillBar1.fillAmount = 0.64f;
-                Instantiate(_skillUpParticle, Camera.main.ScreenToWorldPoint(_skillAnimator1.transform.position), Quaternion.identity, Camera.main.transform);
+                // Instantiate(_skillUpParticle, Camera.main.ScreenToWorldPoint(_skillAnimator1.transform.position), Quaternion.identity, Camera.main.transform);
                 break;
             case 4:
                 _playerVars.skillLevel2 = 1;
                 _skillBar2.fillAmount = 0.35f;
-                Instantiate(_skillUpParticle, Camera.main.ScreenToWorldPoint(_skillAnimator2.transform.position), Quaternion.identity, Camera.main.transform);
+                // Instantiate(_skillUpParticle, Camera.main.ScreenToWorldPoint(_skillAnimator2.transform.position), Quaternion.identity, Camera.main.transform);
                 break;
             case 5:
                 _playerVars.skillLevel1 = 3;
                 _skillBar1.fillAmount = 1f;
-                Instantiate(_skillUpParticle, Camera.main.ScreenToWorldPoint(_skillAnimator1.transform.position), Quaternion.identity, Camera.main.transform);
+                // Instantiate(_skillUpParticle, Camera.main.ScreenToWorldPoint(_skillAnimator1.transform.position), Quaternion.identity, Camera.main.transform);
                 break;
             case 6:
                 _playerVars.skillLevel2 = 2;
                 _skillBar2.fillAmount = 0.64f;
-                Instantiate(_skillUpParticle, Camera.main.ScreenToWorldPoint(_skillAnimator2.transform.position), Quaternion.identity, Camera.main.transform);
+                // Instantiate(_skillUpParticle, Camera.main.ScreenToWorldPoint(_skillAnimator2.transform.position), Quaternion.identity, Camera.main.transform);
                 break;
             case 7:
                 _playerVars.skillLevel2 = 3;
                 _skillBar2.fillAmount = 1f;
-                Instantiate(_skillUpParticle, Camera.main.ScreenToWorldPoint(_skillAnimator2.transform.position), Quaternion.identity, Camera.main.transform);
+                // Instantiate(_skillUpParticle, Camera.main.ScreenToWorldPoint(_skillAnimator2.transform.position), Quaternion.identity, Camera.main.transform);
                 break;
         }
     }

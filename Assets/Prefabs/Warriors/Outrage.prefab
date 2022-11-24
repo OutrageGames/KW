@@ -195,6 +195,7 @@ GameObject:
   - component: {fileID: 8847758818195471746}
   - component: {fileID: 4653312742341633359}
   - component: {fileID: 6183840802615194584}
+  - component: {fileID: 1699196123224675626}
   m_Layer: 6
   m_Name: Outrage
   m_TagString: Player
@@ -244,6 +245,7 @@ MonoBehaviour:
   - {fileID: 8847758818195471746}
   - {fileID: 4653312742341633359}
   - {fileID: 6183840802615194584}
+  - {fileID: 1699196123224675626}
   - {fileID: 2093514203700350266}
   <ParentNetworkObject>k__BackingField: {fileID: 0}
   <ChildNetworkObjects>k__BackingField: []
@@ -478,13 +480,10 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 7825201556846537441}
   _networkObjectCache: {fileID: 7825201556846537441}
   Warrior: {fileID: 0}
-  _playerUI: {fileID: 6183840802615194584}
+  WarriorColor: {r: 0, g: 0, b: 0, a: 0}
   Gun: {fileID: 0}
-  skillLevel1: 1
-  skillLevel2: 1
-  level: 0
-  currentXp: 0
-  nextXp: 0
+  skillLevel1: 3
+  skillLevel2: 3
   _userName: 
 --- !u!70 &7947371392377551223
 CapsuleCollider2D:
@@ -576,12 +575,6 @@ MonoBehaviour:
   active1: 0
   active2: 0
   PlayerVariables: {fileID: 0}
-  actualCooldown1: []
-  actualCooldown2: []
-  skillDamages1: []
-  skillDamages2: []
-  startDuration1: []
-  startDuration2: []
 --- !u!114 &6183840802615194584
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -598,12 +591,33 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 7825201556846537441}
   _networkObjectCache: {fileID: 7825201556846537441}
   HealthBar: {fileID: 1687051875277373284}
-  _experienceBar: {fileID: 6638772079195929018}
+  ExperienceBar: {fileID: 6638772079195929018}
   _nameText: {fileID: 2104952140145166702}
-  _levelText: {fileID: 1553309973275440707}
   _bullets: {fileID: 2776519015585572521}
+  LevelText: {fileID: 1553309973275440707}
   _bulletsImage: {fileID: 2550214711586760282}
-  _skillUpParticle: {fileID: 0}
+  _skillAnimator1: {fileID: 0}
+  _skillAnimator2: {fileID: 0}
+  _playerSkills: {fileID: 4653312742341633359}
+--- !u!114 &1699196123224675626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3168379132310689486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 451ceeaf646e8984cb6ead6d0f603005, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _componentIndexCache: 9
+  _addedNetworkObject: {fileID: 7825201556846537441}
+  _networkObjectCache: {fileID: 7825201556846537441}
+  Level: 1
+  CurrentXP: 0
+  NextXP: 100
+  _playerUI: {fileID: 6183840802615194584}
 --- !u!1 &4033203044090951127
 GameObject:
   m_ObjectHideFlags: 0
@@ -881,7 +895,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2836e36774ca1c4bbbee976e17b649c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 9
+  _componentIndexCache: 10
   _addedNetworkObject: {fileID: 7825201556846537441}
   _networkObjectCache: {fileID: 7825201556846537441}
   _synchronizeParent: 0
@@ -1591,7 +1605,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 1
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a6d46918b43944f498951da846229156, type: 2}
   m_sharedMaterial: {fileID: 7840830287200000601, guid: a6d46918b43944f498951da846229156, type: 2}

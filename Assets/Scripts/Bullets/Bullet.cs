@@ -2,31 +2,52 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using FishNet.Object;
+using FishNet.Object.Synchronizing;
+using FishNet.Transporting;
+using FishNet.Connection;
+using FishNet;
+using FirstGearGames.LobbyAndWorld.Clients;
+using FirstGearGames.LobbyAndWorld.Demos.KingOfTheHill;
+using System;
+
 public class Bullet : MonoBehaviour
 {
     [SerializeField] private float _speed;
     [SerializeField] private LayerMask _hitLayerMask;
     [SerializeField] private float _damage;
     public float Damage { get => _damage; set => _damage = value; }
+    private bool _stop = false;
+    public int BulletID;
+
 
 
     void Update()
     {
-        var travelDistance = Time.deltaTime * _speed;
-        var hit = Physics2D.Raycast(transform.position, transform.right, travelDistance, _hitLayerMask);
-        if (hit.collider is null)
-            transform.position += (transform.right * Time.deltaTime * _speed);
-        else
+        if(!_stop)
         {
-            if (CheckHit(hit.collider))
-            {
-                _speed = 0f;
-                transform.position += (transform.right * hit.distance);
-            }
+            var travelDistance = Time.deltaTime * _speed;
+            var hit = Physics2D.Raycast(transform.position, transform.right, travelDistance, _hitLayerMask);
+        
+            if (hit.collider is null)
+                transform.position += (transform.right * Time.deltaTime * _speed);
             else
             {
-                transform.position += (transform.right * Time.deltaTime * _speed);
+                if (CheckHit(hit.collider))
+                {
+                    _speed = 0f;
+                    transform.position += (transform.right * hit.distance);
+                }
+                else
+                {
+                    transform.position += (transform.right * Time.deltaTime * _speed);
+                }
             }
+        }
+        else
+        {
+            GetComponent<CircleCollider2D>().enabled = false;
+            ///stop
         }
     }
 
@@ -40,7 +61,20 @@ public class Bullet : MonoBehaviour
         {
             var enemyVars = collider.gameObject.GetComponent<PlayerHealth>();
             enemyVars.UpdateHealth(enemyVars, -_damage);
-            Destroy(gameObject);
+
+            //xp
+            var players = GameObject.FindGameObjectsWithTag("Player");
+            for (int i = 0; i < players.Length; i++)
+            {
+                if (players[i].GetComponent<NetworkObject>().OwnerId == BulletID)
+                {
+                    var playerExperience = players[i].GetComponent<PlayerExperience>();
+                    playerExperience.UpdateXP(playerExperience, _damage);
+                }
+            }
+
+            _stop = true;
+            //Destroy(gameObject);
             return true;
         }
         // else if (collider.tag == "Enemy" || collider.tag == "Player")

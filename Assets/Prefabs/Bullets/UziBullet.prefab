@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5570416443491769451}
   - component: {fileID: 2231523127635748923}
   m_Layer: 0
-  m_Name: KarBullet
+  m_Name: UziBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -49,7 +49,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.03
+  m_Radius: 0.01
 --- !u!114 &5570416443491769451
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62,11 +62,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f8d03d969ad6ab4c9cc85d0c56b554e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 300
+  _speed: 250
   _hitLayerMask:
     serializedVersion: 2
     m_Bits: 448
-  _damage: 50
+  _damage: 3
 --- !u!96 &2231523127635748923
 TrailRenderer:
   serializedVersion: 2
@@ -112,7 +112,7 @@ TrailRenderer:
   m_Time: 0.5
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.1
+    widthMultiplier: 0.051
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -166,8 +166,8 @@ TrailRenderer:
       m_Mode: 0
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
-    numCornerVertices: 90
-    numCapVertices: 90
+    numCornerVertices: 60
+    numCapVertices: 60
     alignment: 0
     textureMode: 0
     shadowBias: 0.5

@@ -29,6 +29,11 @@ public class PlayerHealth : NetworkBehaviour
         if(!IsOwner)
         {
             script.Health += changeAmmount;
+
+            if(Health <= 0)
+            {
+                Health = 100;
+            }
         }
     }
 
@@ -43,7 +48,17 @@ public class PlayerHealth : NetworkBehaviour
     {
         if(!IsOwner)
         {
-            _playerUI.HealthBar.transform.localScale = new Vector2(Health / 100f, transform.localScale.y);
+            if (_playerUI.HealthBar.transform.localScale.x <= 0)
+            {
+                _playerUI.HealthBar.transform.localScale = new Vector2(0f, transform.localScale.y);
+            }
+            else
+            {
+                _playerUI.HealthBar.transform.localScale = new Vector2(Health / 100f, transform.localScale.y);
+            }
+
+            
+
         }        
     }
 
@@ -60,6 +75,7 @@ public class PlayerHealth : NetworkBehaviour
 
             Health = 100;
         }
+        
     }
 
     

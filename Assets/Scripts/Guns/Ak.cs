@@ -13,19 +13,21 @@ public class Ak : Gun
         {
             if (currentBullets > 0 && !IsReloading)
             {
-                IsShooting = true;
                 if (spread < spreadRate)
                 {
-                    spread += 0.4f;
+                    spread += 2f;
                 }
-                // audioSource.pitch = Random.Range(0.99f, 1.01f);
-                // audioSource.PlayOneShot(shootSound);
+
                 float bulletRot = transform.eulerAngles.z + Random.Range(-spread, spread);
                 Vector2 bulletPos = spawnPoint.position;
-                ServerShoot(bulletPos, bulletRot, DamageMultiplier);
-                Shoot(bulletPos, bulletRot, DamageMultiplier);
+                int bulletID = GetComponentInParent<NetworkObject>().OwnerId;
+                Shoot(bulletPos, bulletRot, DamageMultiplier, bulletID);
+                ServerShoot(bulletPos, bulletRot, DamageMultiplier, bulletID);
 
-                //b.GetComponent<TrailRenderer>().startColor = GetComponentInChildren<SpriteRenderer>().color;
+                IsShooting = true;
+                
+                // audioSource.pitch = Random.Range(0.99f, 1.01f);
+                // audioSource.PlayOneShot(shootSound);
                 //Instantiate(particleEffect, efePoint.position, Quaternion.identity, transform);
                 currentBullets -= 1;
             }
@@ -34,23 +36,26 @@ public class Ak : Gun
     }
 
     [ServerRpc]
-    void ServerShoot(Vector2 pos, float rot, float dmg)
+    void ServerShoot(Vector2 pos, float rot, float dmg, int bulletID)
     {
-        ClientsShoot(pos, rot, dmg);        
+        ClientsShoot(pos, rot, dmg, bulletID);        
     }
 
     [ObserversRpc]
-    void ClientsShoot(Vector2 pos, float rot, float dmg)
+    void ClientsShoot(Vector2 pos, float rot, float dmg, int bulletID)
     {
         if(!IsOwner)
         {
-            Shoot(pos, rot, dmg);
+            Shoot(pos, rot, dmg, bulletID);
         }
     }
 
-    void Shoot(Vector2 pos, float rot, float dmg)
+    void Shoot(Vector2 pos, float rot, float dmg, int bulletID)
     {
-        GameObject bullet = Instantiate(_bulletPrefab, spawnPoint.position, Quaternion.Euler(0f, 0f, rot));
+        GameObject bullet = Instantiate(_bulletPrefab, pos, Quaternion.Euler(0f, 0f, rot));
         bullet.GetComponent<Bullet>().Damage *= dmg;
+        bullet.GetComponent<Bullet>().BulletID = bulletID;
+        bullet.GetComponent<TrailRenderer>().startColor = GetComponentInChildren<SpriteRenderer>().color;
+        bullet.GetComponent<TrailRenderer>().endColor = GetComponentInChildren<SpriteRenderer>().color;
     }
 }

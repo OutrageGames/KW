@@ -9,23 +9,25 @@ using FishNet.Connection;
 using FishNet;
 using FirstGearGames.LobbyAndWorld.Clients;
 using FirstGearGames.LobbyAndWorld.Demos.KingOfTheHill;
-using System;
+
 
 public class PlayerVariables : NetworkBehaviour
 {
     
     [SerializeField] public WarriorObject Warrior;
-    [SerializeField] private PlayerUI _playerUI;
+    [SerializeField] public Color WarriorColor;
+    private PlayerUI _playerUI;
     [SerializeField] public GunObject Gun;
-    [SerializeField] public int skillLevel1, skillLevel2, level;
-    [SerializeField] public int currentXp, nextXp;
+    [SerializeField] public int skillLevel1, skillLevel2;
     [SerializeField] private string _userName;
+    private PlayerHealth _playerHealth;
 
     public override void OnStartClient()
     {
         base.OnStartClient();
 
         _playerUI = GetComponent<PlayerUI>();
+        _playerHealth = GetComponent<PlayerHealth>();
         
         if(!base.IsOwner)
             return;
@@ -43,6 +45,7 @@ public class PlayerVariables : NetworkBehaviour
 
         //ServerSpawnGun();
         SpawnGun();      
+        WarriorColor = Warrior.warriorColor[0];
 
         //Instantiate(Gun.prefab, transform.position, Quaternion.identity, transform);
         // GameObject go = Instantiate(Gun.prefab, transform.position, Quaternion.identity, transform);
@@ -59,6 +62,19 @@ public class PlayerVariables : NetworkBehaviour
     {
         GameObject SpawnedGO = Instantiate<GameObject>(go, transform.position, Quaternion.identity, transform);
         base.Spawn(SpawnedGO, con);
+    }
+
+    void Update()
+    {
+        // if(_playerHealth.Health <= 0)
+        // {
+        //     float x = Random.Range(3, 60);
+        //     float y = 25;
+        //     Vector2 next = new Vector2(x, y);
+        //     transform.position = next;
+
+        //     _playerHealth.Health = 100;
+        // }        
     }
 
     // [ServerRpc]

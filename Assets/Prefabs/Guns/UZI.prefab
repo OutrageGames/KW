@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 3927346923365841843}
   - component: {fileID: 398728377144808979}
   - component: {fileID: 202543665664134061}
-  - component: {fileID: 1148880525152238379}
+  - component: {fileID: 7809541251802881636}
   m_Layer: 0
-  m_Name: KAR
+  m_Name: UZI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -112,20 +112,20 @@ MonoBehaviour:
   _networkBehaviours:
   - {fileID: 3927346923365841843}
   - {fileID: 398728377144808979}
-  - {fileID: 1148880525152238379}
+  - {fileID: 7809541251802881636}
   <ParentNetworkObject>k__BackingField: {fileID: 0}
   <ChildNetworkObjects>k__BackingField: []
   _isNetworked: 1
   _isGlobal: 0
   _defaultDespawnType: 0
   NetworkObserver: {fileID: 0}
-  <PrefabId>k__BackingField: -1
+  <PrefabId>k__BackingField: 3
   _scenePathHash: 0
   <SceneId>k__BackingField: 0
-  <AssetPathHash>k__BackingField: 4578451012340677145
+  <AssetPathHash>k__BackingField: 2823205874889897413
   _sceneNetworkObjects:
   - {fileID: 202543665664134061}
---- !u!114 &1148880525152238379
+--- !u!114 &7809541251802881636
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -134,24 +134,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 891395486753981208}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93a8d24e92786194294733d982147dd8, type: 3}
+  m_Script: {fileID: 11500000, guid: b541796bcda110d4a8dc746ec2062296, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _componentIndexCache: 2
   _addedNetworkObject: {fileID: 202543665664134061}
   _networkObjectCache: {fileID: 202543665664134061}
   _damageMultiplier: 1
-  fireRate: 0
-  spreadRate: 0
+  fireRate: 0.07
+  spreadRate: 10
   spread: 0
-  _bulletPrefab: {fileID: 2016260182495394823, guid: a43b6c9c56bb60c408efe01afde8bb2d, type: 3}
+  _bulletPrefab: {fileID: 2016260182495394823, guid: 9035b9852cafc794292fedf8d7c80b8d, type: 3}
   particleEffect: {fileID: 0}
-  oneMagBullets: 1
+  oneMagBullets: 50
   currentBullets: 0
   spawnPoint: {fileID: 134870834719415927}
   efePoint: {fileID: 0}
   ReloadTime: 0
-  ReloadStartTime: 2
+  ReloadStartTime: 0.5
 --- !u!1 &1901463225609188523
 GameObject:
   m_ObjectHideFlags: 0
@@ -176,7 +176,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1901463225609188523}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.56, y: -0, z: 0}
+  m_LocalPosition: {x: 1.955, y: -0.011, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -256,8 +256,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: -326976666729940600, guid: 10c2e7e22f230924d95d3695efaa88b6, type: 3}
-  m_Color: {r: 0.4433962, g: 0.20175523, b: 0.13594696, a: 1}
+  m_Sprite: {fileID: -7771069176956810386, guid: 10c2e7e22f230924d95d3695efaa88b6, type: 3}
+  m_Color: {r: 0.764151, g: 0.19824673, b: 0.7536098, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

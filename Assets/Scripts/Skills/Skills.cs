@@ -12,7 +12,7 @@ public class Skills : NetworkBehaviour
     public bool active1, active2;
     public PlayerVariables PlayerVariables;
     //public GameObject[] skillObjects;
-    public float[] actualCooldown1, actualCooldown2, skillDamages1, skillDamages2, startDuration1, startDuration2;
+    // public float[] actualCooldown1, actualCooldown2, skillDamages1, skillDamages2, startDuration1, startDuration2;
     
     // public PlayerStatsController _playerStatsController;
     // Animator skillAnimator1, skillAnimator2;
