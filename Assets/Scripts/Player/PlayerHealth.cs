@@ -12,6 +12,7 @@ using FirstGearGames.LobbyAndWorld.Demos.KingOfTheHill;
 public class PlayerHealth : NetworkBehaviour
 {
     [SyncVar] public float Health;
+    [SyncVar] public bool IsImmune;
     [SerializeField] private PlayerUI _playerUI;
 
     public override void OnStartClient()
@@ -24,9 +25,15 @@ public class PlayerHealth : NetworkBehaviour
     }
 
     [ServerRpc]
+    public void BecomeImmune(PlayerHealth script, bool immunity)
+    {
+        script.IsImmune = immunity;
+    }
+
+    [ServerRpc]
     public void UpdateHealth(PlayerHealth script, float changeAmmount)
     {
-        if(!IsOwner)
+        if(!IsOwner && !script.IsImmune)
         {
             script.Health += changeAmmount;
 

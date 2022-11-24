@@ -9,6 +9,8 @@ TagManager:
   - Bullet
   - LobbyCamera
   - MyInstance
+  - item
+  - Immune
   layers:
   - Default
   - TransparentFX

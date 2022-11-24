@@ -60,16 +60,22 @@ public class Bullet : MonoBehaviour
         else if ((collider.tag == "Player"))
         {
             var enemyVars = collider.gameObject.GetComponent<PlayerHealth>();
-            enemyVars.UpdateHealth(enemyVars, -_damage);
-
-            //xp
-            var players = GameObject.FindGameObjectsWithTag("Player");
-            for (int i = 0; i < players.Length; i++)
+            if(!enemyVars.IsImmune)
             {
-                if (players[i].GetComponent<NetworkObject>().OwnerId == BulletID)
+                if(enemyVars.GetComponent<NetworkObject>().OwnerId != BulletID)
                 {
-                    var playerExperience = players[i].GetComponent<PlayerExperience>();
-                    playerExperience.UpdateXP(playerExperience, _damage);
+                    enemyVars.UpdateHealth(enemyVars, -_damage);
+                }
+
+                //xp
+                var players = GameObject.FindGameObjectsWithTag("Player");
+                for (int i = 0; i < players.Length; i++)
+                {
+                    if (players[i].GetComponent<NetworkObject>().OwnerId == BulletID)
+                    {
+                        var playerExperience = players[i].GetComponent<PlayerExperience>();
+                        playerExperience.UpdateXP(playerExperience, _damage);
+                    }
                 }
             }
 

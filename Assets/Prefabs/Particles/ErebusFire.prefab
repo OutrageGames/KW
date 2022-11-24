@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1543975307713837349}
   - component: {fileID: 8160125176122469790}
   m_Layer: 13
-  m_Name: OutrageFire
+  m_Name: ErebusFire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -680,7 +680,7 @@ ParticleSystem:
     gravityModifier:
       serializedVersion: 2
       minMaxState: 0
-      scalar: -2
+      scalar: 0
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -820,7 +820,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 0.53527945
+      value: 0.8083395
       mode: 0
       spread: 0
       speed:
@@ -939,7 +939,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 100
+      scalar: 40
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -1554,9 +1554,7 @@ ParticleSystem:
     uvChannelMask: -1
     rowMode: 1
     sprites:
-    - sprite: {fileID: 3730887761424324059, guid: 728a5b51e8752044da4e54514a9165f0, type: 3}
-    - sprite: {fileID: -4009157606203222040, guid: 728a5b51e8752044da4e54514a9165f0, type: 3}
-    - sprite: {fileID: -5243772346084840235, guid: 728a5b51e8752044da4e54514a9165f0, type: 3}
+    - sprite: {fileID: 21300000, guid: 25df5f1d43295fe43ba215c416ac4df9, type: 3}
     flipU: 0
     flipV: 0
   VelocityModule:

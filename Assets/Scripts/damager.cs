@@ -19,19 +19,22 @@ public class damager : MonoBehaviour
         if(collider.tag == "Player")
         {
             var enemyVars = collider.gameObject.GetComponent<PlayerHealth>();
-            enemyVars.UpdateHealth(enemyVars, -_damage);    
-
-            //xp
-            var players = GameObject.FindGameObjectsWithTag("Player");
-            for (int i = 0; i < players.Length; i++)
+            if(enemyVars.GetComponent<NetworkObject>().OwnerId != DamagerID)
             {
-                if (players[i].GetComponent<NetworkObject>().OwnerId == DamagerID)
+                enemyVars.UpdateHealth(enemyVars, -_damage);    
+
+                //xp
+                var players = GameObject.FindGameObjectsWithTag("Player");
+                for (int i = 0; i < players.Length; i++)
                 {
-                    var playerExperience = players[i].GetComponent<PlayerExperience>();
-                    playerExperience.UpdateXP(playerExperience, _damage);
+                    if (players[i].GetComponent<NetworkObject>().OwnerId == DamagerID)
+                    {
+                        var playerExperience = players[i].GetComponent<PlayerExperience>();
+                        playerExperience.UpdateXP(playerExperience, _damage);
+                    }
                 }
             }
-
+            
             Destroy(gameObject);
         }
     }

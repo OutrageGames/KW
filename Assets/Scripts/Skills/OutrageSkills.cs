@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using FishNet.Object;
-
 using UnityEngine.InputSystem;
 
 public class OutrageSkills : Skills
@@ -86,8 +85,6 @@ public class OutrageSkills : Skills
         main.startColor = color;
         ps.Play();  
     }
-
-
 
     public IEnumerator ResetTextAndDmg()
     {

@@ -482,8 +482,8 @@ MonoBehaviour:
   Warrior: {fileID: 0}
   WarriorColor: {r: 0, g: 0, b: 0, a: 0}
   Gun: {fileID: 0}
-  skillLevel1: 3
-  skillLevel2: 3
+  skillLevel1: 0
+  skillLevel2: 0
   _userName: 
 --- !u!70 &7947371392377551223
 CapsuleCollider2D:
@@ -552,6 +552,7 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 7825201556846537441}
   _networkObjectCache: {fileID: 7825201556846537441}
   Health: 100
+  IsImmune: 0
   _playerUI: {fileID: 6183840802615194584}
 --- !u!114 &4653312742341633359
 MonoBehaviour:

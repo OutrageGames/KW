@@ -559,8 +559,7 @@ MonoBehaviour:
   _networkObjectCache: {fileID: 717890314}
   _playerPrefab:
   - {fileID: 7825201556846537441, guid: e368700635c242a41a52a70cc4cb5ac0, type: 3}
-  - {fileID: 7825201556846537441, guid: 88e28e6b28a7ae84aadfda2bfce973b6, type: 3}
-  - {fileID: 7825201556846537441, guid: bd3ea652813231c49ab19b04e4169d26, type: 3}
+  - {fileID: 7825201556846537441, guid: 2611c7ce6d2a24d448347cc9a8800a29, type: 3}
   _gunPrefab:
   - {fileID: 1400210952860977099, guid: 2e4773909d24fc145b333eca48ed5b0b, type: 3}
   - {fileID: 202543665664134061, guid: 0c1bb275f2834cb489f53894f35477d3, type: 3}
