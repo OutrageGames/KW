@@ -18,9 +18,11 @@ TagManager:
   - 
   - Water
   - UI
-  - Player
+  - 
   - Ground
-  - Enemy
+  - HeadUI
+  - FOW
+  - Player
   - 
   - 
   - 
@@ -41,9 +43,7 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
+  - FrontGround
   m_SortingLayers:
   - name: Default
     uniqueID: 0

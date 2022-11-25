@@ -21,6 +21,7 @@ public class PlayerVariables : NetworkBehaviour
     [SerializeField] public int skillLevel1, skillLevel2;
     [SerializeField] private string _userName;
     private PlayerHealth _playerHealth;
+    [SerializeField] private HardLight2D _playerLight;
 
     public override void OnStartClient()
     {
@@ -28,6 +29,12 @@ public class PlayerVariables : NetworkBehaviour
 
         _playerUI = GetComponent<PlayerUI>();
         _playerHealth = GetComponent<PlayerHealth>();
+        _playerLight.gameObject.SetActive(base.IsOwner);
+
+        // if(base.IsOwner)
+        //     gameObject.GetComponentInChildren<SpriteRenderer>().gameObject.layer = 10;
+        // else
+        //     gameObject.GetComponentInChildren<SpriteRenderer>().gameObject.layer = 11;
         
         if(!base.IsOwner)
             return;
