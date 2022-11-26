@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using FishNet.Object;
+using FishNet.Object.Synchronizing;
 
 public class KosasSkills : Skills
 {
-    public bool insideMask;
+    // private bool _insideMask;
     public GameObject invParticle;
     private Animator anim;
     [SerializeField] private GameObject _headUI;
+    public bool IsInsideMask;
 
     public override void Skill1()
     {
@@ -20,6 +22,12 @@ public class KosasSkills : Skills
         ServerAb1(mousePos, duration, PlayerVariables.WarriorColor, playerID);
         Ab1(mousePos, duration, PlayerVariables.WarriorColor, playerID);
     }
+
+    // [ServerRpc]
+    // public void GetInMask(bool inMask)
+    // {
+    //     IsInsideMask = inMask;
+    // }
 
     [ServerRpc]
     void ServerAb1(Vector2 pos, float duration, Color color, int playerID)
@@ -59,7 +67,8 @@ public class KosasSkills : Skills
         dmgText.text = "invisible";
         StartCoroutine(ResetText());
 
-        Invoke(nameof(ServerBecomeVisible), PlayerVariables.Warrior.startDuration2[PlayerVariables.skillLevel2 - 1]);
+        //Invoke(nameof(ServerBecomeVisible), PlayerVariables.Warrior.startDuration2[PlayerVariables.skillLevel2 - 1]);
+        StartCoroutine(RunVisible());
 
         // GameObject fire = Instantiate(PlayerVariables.Warrior.skillObjects[2], transform.position, Quaternion.identity, transform);
         // ParticleSystem ps = fire.GetComponent<ParticleSystem>();
@@ -94,6 +103,15 @@ public class KosasSkills : Skills
         }
     }
 
+    IEnumerator RunVisible()
+    {
+        yield return new WaitForSeconds(PlayerVariables.Warrior.startDuration2[PlayerVariables.skillLevel2 - 1]);
+        if(!IsInsideMask)
+        {
+            ServerBecomeVisible();
+        }
+    }
+
     [ServerRpc]
     void ServerBecomeVisible()
     {
@@ -104,6 +122,14 @@ public class KosasSkills : Skills
     void ClientBecomeVisible()
     {
         if(!IsOwner)
+        {
+            BecomeVisible();
+        }
+    }
+
+    void BecomeVisible()
+    {
+        if(!IsInsideMask)
         {
             GetComponentInChildren<SpriteRenderer>().enabled = true;
             _headUI.gameObject.SetActive(true);
@@ -121,6 +147,7 @@ public class KosasSkills : Skills
             //var main = ps.main;
             //main.duration = playerVars.playerObject.startDuration1[playerVars.skillLevel1 - 1];
             //ps.Play();
+            IsInsideMask = true;
 
             TMP_Text dmgText = GameObject.Find("Skill1Text").GetComponent<TMP_Text>();
             dmgText.text = "invisible";
@@ -138,6 +165,8 @@ public class KosasSkills : Skills
             TMP_Text dmgText = GameObject.Find("Skill1Text").GetComponent<TMP_Text>();
             dmgText.text = "";
 
+            IsInsideMask = false;
+            
             if(!active2)
             {
                 ServerBecomeVisible();
@@ -145,36 +174,4 @@ public class KosasSkills : Skills
             // BecomeVisible();
         }
     }
-
-    // private void Update()
-    // {
-    //     base.Update();
-
-    //     // if(insideMask)
-    //     // {
-    //     //     BecomeInvisible();
-    //     // }
-
-    //     if (active1)
-    //     {
-    //         // if (!playerVars.IsOwner)
-    //         // {
-    //         //     if (insideMask)
-    //         //     {
-    //         //         GetComponentInChildren<SpriteRenderer>().enabled = false;
-    //         //         // GetComponent<playerVariables>().headUI.gameObject.SetActive(false);
-    //         //         GetComponentInChildren<Gun>().gameObject.GetComponentInChildren<SpriteRenderer>().enabled = false;
-    //         //     }
-    //         //     else
-    //         //     {
-    //         //         if (!active2)
-    //         //         {
-    //         //             GetComponentInChildren<SpriteRenderer>().enabled = true;
-    //         //             // GetComponent<playerVariables>().headUI.gameObject.SetActive(true);
-    //         //             GetComponentInChildren<Gun>().gameObject.GetComponentInChildren<SpriteRenderer>().enabled = true;
-    //         //         }
-    //         //     }
-    //         // }
-    //     }
-    // }
 }

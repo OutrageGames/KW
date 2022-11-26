@@ -376,6 +376,7 @@ MonoBehaviour:
   - {fileID: 4653312742341633359}
   - {fileID: 6183840802615194584}
   - {fileID: 1699196123224675626}
+  - {fileID: 9204433369375818535}
   - {fileID: 2093514203700350266}
   <ParentNetworkObject>k__BackingField: {fileID: 0}
   <ChildNetworkObjects>k__BackingField: []
@@ -475,7 +476,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.0001
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 8
@@ -762,6 +763,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a04598c943b0f3e42998a9ccfe44f308, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _componentIndexCache: 10
+  _addedNetworkObject: {fileID: 7825201556846537441}
+  _networkObjectCache: {fileID: 7825201556846537441}
   _viewRadius: 50
   _viewAngle: 360
   _targetMask:
@@ -1053,7 +1057,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2836e36774ca1c4bbbee976e17b649c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 10
+  _componentIndexCache: 11
   _addedNetworkObject: {fileID: 7825201556846537441}
   _networkObjectCache: {fileID: 7825201556846537441}
   _synchronizeParent: 0
