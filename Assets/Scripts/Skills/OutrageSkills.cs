@@ -86,7 +86,7 @@ public class OutrageSkills : Skills
         ps.Play();  
     }
 
-    public IEnumerator ResetTextAndDmg()
+    IEnumerator ResetTextAndDmg()
     {
         yield return new WaitForSeconds(PlayerVariables.Warrior.startDuration2[PlayerVariables.skillLevel2 - 1]);
         GetComponentInChildren<Gun>().DamageMultiplier = 1;

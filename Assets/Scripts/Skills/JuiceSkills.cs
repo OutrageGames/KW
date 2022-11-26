@@ -2,21 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using FishNet.Object;
+using UnityEngine.InputSystem;
 
 public class JuiceSkills : Skills
 {
-    public bool insideMask;
-    public GameObject madeBig;
+    public GameObject BigEnemy;
 
     public override void Skill1()
     {
-        // GameObject skill = Instantiate(playerVars.WarriorObject.skillObjects[0], GetComponentInChildren<Gun>().spawnPoint.position,
-        //     Quaternion.Euler(new Vector3(0f, 0f, GetComponentInChildren<Gun>().gameObject.transform.rotation.eulerAngles.z)));
+        GameObject skill = Instantiate(PlayerVariables.Warrior.skillObjects[0], GetComponentInChildren<Gun>().spawnPoint.position,
+            Quaternion.Euler(new Vector3(0f, 0f, GetComponentInChildren<Gun>().gameObject.transform.rotation.eulerAngles.z)));
 
-        // skill.GetComponent<Rigidbody2D>().velocity = skill.transform.right * 40f;
-        // skill.GetComponent<juiceSkillshot>().size = playerVars.WarriorObject.skillDamages1[playerVars.skillLevel1 - 1];
-        // skill.GetComponentInChildren<SpriteRenderer>().color = new Color(playerVars.WarriorColor.r, playerVars.WarriorColor.g, playerVars.WarriorColor.b, 1f);
-        // skill.GetComponent<TrailRenderer>().startColor = new Color(playerVars.WarriorColor.r, playerVars.WarriorColor.g, playerVars.WarriorColor.b, 1f);
+        skill.GetComponent<Rigidbody2D>().velocity = skill.transform.right * 40f;
+        skill.GetComponent<JuiceSkillshot>().Size = PlayerVariables.Warrior.skillDamages1[PlayerVariables.skillLevel1 - 1];
+        skill.GetComponent<JuiceSkillshot>().JuiceSkills = this;
+        // skill.GetComponentInChildren<SpriteRenderer>().color = new Color(PlayerVariables.WarriorColor.r, PlayerVariables.WarriorColor.g, PlayerVariables.WarriorColor.b, 1f);
+        // skill.GetComponent<TrailRenderer>().startColor = new Color(PlayerVariables.WarriorColor.r, PlayerVariables.WarriorColor.g, PlayerVariables.WarriorColor.b, 1f);
         // skill.GetComponent<TrailRenderer>().endColor = new Color(0f, 0f, 0f, 0f);
 
         // ParticleSystem ps = skill.GetComponent<ParticleSystem>();
@@ -27,36 +29,134 @@ public class JuiceSkills : Skills
 
     }
 
+    public IEnumerator MakeSmallAgain(Transform trs)
+    {
+        yield return new WaitForSeconds(PlayerVariables.Warrior.startDuration1[PlayerVariables.skillLevel1 - 1]);
+        ServerMakeSmall(trs);
+        MakeSmall(trs);
+    }
+
+    [ServerRpc]
+    public void ServerMakeSmall(Transform trs)
+    {
+        ClientMakeSmall(trs);
+    }
+    [ObserversRpc]
+    void ClientMakeSmall(Transform trs)
+    {
+        if(!IsOwner)
+        {
+            MakeSmall(trs);
+        }
+    }
+    void MakeSmall(Transform trs)
+    {
+        trs.localScale = new Vector2(1f, 1f);
+    }
+
+    // IEnumerator BecomeBigAgain(float timer)
+    // {
+    //     yield return new WaitForSeconds(timer);
+
+    //     transform.localScale = new Vector2(1f, 1f);
+    //     // GetComponentInChildren<Gun>().transform.localScale = new Vector2(1f, 1f);
+    // }
+
+    [ServerRpc]
+    public void ServerMakeBig(Transform trs, float scale)
+    {
+        ClientMakeBig(trs, scale);
+    }
+    [ObserversRpc]
+    void ClientMakeBig(Transform trs, float scale)
+    {
+        if(!IsOwner)
+        {
+            MakeBig(trs, scale);
+        }
+    }
+    void MakeBig(Transform trs, float scale)
+    {
+        trs.localScale = new Vector2(scale, scale);
+    }
+
+
+
+
+
+    //skill2
+
     public override void Skill2()
     {
-        // Vector3 scaleTmp = transform.localScale;
+        //Vector2 scaleTmp = transform.localScale;
+        float scale = PlayerVariables.Warrior.skillDamages2[PlayerVariables.skillLevel2 - 1];
 
-        // transform.localScale = transform.localScale / playerVars.WarriorObject.skillDamages2[playerVars.skillLevel2 - 1];
-        // GetComponentInChildren<Gun>().transform.localScale = scaleTmp * playerVars.WarriorObject.skillDamages2[playerVars.skillLevel2 - 1];
+        ServerAb2(transform, scale);
+        Ab2(transform, scale);
 
-        // GameObject dmgText = Instantiate(playerVars.WarriorObject.skillObjects[1], transform.position, Quaternion.identity, transform);
-        // dmgText.GetComponentInChildren<Canvas>().GetComponentInChildren<TMP_Text>().text = "SMOL";
-        // dmgText.GetComponent<destroyAfter>().timer = playerVars.WarriorObject.startDuration2[playerVars.skillLevel2 - 1];
+        StartCoroutine(CorBecomeBig(transform));
 
-        // StartCoroutine(BecomeBigAgain(playerVars.WarriorObject.startDuration2[playerVars.skillLevel2 - 1]));
+        //GetComponentInChildren<Gun>().transform.localScale = scaleTmp * PlayerVariables.Warrior.skillDamages2[PlayerVariables.skillLevel2 - 1];
+
+        StartCoroutine(ResetText());
+        TMP_Text dmgText = GameObject.Find("Skill2Text").GetComponent<TMP_Text>();
+        dmgText.text = "small";        
+
+        
     }
 
-    public IEnumerator MakeSmallAgain(float timer)
+    //become small
+    [ServerRpc]
+    void ServerAb2(Transform trs, float scale)
     {
-        yield return new WaitForSeconds(timer);
-
-        if (madeBig != null)
+        ClientAb2(trs, scale);
+    }
+    [ObserversRpc]
+    void ClientAb2(Transform trs, float scale)
+    {
+        if(!IsOwner)
         {
-            madeBig.transform.localScale = new Vector2(1f, 1f);
+            Ab2(trs, scale);
         }
-        madeBig = null;
     }
-
-    IEnumerator BecomeBigAgain(float timer)
+    void Ab2(Transform trs, float scale)
     {
-        yield return new WaitForSeconds(timer);
-
-        transform.localScale = new Vector2(1f, 1f);
-        // GetComponentInChildren<Gun>().transform.localScale = new Vector2(1f, 1f);
+        trs.localScale = trs.localScale / scale;
     }
+
+    //become big
+    IEnumerator CorBecomeBig(Transform trs)
+    {
+        yield return new WaitForSeconds(PlayerVariables.Warrior.startDuration2[PlayerVariables.skillLevel2 - 1]);
+        ServerBecomeBig(trs);
+        BecomeBig(trs);
+    }
+
+    [ServerRpc]
+    void ServerBecomeBig(Transform trs)
+    {
+        ClientBecomeBig(trs);
+    }
+    [ObserversRpc]
+    void ClientBecomeBig(Transform trs)
+    {
+        if(!IsOwner)
+        {
+            BecomeBig(trs);
+        }
+    }
+    void BecomeBig(Transform trs)
+    {
+        trs.localScale = new Vector2(1f, 1f);
+    }
+
+
+    IEnumerator ResetText()
+    {
+        yield return new WaitForSeconds(PlayerVariables.Warrior.startDuration2[PlayerVariables.skillLevel2 - 1]);
+        TMP_Text dmgText = GameObject.Find("Skill2Text").GetComponent<TMP_Text>();
+        dmgText.text = "";
+    }
+
+    
 }

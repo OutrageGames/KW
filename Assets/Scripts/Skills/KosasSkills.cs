@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using FishNet.Object;
 using FishNet.Object.Synchronizing;
+using UnityEngine.InputSystem;
 
 public class KosasSkills : Skills
 {
@@ -49,7 +50,7 @@ public class KosasSkills : Skills
         skill.GetComponent<SpriteRenderer>().color = color;
         skill.GetComponent<PassId>().id = playerID;
         anim = skill.GetComponent<Animator>();
-        StartCoroutine(Shrink(duration - 0.5f));        
+        StartCoroutine(Shrink(duration - 0.3f));        
     }
 
     IEnumerator Shrink(float time)

@@ -65,8 +65,9 @@ MonoBehaviour:
   _speed: 250
   _hitLayerMask:
     serializedVersion: 2
-    m_Bits: 448
+    m_Bits: 1216
   _damage: 3
+  BulletID: 0
 --- !u!96 &2231523127635748923
 TrailRenderer:
   serializedVersion: 2

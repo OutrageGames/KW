@@ -8,6 +8,8 @@ public class PlayerMovement : NetworkBehaviour
 {
     [SerializeField] private float _moveSpeed;
     [SerializeField] private float _jumpSpeed;
+    public float MoveSpeed { get => _moveSpeed; set => _moveSpeed = value; }
+    public float JumpSpeed { get => _jumpSpeed; set => _jumpSpeed = value; }
     private float _curDir;
     [SerializeField] private float _groundCheckY, _groundCheckSizeX, _groundCheckSizeY;
     [SerializeField] private LayerMask _groundMask;

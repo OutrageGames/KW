@@ -69,5 +69,3 @@ MonoBehaviour:
   - 7
   skillObjects:
   - {fileID: 4407775118014437591, guid: 263e1f70d44a9064787a27811ce948b1, type: 3}
-  - {fileID: 7006253050249420380, guid: 474959458d70f06438e3c890d3bd46cf, type: 3}
-  - {fileID: 2238858307553287696, guid: ff019ddd28f56b84ea98f139245b53b6, type: 3}

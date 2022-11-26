@@ -32,19 +32,25 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
   - FrontGround
+  - 
+  - 
+  - 
+  - 
+  - Skills
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Player
+    uniqueID: 3530348643
+    locked: 0
+  - name: Skills
+    uniqueID: 1023760755
     locked: 0
