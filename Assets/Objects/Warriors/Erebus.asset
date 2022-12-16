@@ -15,8 +15,11 @@ MonoBehaviour:
   name: Erebus
   priceKW: 6825
   priceO: 1320
-  splashArt: {fileID: 3056395593743490674, guid: fc10a791f2f42364c825ecd13280cbf4, type: 3}
-  warriorSprite: {fileID: -1412277567133164151, guid: 21dda2ac3ff3652469e53e3529594db4, type: 3}
+  splashArt: {fileID: 1717418044, guid: 3cbbc550867999841b33773c68e28eb9, type: 3}
+  warriorSprites:
+  - {fileID: -7325227618104953156, guid: af4c7c0b2ca840a45b80c7e0b4a297fe, type: 3}
+  - {fileID: 6707223310538307031, guid: b734b7db416562c4ebd96125c067129e, type: 3}
+  - {fileID: 3973393051017162004, guid: 8d80744ae24d16343bbb208e181c87f4, type: 3}
   skillImages:
   - {fileID: -2295215578120324661, guid: 0db6b18dc1c42a345b5791d8244ee494, type: 3}
   - {fileID: 8343727880241766452, guid: 0db6b18dc1c42a345b5791d8244ee494, type: 3}

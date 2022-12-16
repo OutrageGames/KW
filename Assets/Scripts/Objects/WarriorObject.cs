@@ -8,7 +8,8 @@ public class WarriorObject : ScriptableObject
 {
     public new string name;
     public int priceKW, priceO;
-    public Sprite splashArt, warriorSprite;
+    public Sprite splashArt;
+    public Sprite[] warriorSprites;
     public Sprite[] skillImages;
 
     [TextArea(3,10)]

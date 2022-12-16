@@ -21,9 +21,10 @@ public abstract class Gun : NetworkBehaviour
     public int oneMagBullets, currentBullets;
     public Transform spawnPoint, efePoint;
     // public Vector2 spawnPointPos;
-    // private Animator anim;
+    [SerializeField] private Animator anim;
     private string currentState;
-    // public string idleAnimation, shootAnimation, reloadAnimation;
+    public string gunName;
+    private string idleAnimation, shootAnimation, reloadAnimation;
     // public AudioClip shootSound;
     // public AudioSource audioSource;
     // private float _rotZ;
@@ -47,6 +48,9 @@ public abstract class Gun : NetworkBehaviour
     public override void OnStartClient()
     {
         base.OnStartClient();
+        anim = GetComponentInChildren<Animator>();
+        
+
         if(!base.IsOwner)
         {
             GetComponent<Gun>().enabled = false;
@@ -65,7 +69,9 @@ public abstract class Gun : NetworkBehaviour
     private void Awake()
     {
         controls = new InputMaster(); 
-        
+        idleAnimation = gunName + "Idle";
+        shootAnimation = gunName + "Shoot";
+        reloadAnimation = gunName + "Reload";
         // playerVars = GetComponentInParent<PlayerVariables>();
         // _cameraController = transform.parent.GetComponent<PlayerCameraController>();
 
@@ -94,12 +100,20 @@ public abstract class Gun : NetworkBehaviour
         controls.Player.Shoot.canceled += ShootCallback;
     }
 
+    void PlayAnim(string newState)
+    {
+        if (currentState == newState) return;
+        anim.Play(newState);
+        currentState = newState;
+    }
+
     public virtual void Reload()
     {
         // if (!playerVars.HasDebuff(TimedEffectType.Stun))
         // {
         _isReloading = true;
         spread = 0;
+        anim.SetBool("isShooting", false);
         // }
     }
 
@@ -158,14 +172,21 @@ public abstract class Gun : NetworkBehaviour
         //     currentBullets = oneMagBullets;
         // }
 
-        // if (_isReloading)
-        // {
-        //     PlayAnim(reloadAnimation);
-        // }
-        // else if (!_isShooting)
-        // {
-        //     PlayAnim(idleAnimation);
-        // }
+
+        if(IsReloading)
+        {
+            anim.SetBool("isReloading", true);
+        }
+        else
+        {
+            anim.SetBool("isReloading", false);
+        }
+        
+        
+        if (!_isShooting)
+        {
+            anim.SetBool("isShooting", false);
+        }
 
         if (currentBullets <= 0 && !_isReloading)
         {
@@ -177,6 +198,7 @@ public abstract class Gun : NetworkBehaviour
         {
             //Shooting();
             _shootTimer = fireRate;
+            anim.SetBool("isShooting", true);
 
             // if (_isOwner)
             // {

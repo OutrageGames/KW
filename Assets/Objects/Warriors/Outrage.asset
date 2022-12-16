@@ -15,8 +15,11 @@ MonoBehaviour:
   name: Outrage
   priceKW: 4800
   priceO: 960
-  splashArt: {fileID: 6773602704187531846, guid: 016c791cee21c4747af546d84a991662, type: 3}
-  warriorSprite: {fileID: -3021023844696833094, guid: 21dda2ac3ff3652469e53e3529594db4, type: 3}
+  splashArt: {fileID: -1890191497, guid: ab9c46dd8266f184db5c897040212c5f, type: 3}
+  warriorSprites:
+  - {fileID: -4378415213808271830, guid: af4c7c0b2ca840a45b80c7e0b4a297fe, type: 3}
+  - {fileID: 210340451996655019, guid: b734b7db416562c4ebd96125c067129e, type: 3}
+  - {fileID: -4830221730189218348, guid: 8d80744ae24d16343bbb208e181c87f4, type: 3}
   skillImages:
   - {fileID: 2288021345558129070, guid: 0db6b18dc1c42a345b5791d8244ee494, type: 3}
   - {fileID: -785742089570462689, guid: 0db6b18dc1c42a345b5791d8244ee494, type: 3}

@@ -89,13 +89,13 @@ namespace FirstGearGames.LobbyAndWorld.Global.Canvases
         /// <summary>
         /// Received when Leave is pressed.
         /// </summary>
-        public void OnClick_Leave()
+        public void OnClick_Leave(GameObject anim)
         {
             //Hide current room.
+            anim.GetComponent<Animator>().SetBool("show", false);
             ShowCurrentRoom(false);
             LobbyNetwork.LeaveRoom();
+            
         }
-
     }
-
 }

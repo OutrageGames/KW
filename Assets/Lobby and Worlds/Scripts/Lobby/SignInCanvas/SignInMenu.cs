@@ -50,7 +50,7 @@ namespace FirstGearGames.LobbyAndWorld.Lobbies.SignInCanvases
         /// <summary>
         /// Called when SignIn button is pressed.
         /// </summary>
-        public void OnClick_SignIn()
+        public void OnClick_SignIn(Animator anim)
         {
             string username = _usernameText.text.Trim();
             string failedReason = string.Empty;            
@@ -62,9 +62,27 @@ namespace FirstGearGames.LobbyAndWorld.Lobbies.SignInCanvases
             //Try to login through server.
             else
             {
-                SetSignInLocked(true);
-                LobbyNetwork.SignIn(username);
+                anim.SetTrigger("click");
+                Invoke(nameof(SignIn), 0.4f);
             }
+        }
+
+        void SignIn()
+        {
+            string username = _usernameText.text.Trim();
+            SetSignInLocked(true);
+            LobbyNetwork.SignIn(username);
+        }
+
+        public void OnClick_Quit(Animator anim)
+        {
+            anim.SetTrigger("show");
+            Invoke(nameof(QuitGame), 1.5f);
+        }
+
+        void QuitGame()
+        {
+            Application.Quit();
         }
 
         /// <summary>

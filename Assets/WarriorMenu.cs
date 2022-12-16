@@ -9,7 +9,8 @@ public class WarriorMenu : MonoBehaviour
     [SerializeField] private WarriorObject[] _warriorObjects;
     [SerializeField] private WarriorObject _chosenWarrior;
     [SerializeField] private int _warriorID;
-    [SerializeField] private Image _splashArt, _warriorSprite, _mainMenuSprite;
+    [SerializeField] private Image _splashArt;
+    [SerializeField] private Image[] _mainMenuSprites, _warriorSprites;
     [SerializeField] private TMP_Text _warriorName;
     void Start()
     {
@@ -37,7 +38,11 @@ public class WarriorMenu : MonoBehaviour
 
         _warriorName.text = _chosenWarrior.name;
         _splashArt.sprite = _chosenWarrior.splashArt;
-        _mainMenuSprite.sprite = _chosenWarrior.warriorSprite;
-        _warriorSprite.sprite = _chosenWarrior.warriorSprite;
+        // _mainMenuSprites[0].sprite = _chosenWarrior.warriorSprites[0];
+
+        _warriorSprites[0].sprite = _chosenWarrior.warriorSprites[0];
+        _warriorSprites[1].sprite = _chosenWarrior.warriorSprites[1];
+        _warriorSprites[2].sprite = _chosenWarrior.warriorSprites[2];
+        _warriorSprites[3].sprite = _chosenWarrior.warriorSprites[2];
     }
 }

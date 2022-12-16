@@ -8,20 +8,32 @@ using TMPro;
 using FishNet.Connection;
 using FirstGearGames.LobbyAndWorld.Clients;
 using FirstGearGames.LobbyAndWorld.Demos.KingOfTheHill;
+using UnityEngine.InputSystem;
+
 
 public class PlayerHealth : NetworkBehaviour
 {
     [SyncVar] public float Health;
     [SyncVar] public bool IsImmune;
     [SerializeField] private PlayerUI _playerUI;
+    public GameObject DamagedBy;
+    [SerializeField] private GameplayManager _gameplayManager;
+    [SerializeField] private PlayerVariables _playerVariables;
 
     public override void OnStartClient()
     {
         base.OnStartClient();
+        _gameplayManager = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameplayManager>();
+        _playerVariables = GetComponent<PlayerVariables>();
 
         if(!base.IsOwner)
-            GetComponent<PlayerHealth>().enabled = false;
+            return;
+    }
 
+
+    void Start()
+    {
+        transform.position = _gameplayManager.SpawnPoints[_playerVariables.playerID].position;
     }
 
     [ServerRpc]
@@ -30,62 +42,48 @@ public class PlayerHealth : NetworkBehaviour
         script.IsImmune = immunity;
     }
 
+    public void BulletDmg(PlayerHealth script, float changeAmmount)
+    {
+        UpdateHealth(script, changeAmmount);
+    }
+
+    public void ShowHealth()
+    {
+        _playerUI.HealthBar.transform.localScale = new Vector2(Health / 100f, transform.localScale.y);   
+    }
+
+    [ServerRpc]
+    public void serhealth100(PlayerHealth script)
+    {
+        script.Health = 100;
+    }
+
     [ServerRpc]
     public void UpdateHealth(PlayerHealth script, float changeAmmount)
     {
         if(!IsOwner && !script.IsImmune)
         {
             script.Health += changeAmmount;
-
-            if(Health <= 0)
-            {
-                Health = 100;
-            }
         }
-    }
-
-    void ShowHealth()
-    {
-        _playerUI.HealthBar.transform.localScale = new Vector2(Health / 100f, transform.localScale.y);
-        ChangeHealth();
-    }
-
-    [ObserversRpc]
-    public void ChangeHealth()
-    {
-        if(!IsOwner)
-        {
-            if (_playerUI.HealthBar.transform.localScale.x <= 0)
-            {
-                _playerUI.HealthBar.transform.localScale = new Vector2(0f, transform.localScale.y);
-            }
-            else
-            {
-                _playerUI.HealthBar.transform.localScale = new Vector2(Health / 100f, transform.localScale.y);
-            }
-
-            
-
-        }        
     }
 
     void Update()
     {
         ShowHealth();
-
         if(Health <= 0)
         {
-            float x = Random.Range(3, 60);
-            float y = 25;
-            Vector2 next = new Vector2(x, y);
-            transform.position = next;
-
+            _gameplayManager.ShowKillText(DamagedBy, gameObject);
+            DamagedBy.GetComponent<PlayerVariables>().Kills++;
+            DamagedBy.transform.position = _gameplayManager.SpawnPoints[DamagedBy.GetComponent<PlayerVariables>().playerID].position;
+            if(DamagedBy.GetComponent<PlayerVariables>().Kills >= 10)
+            {
+                _gameplayManager.Win(DamagedBy.GetComponent<PlayerVariables>().Username);
+            }
+            transform.position = _gameplayManager.SpawnPoints[_playerVariables.playerID].position;
             Health = 100;
+            serhealth100(this);
         }
-        
     }
 
     
-
-
 }

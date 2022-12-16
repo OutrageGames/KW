@@ -130,15 +130,15 @@ public class NetworkHudCanvases : MonoBehaviour
 
     private void Start()
     {
-#if !ENABLE_INPUT_SYSTEM
-        SetEventSystem();
-        BaseInputModule inputModule = FindObjectOfType<BaseInputModule>();
-        if (inputModule == null)
-            gameObject.AddComponent<StandaloneInputModule>();
-#else
-        _serverIndicator.transform.parent.gameObject.SetActive(false);
-        _clientIndicator.transform.parent.gameObject.SetActive(false);
-#endif
+        #if ENABLE_INPUT_SYSTEM
+                SetEventSystem();
+                BaseInputModule inputModule = FindObjectOfType<BaseInputModule>();
+                if (inputModule == null)
+                    gameObject.AddComponent<StandaloneInputModule>();
+        #else
+                _serverIndicator.transform.parent.gameObject.SetActive(false);
+                _clientIndicator.transform.parent.gameObject.SetActive(false);
+        #endif
 
         _networkManager = FindObjectOfType<NetworkManager>();
         if (_networkManager == null)
@@ -158,6 +158,8 @@ public class NetworkHudCanvases : MonoBehaviour
             OnClick_Server();
         if (!Application.isBatchMode && (_autoStartType == AutoStartType.Host || _autoStartType == AutoStartType.Client))
             OnClick_Client();
+
+        enabled = false;
     }
 
 
@@ -199,6 +201,7 @@ public class NetworkHudCanvases : MonoBehaviour
     private void ServerManager_OnServerConnectionState(ServerConnectionStateArgs obj)
     {
         _serverState = obj.ConnectionState;
+        Debug.Log(obj.ConnectionState);
         UpdateColor(obj.ConnectionState, ref _serverIndicator);
     }
 
@@ -228,6 +231,19 @@ public class NetworkHudCanvases : MonoBehaviour
             _networkManager.ClientManager.StartConnection();
 
         DeselectButtons();
+    }
+
+    public void OnClick_Back(Animator anim)
+    {
+        anim.SetTrigger("show");
+        Invoke(nameof(client), 0.2f);
+        DeselectButtons();
+    }
+
+    void client()
+    {
+        _networkManager.ClientManager.StopConnection();
+        
     }
 
     public void WaitFor_Client()

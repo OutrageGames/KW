@@ -20,8 +20,8 @@ public class Kar : Gun
                 float bulletRot = transform.eulerAngles.z + Random.Range(-spread, spread);
                 Vector2 bulletPos = spawnPoint.position;
                 int bulletID = GetComponentInParent<NetworkObject>().OwnerId;
-                ServerShoot(bulletPos, bulletRot, DamageMultiplier, bulletID);
-                Shoot(bulletPos, bulletRot, DamageMultiplier, bulletID);
+                ServerShoot(bulletPos, bulletRot, DamageMultiplier, transform.parent.gameObject);
+                Shoot(bulletPos, bulletRot, DamageMultiplier, transform.parent.gameObject);
 
                 //b.GetComponent<TrailRenderer>().startColor = GetComponentInChildren<SpriteRenderer>().color;
                 //Instantiate(particleEffect, efePoint.position, Quaternion.identity, transform);
@@ -32,25 +32,25 @@ public class Kar : Gun
     }
 
     [ServerRpc]
-    void ServerShoot(Vector2 pos, float rot, float dmg, int bulletID)
+    void ServerShoot(Vector2 pos, float rot, float dmg, GameObject shooter)
     {
-        ClientsShoot(pos, rot, dmg, bulletID);        
+        ClientsShoot(pos, rot, dmg, shooter);        
     }
 
     [ObserversRpc]
-    void ClientsShoot(Vector2 pos, float rot, float dmg, int bulletID)
+    void ClientsShoot(Vector2 pos, float rot, float dmg, GameObject shooter)
     {
         if(!IsOwner)
         {
-            Shoot(pos, rot, dmg, bulletID);
+            Shoot(pos, rot, dmg, shooter);
         }
     }
 
-    void Shoot(Vector2 pos, float rot, float dmg, int bulletID)
+    void Shoot(Vector2 pos, float rot, float dmg, GameObject shooter)
     {
         GameObject bullet = Instantiate(_bulletPrefab, pos, Quaternion.Euler(0f, 0f, rot));
         bullet.GetComponent<Bullet>().Damage *= dmg;
-        bullet.GetComponent<Bullet>().BulletID = bulletID;
+        bullet.GetComponent<Bullet>().Shooter = shooter;
         bullet.GetComponent<TrailRenderer>().startColor = GetComponentInChildren<SpriteRenderer>().color;
         bullet.GetComponent<TrailRenderer>().endColor = GetComponentInChildren<SpriteRenderer>().color;
     }

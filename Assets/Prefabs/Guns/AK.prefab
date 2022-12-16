@@ -128,6 +128,7 @@ MonoBehaviour:
   - {fileID: 6166064349090622888}
   - {fileID: 450013891512142764}
   - {fileID: 1542204564586179603}
+  - {fileID: 7667575243489729033}
   <ParentNetworkObject>k__BackingField: {fileID: 0}
   <ChildNetworkObjects>k__BackingField: []
   _isNetworked: 1
@@ -180,8 +181,10 @@ MonoBehaviour:
   currentBullets: 0
   spawnPoint: {fileID: 134870834719415927}
   efePoint: {fileID: 0}
+  anim: {fileID: 0}
+  gunName: ak
   ReloadTime: 0
-  ReloadStartTime: 1
+  ReloadStartTime: 1.65
 --- !u!1 &1901463225609188523
 GameObject:
   m_ObjectHideFlags: 0
@@ -223,6 +226,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2955251562528372941}
   - component: {fileID: 8252846697967595627}
+  - component: {fileID: 3478963035424897011}
+  - component: {fileID: 7667575243489729033}
   m_Layer: 10
   m_Name: sprite
   m_TagString: Untagged
@@ -286,14 +291,55 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: -3953392710612138364, guid: 10c2e7e22f230924d95d3695efaa88b6, type: 3}
-  m_Color: {r: 0.26111352, g: 0.20906018, b: 0.5471698, a: 1}
+  m_Sprite: {fileID: -1970624150, guid: 5ed71f7e4f5b034459210e08c69a34a7, type: 3}
+  m_Color: {r: 0.7830189, g: 0.09972411, b: 0.27316415, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 5.5625, y: 2.4375}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &3478963035424897011
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5380070690799086465}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f6aa4f09d6175f5458f9c7fc87831123, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &7667575243489729033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5380070690799086465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8cac635f24954048aad3a6ff9110beb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _componentIndexCache: 3
+  _addedNetworkObject: {fileID: 1400210952860977099}
+  _networkObjectCache: {fileID: 1400210952860977099}
+  IgnoredParameters: []
+  _animator: {fileID: 3478963035424897011}
+  _smoothFloats: 1
+  _interpolation: 2
+  _clientAuthoritative: 1
+  _sendToOwner: 0

@@ -30,7 +30,7 @@ public class damager : MonoBehaviour
                     if (players[i].GetComponent<NetworkObject>().OwnerId == DamagerID)
                     {
                         var playerExperience = players[i].GetComponent<PlayerExperience>();
-                        playerExperience.UpdateXP(playerExperience, _damage);
+                        playerExperience.UpdateXP(playerExperience, _damage * 2f);
                     }
                 }
             }

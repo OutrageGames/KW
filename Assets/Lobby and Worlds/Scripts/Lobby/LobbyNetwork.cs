@@ -393,9 +393,9 @@ namespace FirstGearGames.LobbyAndWorld.Lobbies
                 failedReason = "Username must be at least 3 letters long.";
                 return false;
             }
-            if (value.Length > 15)
+            if (value.Length > 16)
             {
-                failedReason = "Username must be at most 15 letters long.";
+                failedReason = "Username must be at most 16 letters long.";
                 return false;
             }
             bool letters = value.All(c => Char.IsLetter(c));

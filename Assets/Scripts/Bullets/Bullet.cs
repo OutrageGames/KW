@@ -18,8 +18,7 @@ public class Bullet : MonoBehaviour
     [SerializeField] private float _damage;
     public float Damage { get => _damage; set => _damage = value; }
     private bool _stop = false;
-    public int BulletID;
-
+    public GameObject Shooter;
 
 
     void Update()
@@ -59,22 +58,23 @@ public class Bullet : MonoBehaviour
         }
         else if ((collider.tag == "Player"))
         {
-            var enemyVars = collider.gameObject.GetComponent<PlayerHealth>();
-            if(!enemyVars.IsImmune)
+            var enemyHealth = collider.gameObject.GetComponent<PlayerHealth>();
+            if(!enemyHealth.IsImmune)
             {
-                if(enemyVars.GetComponent<NetworkObject>().OwnerId != BulletID)
+                if(enemyHealth.gameObject.GetComponent<PlayerVariables>().playerID != Shooter.GetComponent<PlayerVariables>().playerID)
                 {
-                    enemyVars.UpdateHealth(enemyVars, -_damage);
+                    enemyHealth.BulletDmg(enemyHealth, -_damage);
+                    enemyHealth.DamagedBy = Shooter;
                 }
 
                 //xp
                 var players = GameObject.FindGameObjectsWithTag("Player");
                 for (int i = 0; i < players.Length; i++)
                 {
-                    if (players[i].GetComponent<NetworkObject>().OwnerId == BulletID)
+                    if (players[i].GetComponent<PlayerVariables>().playerID == Shooter.GetComponent<PlayerVariables>().playerID)
                     {
                         var playerExperience = players[i].GetComponent<PlayerExperience>();
-                        playerExperience.UpdateXP(playerExperience, _damage);
+                        playerExperience.UpdateXP(playerExperience, _damage * 2f);
                     }
                 }
             }

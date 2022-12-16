@@ -19,8 +19,8 @@ public class PlayerExperience : NetworkBehaviour
     {
         base.OnStartClient();
 
-        if(!base.IsOwner)
-            GetComponent<PlayerExperience>().enabled = false;
+        // if(!base.IsOwner)
+        //     GetComponent<PlayerExperience>().enabled = false;
 
     }
 
@@ -42,7 +42,7 @@ public class PlayerExperience : NetworkBehaviour
             {
                 CurrentXP = 699;
             }
-            NextXP = Level * 100;
+            NextXP = (Level * 50) + (100 / Level);
         }   
     }
 

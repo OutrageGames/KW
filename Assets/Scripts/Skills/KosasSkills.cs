@@ -98,7 +98,11 @@ public class KosasSkills : Skills
     {
         if(!IsOwner)
         {
-            GetComponentInChildren<SpriteRenderer>().enabled = false;
+            // GetComponentInChildren<Animator>().GetComponentInChildren<SpriteRenderer>().enabled = false;
+            foreach(Transform child in GetComponentInChildren<Animator>().gameObject.transform)
+            {
+                child.GetComponent<SpriteRenderer>().enabled = false;
+            }
             _headUI.gameObject.SetActive(false);
             GetComponentInChildren<Gun>().gameObject.GetComponentInChildren<SpriteRenderer>().enabled = false;
         }
@@ -132,7 +136,10 @@ public class KosasSkills : Skills
     {
         if(!IsInsideMask)
         {
-            GetComponentInChildren<SpriteRenderer>().enabled = true;
+            foreach(Transform child in GetComponentInChildren<Animator>().gameObject.transform)
+            {
+                child.GetComponent<SpriteRenderer>().enabled = true;
+            }
             _headUI.gameObject.SetActive(true);
             GetComponentInChildren<Gun>().gameObject.GetComponentInChildren<SpriteRenderer>().enabled = true;
         }

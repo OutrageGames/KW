@@ -11,6 +11,7 @@ TagManager:
   - MyInstance
   - item
   - Immune
+  - Manager
   layers:
   - Default
   - TransparentFX

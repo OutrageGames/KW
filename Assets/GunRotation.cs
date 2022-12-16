@@ -9,7 +9,7 @@ public class GunRotation : NetworkBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _warriorSprite = transform.parent.gameObject.GetComponentInChildren<SpriteRenderer>().transform;
+        _warriorSprite = transform.parent.gameObject.GetComponentInChildren<Animator>().transform;
     }
 
     private void Update()

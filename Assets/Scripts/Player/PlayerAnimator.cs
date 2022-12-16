@@ -12,14 +12,13 @@ using FirstGearGames.LobbyAndWorld.Demos.KingOfTheHill;
 public class PlayerAnimator : NetworkBehaviour
 {
     [SerializeField] private PlayerVariables _playerVariables;
-    [SerializeField] private SpriteRenderer _spriteRenderer;
+    [SerializeField] private SpriteRenderer[] _spriteRenderers;
     
     
     public override void OnStartClient()
     {
         base.OnStartClient();
-        _playerVariables = GetComponent<PlayerVariables>();
-        _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        _playerVariables = GetComponentInParent<PlayerVariables>();
 
         
         if(!base.IsOwner)
@@ -47,6 +46,9 @@ public class PlayerAnimator : NetworkBehaviour
 
     private void SetSprite(PlayerVariables playerVariables)
     {
-        _spriteRenderer.sprite = playerVariables.Warrior.warriorSprite;
+        _spriteRenderers[0].sprite = playerVariables.Warrior.warriorSprites[0];
+        _spriteRenderers[1].sprite = playerVariables.Warrior.warriorSprites[1];
+        _spriteRenderers[2].sprite = playerVariables.Warrior.warriorSprites[2];
+        _spriteRenderers[3].sprite = playerVariables.Warrior.warriorSprites[2];
     }
 }

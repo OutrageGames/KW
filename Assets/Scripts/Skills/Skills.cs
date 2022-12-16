@@ -50,8 +50,8 @@ public class Skills : NetworkBehaviour
 
     private void Start()
     {
-        controls.Player.Ability1.performed += Skill1Callback;
-        controls.Player.Ability2.performed += Skill2Callback;
+        controls.Player.Skill1.performed += Skill1Callback;
+        controls.Player.Skill2.performed += Skill2Callback;
         PlayerVariables = GetComponent<PlayerVariables>();
 
         //controls.actions.get["Player"].Ability1.performed += Ability1Callback;

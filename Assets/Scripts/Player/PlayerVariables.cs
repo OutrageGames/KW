@@ -18,18 +18,25 @@ public class PlayerVariables : NetworkBehaviour
     [SerializeField] public Color WarriorColor;
     private PlayerUI _playerUI;
     [SerializeField] public GunObject Gun;
-    [SerializeField] public int skillLevel1, skillLevel2;
-    [SerializeField] private string _userName;
-    private PlayerHealth _playerHealth;
+    public int skillLevel1, skillLevel2;
+    [SyncVar] public int playerID;
+    [SyncVar] public string Username;
     [SerializeField] private HardLight2D _playerLight;
+    [SyncVar] public int Kills;
+    // [SyncVar] public float Health;
+    [SyncVar] public bool IsImmune;
+    public int DamagedBy;
+    [SerializeField] private GameplayManager _gameplayManager;
+    public InputMaster controls;
+
 
     public override void OnStartClient()
     {
         base.OnStartClient();
 
         _playerUI = GetComponent<PlayerUI>();
-        _playerHealth = GetComponent<PlayerHealth>();
         _playerLight.gameObject.SetActive(base.IsOwner);
+        _gameplayManager = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameplayManager>();
 
         // if(base.IsOwner)
         //     gameObject.GetComponentInChildren<SpriteRenderer>().gameObject.layer = 10;
@@ -48,7 +55,6 @@ public class PlayerVariables : NetworkBehaviour
         SetWarrior(client, ciSettings);
         ServerSetWarrior(client, ciSettings); 
 
-        
 
         //ServerSpawnGun();
         SpawnGun();      
@@ -64,52 +70,19 @@ public class PlayerVariables : NetworkBehaviour
     {
         ServerSpawnGun(Gun.prefab, LocalConnection);
     }
+
     [ServerRpc]
     void ServerSpawnGun(GameObject go, NetworkConnection con)
     {
-        GameObject SpawnedGO = Instantiate<GameObject>(go, transform.position, Quaternion.identity, transform);
+        GameObject SpawnedGO = Instantiate<GameObject>(go, new Vector2(transform.position.x, transform.position.y + 0.3f), Quaternion.identity, transform);
         base.Spawn(SpawnedGO, con);
     }
 
-    void Update()
+    [ServerRpc]
+    public void ServerChangeID(PlayerVariables var, int gab)
     {
-        // if(_playerHealth.Health <= 0)
-        // {
-        //     float x = Random.Range(3, 60);
-        //     float y = 25;
-        //     Vector2 next = new Vector2(x, y);
-        //     transform.position = next;
-
-        //     _playerHealth.Health = 100;
-        // }        
+        var.playerID = gab;
     }
-
-    // [ServerRpc]
-    // public void ServerSpawnGun()
-    // {
-    //     ClientSpawnGun();
-    // }
-
-    // [ObserversRpc]
-    // public void ClientSpawnGun()
-    // {
-    //     if(!IsOwner)
-    //     {
-    //         SpawnGun();
-    //     }
-    // }
-
-    // private void SpawnGun()
-    // {
-    //     GameObject go = Instantiate(Gun.prefab, transform.position, Quaternion.identity, transform);
-    //     //base.Spawn(go, client.LocalConnection);
-    //     ServerManager.Spawn(go);
-    // }
-
-
-
-
-
     
     [ServerRpc]
     public void ServerSetWarrior(NetworkObject client, PlayerSettings ciSettings)
@@ -123,6 +96,7 @@ public class PlayerVariables : NetworkBehaviour
         if(!IsOwner)
         {
             SetWarrior(client, ciSettings);
+            _gameplayManager.OtherNames[1].text = Username;
         }
     }
 
@@ -130,7 +104,7 @@ public class PlayerVariables : NetworkBehaviour
     {
         Warrior = ciSettings.GetAllWarriors()[ciSettings.GetWarriorIndex()];
         Gun = ciSettings.GetAllGuns()[ciSettings.GetGunIndex()];
-        _userName = ciSettings.GetUsername();
-        _playerUI.Username.text = _userName.ToString();
+        Username = ciSettings.GetUsername();
+        _playerUI.Username.text = Username.ToString();
     }
 }

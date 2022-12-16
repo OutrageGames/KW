@@ -37,15 +37,17 @@ namespace FirstGearGames.LobbyAndWorld.Lobbies.SignInCanvases
             Reset();
         }
 
-        public void OpenWarriorMenu()
+        public void OpenWarriorMenu(Animator anim)
         {
+            anim.SetBool("show", true);
             _warriorMenu.GetComponent<CanvasGroup>().alpha = 1;
             _warriorMenu.GetComponent<CanvasGroup>().interactable = true;
             _warriorMenu.GetComponent<CanvasGroup>().blocksRaycasts = true;
         }
 
-        public void CloseWarriorMenu()
+        public void CloseWarriorMenu(Animator anim)
         {
+            anim.SetBool("show", false);
             _warriorMenu.GetComponent<CanvasGroup>().alpha = 0;
             _warriorMenu.GetComponent<CanvasGroup>().interactable = false;
             _warriorMenu.GetComponent<CanvasGroup>().blocksRaycasts = false;

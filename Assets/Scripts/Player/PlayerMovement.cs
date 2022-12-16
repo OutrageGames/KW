@@ -16,11 +16,13 @@ public class PlayerMovement : NetworkBehaviour
     private Rigidbody2D _rigidbody;
     private BoxCollider2D _collider;
     private bool _isGrounded;
+    private Animator _animator;
 
     public override void OnStartClient()
     {
         base.OnStartClient();
         _rigidbody = GetComponent<Rigidbody2D>();
+        _animator = GetComponentInChildren<Animator>();
         _rigidbody.isKinematic = !IsOwner;
         if(!base.IsOwner)
         {
@@ -52,6 +54,16 @@ public class PlayerMovement : NetworkBehaviour
         if(!IsOwner && _isGrounded)
         {
             _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 0f);
+            
+        }
+
+        if(!_isGrounded)
+        {
+            _animator.SetBool("jumping", true);
+        }
+        else
+        {
+            _animator.SetBool("jumping", false);
         }
 
         Move(_curDir);
@@ -70,6 +82,7 @@ public class PlayerMovement : NetworkBehaviour
         if(_isGrounded)
         {
             _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, _jumpSpeed);
+            _animator.SetBool("jumping", true);
         }
     }
 
@@ -79,7 +92,15 @@ public class PlayerMovement : NetworkBehaviour
             return;
 
 
-        _curDir = context.ReadValue<float>();        
+        _curDir = context.ReadValue<float>();     
+
+        if (_curDir != 0f)
+            _animator.SetFloat("speed", _curDir);
+
+        if (_curDir != 0f)
+            _animator.SetBool("walking", true);
+        else
+            _animator.SetBool("walking", false);
     }
 
     public void JumpCallback(InputAction.CallbackContext context)

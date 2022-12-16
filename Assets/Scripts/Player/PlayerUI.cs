@@ -6,6 +6,8 @@ using TMPro;
 using Cinemachine;
 using FishNet.Object;
 using UnityEngine.InputSystem;
+using FirstGearGames.LobbyAndWorld.Demos.KingOfTheHill;
+
 
 
 public class PlayerUI : NetworkBehaviour
@@ -14,19 +16,22 @@ public class PlayerUI : NetworkBehaviour
     [SerializeField] public Transform HealthBar;
     [SerializeField] public Transform ExperienceBar;
     [SerializeField] private TMP_Text _nameText, _bullets;
+    
     [SerializeField] public TMP_Text LevelText;
     public TMP_Text Username { get => _nameText; set => _nameText = value; }
     [SerializeField] private SpriteRenderer _bulletsImage;
-    // [SerializeField] private GameObject _skillUpParticle;
+    private GameObject _leaveButton;
     [Space(10)]
 
     private Image _skillBar1, _skillBar2, _skillbarBG1, _skillbarBG2, _skillCooldownBar1, _skillCooldownBar2, _skillLock1, _skillLock2, _skillImage1, _skillImage2;
     private Image _durationBar1, _durationBar2;
-    private TMP_Text _skillCooldownText1, _skillCooldownText2;
-    [SerializeField] private Animator _skillAnimator1, _skillAnimator2;
-    private PlayerVariables _playerVars;
+    private TMP_Text _skillCooldownText1, _skillCooldownText2, _yourName, _yourKills, _killsText;
+    [SerializeField] private Animator _skillAnimator1, _skillAnimator2, _tabBar, _escapeMenu;
+    [SerializeField] private PlayerVariables _playerVars;
     [SerializeField] private Skills _playerSkills;
     private PlayerExperience _playerExperience;
+    [SerializeField] private GameplayManager _gameplayManager;
+    public InputMaster controls;
     
 
  
@@ -34,13 +39,15 @@ public class PlayerUI : NetworkBehaviour
     public override void OnStartClient()
     {
         base.OnStartClient();
-        if(!base.IsOwner)
+        _gameplayManager = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameplayManager>();
+
+        if(!IsOwner)
         {
             _bulletsImage.enabled = false;
             _bullets.enabled = false;
         }
 
-        _playerVars = GetComponent<PlayerVariables>();
+        
         _playerExperience = GetComponent<PlayerExperience>();
 
         
@@ -60,11 +67,21 @@ public class PlayerUI : NetworkBehaviour
         _skillImage2 = GameObject.Find("skillImage2").GetComponent<Image>();
         _skillCooldownText1 = GameObject.Find("skillCDtext1").GetComponent<TMP_Text>();
         _skillCooldownText2 = GameObject.Find("skillCDtext2").GetComponent<TMP_Text>();
+        _killsText = GameObject.Find("KillsText").GetComponent<TMP_Text>();
         _skillAnimator1 = GameObject.Find("skillAnimator1").GetComponent<Animator>();
         _skillAnimator2 = GameObject.Find("skillAnimator2").GetComponent<Animator>();
+        _tabBar = GameObject.Find("TabBar").GetComponent<Animator>();
+        _escapeMenu = GameObject.Find("EscapeMenu").GetComponent<Animator>();
+        _leaveButton = GameObject.Find("RoomActionCanvas");
+        // _leaveButton.GetComponent<CanvasGroup>().alpha = 0;
+        // _yourName = GameObject.Find("YourName").GetComponent<TMP_Text>();
+        // _yourKills = GameObject.Find("YourKills").GetComponent<TMP_Text>();
+        
 
         if (IsOwner)
         {
+            _gameplayManager.OtherNames[0].text = _playerVars.Username;
+
             _skillImage1.sprite = _playerVars.Warrior.skillImages[0];
             _skillImage2.sprite = _playerVars.Warrior.skillImages[1];
 
@@ -73,6 +90,7 @@ public class PlayerUI : NetworkBehaviour
             _skillCooldownText1.enabled = false;
             _skillCooldownText2.enabled = false;
 
+            // _yourName.text = _playerVars.Username;
 
             //userController con = GameObject.FindGameObjectWithTag("controller").GetComponent<userController>();
 
@@ -105,6 +123,35 @@ public class PlayerUI : NetworkBehaviour
         }
     }
 
+    public void ShowTabCallback(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            _tabBar.SetBool("show", true);
+        }
+        else if (context.canceled)
+        {
+            _tabBar.SetBool("show", false);
+        }
+    }
+
+    public void EscapeCallback(InputAction.CallbackContext context)
+    {
+        // if (context.performed)
+        // {
+        //     bool asd = _escapeMenu.GetBool("show");
+        //     _escapeMenu.SetBool("show", !asd);
+        // }
+        if (context.performed)
+        {
+            _escapeMenu.SetBool("show", true);
+        }
+        else if (context.canceled)
+        {
+            _escapeMenu.SetBool("show", false);
+        }
+    }
+
     private void Update()
     {
         
@@ -116,6 +163,13 @@ public class PlayerUI : NetworkBehaviour
         {
             UpdateSkillset();
             _bullets.text = GetComponentInChildren<Gun>().currentBullets.ToString();
+            _killsText.text = "Kills:   " + _playerVars.Kills.ToString() + "/10";
+            _gameplayManager.OtherKills[0].text = _playerVars.Kills.ToString();
+            //_yourKills.text = _playerVars.Kills.ToString();
+        }
+        else
+        {
+            _gameplayManager.OtherKills[1].text = _playerVars.Kills.ToString();
         }
         
         //hpBar.fillAmount = Mathf.Lerp(0.22f, 1f, playerVars.hp / 100f) / (playerVars.fullHp / 100f);

@@ -42,7 +42,7 @@ namespace FirstGearGames.LobbyAndWorld.Global.Canvases
         /// <summary>
         /// CanvasGroup on this object.
         /// </summary>
-        private CanvasGroup _canvasGroup;
+        // private CanvasGroup _canvasGroup;
         /// <summary>
         /// True if message is currently persistent.
         /// </summary>
@@ -63,7 +63,7 @@ namespace FirstGearGames.LobbyAndWorld.Global.Canvases
         /// </summary>
         private void FirstInitialize()
         {
-            _canvasGroup = GetComponent<CanvasGroup>();
+            // _canvasGroup = GetComponent<CanvasGroup>();
             _defaultBackgroundOpacity = _backgroundImage.color.a;
             _originalText = _text.text;
             _originalColor = _text.color;
@@ -78,8 +78,8 @@ namespace FirstGearGames.LobbyAndWorld.Global.Canvases
         {
             _originalText = text;
             _originalColor = color;
-            if (_runningMessage == null)
-                SetToOriginals();
+            // if (_runningMessage == null)
+            //     SetToOriginals();
         }
 
         /// <summary>
@@ -88,22 +88,23 @@ namespace FirstGearGames.LobbyAndWorld.Global.Canvases
         /// <param name="text"></param>
         /// <param name="color"></param>
         /// <param name="duration"></param>
-        public void ShowTimedMessage(string text, Color color, float duration = 3f, float? opacity = null)
+        public void ShowTimedMessage(string text, Color color, float duration = 5f, float? opacity = null)
         {
             if (_runningMessage != null)
                 StopCoroutine(_runningMessage);
 
-            _runningMessage = StartCoroutine(__ShowMessage(text, color, duration, opacity));
+            GetComponent<Animator>().SetTrigger("show");
+            __ShowMessage(text, duration, opacity);
         }
 
         /// <summary>
         /// Sets to original text and color.
         /// </summary>
-        private void SetToOriginals()
-        {
-            _text.text = _originalText;
-            _text.color = _originalColor;
-        }
+        // private void SetToOriginals()
+        // {
+        //     _text.text = _originalText;
+        //     _text.color = _originalColor;
+        // }
 
         /// <summary>
         /// Shows a message for a set duration.
@@ -112,29 +113,29 @@ namespace FirstGearGames.LobbyAndWorld.Global.Canvases
         /// <param name="color"></param>
         /// <param name="duration"></param>
         /// <returns></returns>
-        private IEnumerator __ShowMessage(string text, Color color, float duration, float? opacity)
+        private void __ShowMessage(string text, float duration, float? opacity)
         {
-            _canvasGroup.SetActive(true, true);
+            // _canvasGroup.SetActive(true, true);
 
             //Adjust opacity if not null.
-            Color backgroundColor = _backgroundImage.color;
-            if (opacity != null)
-                backgroundColor.a = opacity.Value;
-            else
-                backgroundColor.a = _defaultBackgroundOpacity;
-            _backgroundImage.color = backgroundColor;
+            // Color backgroundColor = _backgroundImage.color;
+            // if (opacity != null)
+            //     backgroundColor.a = opacity.Value;
+            // else
+            //     backgroundColor.a = _defaultBackgroundOpacity;
+            // _backgroundImage.color = backgroundColor;
 
             //Show text for specified time.
             _text.text = text;
-            _text.color = color;
-            yield return new WaitForSeconds(duration);
+            // _text.color = color;
+            GetComponent<Animator>().SetTrigger("show");
 
             //Set back to original text.
-            SetToOriginals();
+            // SetToOriginals();
             _runningMessage = null;
 
-            if (!_persistent)
-                _canvasGroup.SetActive(false, true);
+            // if (!_persistent)
+            //     _canvasGroup.SetActive(false, true);
         }
 
         /// <summary>
@@ -145,9 +146,9 @@ namespace FirstGearGames.LobbyAndWorld.Global.Canvases
         public void StartPersistentText(string text, Color color)
         {
             _text.text = text;
-            _text.color = color;
+            // _text.color = color;
 
-            _canvasGroup.SetActive(true, true);
+            // _canvasGroup.SetActive(true, true);
         }
 
         /// <summary>
@@ -155,8 +156,8 @@ namespace FirstGearGames.LobbyAndWorld.Global.Canvases
         /// </summary>
         public void StartPersistentText()
         {
-            SetToOriginals();
-            _canvasGroup.SetActive(true, true);
+            // SetToOriginals();
+            // _canvasGroup.SetActive(true, true);
         }
 
         /// <summary>
@@ -164,7 +165,7 @@ namespace FirstGearGames.LobbyAndWorld.Global.Canvases
         /// </summary>
         public void EndPersistentText()
         {
-            _canvasGroup.SetActive(false, true);
+            // _canvasGroup.SetActive(false, true);
         }
     }
 

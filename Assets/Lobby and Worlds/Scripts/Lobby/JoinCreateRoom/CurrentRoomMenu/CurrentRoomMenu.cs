@@ -344,6 +344,13 @@ namespace FirstGearGames.LobbyAndWorld.Lobbies.JoinCreateRoomCanvases
                 GlobalManager.CanvasesManager.MessagesCanvas.InfoMessages.ShowTimedMessage(failedReason, Color.red);
         }
 
+        public void OnClick_Leave()
+        {
+            //Hide current room.
+            LobbyNetwork.LeaveRoom();
+            
+        }
+
     }
 
 

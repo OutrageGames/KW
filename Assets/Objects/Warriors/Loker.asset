@@ -16,7 +16,10 @@ MonoBehaviour:
   priceKW: 2000
   priceO: 960
   splashArt: {fileID: 5391509491839537004, guid: 2c1715df8cc5d104a8b38ecf3aecc98d, type: 3}
-  warriorSprite: {fileID: -2593572779518371039, guid: 21dda2ac3ff3652469e53e3529594db4, type: 3}
+  warriorSprites:
+  - {fileID: -5980336093888234789, guid: af4c7c0b2ca840a45b80c7e0b4a297fe, type: 3}
+  - {fileID: -384807226754113101, guid: b734b7db416562c4ebd96125c067129e, type: 3}
+  - {fileID: -9027304882974352746, guid: 8d80744ae24d16343bbb208e181c87f4, type: 3}
   skillImages:
   - {fileID: 729924755895458546, guid: 0db6b18dc1c42a345b5791d8244ee494, type: 3}
   - {fileID: -1198321888542958605, guid: 0db6b18dc1c42a345b5791d8244ee494, type: 3}
