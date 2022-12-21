@@ -1,6 +1,8 @@
 ﻿using FirstGearGames.LobbyAndWorld.Extensions;
 using TMPro;
 using UnityEngine;
+using System.Collections;
+
 
 namespace FirstGearGames.LobbyAndWorld.Global.Canvases
 {
@@ -58,9 +60,10 @@ namespace FirstGearGames.LobbyAndWorld.Global.Canvases
         /// Called when sign in passes.
         /// </summary>
         /// <param name="signedIn"></param>
-        public void SignInSuccess(string username)
+        public IEnumerator SignInSuccess(string username)
         {
-            _canvasGroup.SetActive(true, true);
+            yield return new WaitForSeconds(0.5f);
+            //_canvasGroup.SetActive(true, true);
             _signedInText.text = SIGNED_IN_PREFIX + username;
         }
 

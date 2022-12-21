@@ -19,6 +19,7 @@ public class PlayerHealth : NetworkBehaviour
     public GameObject DamagedBy;
     [SerializeField] private GameplayManager _gameplayManager;
     [SerializeField] private PlayerVariables _playerVariables;
+    [SerializeField] private GameObject _deathParticle;
 
     public override void OnStartClient()
     {
@@ -75,6 +76,14 @@ public class PlayerHealth : NetworkBehaviour
             _gameplayManager.ShowKillText(DamagedBy, gameObject);
             DamagedBy.GetComponent<PlayerVariables>().Kills++;
             DamagedBy.transform.position = _gameplayManager.SpawnPoints[DamagedBy.GetComponent<PlayerVariables>().playerID].position;
+
+            GameObject deathP = Instantiate(_deathParticle, transform.position, Quaternion.identity);
+            ParticleSystem ps = deathP.GetComponent<ParticleSystem>();
+            ps.Stop();
+            var main = ps.main;
+            main.startColor = _playerVariables.WarriorColor;
+            ps.Play();  
+
             if(DamagedBy.GetComponent<PlayerVariables>().Kills >= 10)
             {
                 _gameplayManager.Win(DamagedBy.GetComponent<PlayerVariables>().Username);

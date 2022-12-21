@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using FishNet.Object;
 using UnityEngine.InputSystem;
+using Cinemachine;
 
 public abstract class Gun : NetworkBehaviour
 {
@@ -25,11 +26,10 @@ public abstract class Gun : NetworkBehaviour
     private string currentState;
     public string gunName;
     private string idleAnimation, shootAnimation, reloadAnimation;
-    // public AudioClip shootSound;
+    // public AudioClip ShootSound;
     // public AudioSource audioSource;
     // private float _rotZ;
     // private PlayerVariables playerVars;
-    // [SerializeField] private float shakeAmount;
     // private PlayerCameraController _cameraController;
     public InputMaster controls;
 
@@ -49,7 +49,6 @@ public abstract class Gun : NetworkBehaviour
     {
         base.OnStartClient();
         anim = GetComponentInChildren<Animator>();
-        
 
         if(!base.IsOwner)
         {
@@ -98,6 +97,7 @@ public abstract class Gun : NetworkBehaviour
     {
         controls.Player.Shoot.performed += ShootCallback;
         controls.Player.Shoot.canceled += ShootCallback;
+        controls.Player.Reload.performed += ReloadCallback;
     }
 
     void PlayAnim(string newState)
@@ -115,6 +115,17 @@ public abstract class Gun : NetworkBehaviour
         spread = 0;
         anim.SetBool("isShooting", false);
         // }
+    }
+
+    public void ReloadCallback(InputAction.CallbackContext context)
+    {
+        if(!base.IsOwner)
+            return;
+
+        if (context.performed)
+        {
+            Reload();
+        }
     }
 
     // public virtual void StartShoot()

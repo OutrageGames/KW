@@ -13,6 +13,9 @@ using UnityEngine;
 using UnitySceneManager = UnityEngine.SceneManagement.SceneManager;
 using FishNet.Object.Synchronizing;
 using TMPro;
+using MySceneManager = UnityEngine.SceneManagement;
+
+
 
 
 namespace FirstGearGames.LobbyAndWorld.Demos.KingOfTheHill
@@ -90,6 +93,7 @@ namespace FirstGearGames.LobbyAndWorld.Demos.KingOfTheHill
         /// </summary>
         public void FirstInitialize(RoomDetails roomDetails, LobbyNetwork lobbyNetwork)
         {
+            MySceneManager.SceneManager.SetActiveScene(gameObject.scene);
             _roomDetails = roomDetails;
             _lobbyNetwork = lobbyNetwork;
             _lobbyNetwork.OnClientStarted += LobbyNetwork_OnClientStarted;
@@ -302,7 +306,7 @@ namespace FirstGearGames.LobbyAndWorld.Demos.KingOfTheHill
             // float y = 25;
             //float z = Random.Range(-_spawnRegion.z / 2f, _spawnRegion.z / 2f);
             // Vector2 next = new Vector2(x, y);
-
+            
             //Make object and move it to proper scene.
             ClientInstance ci = ClientInstance.ReturnClientInstance(conn);
             PlayerSettings ps = ci.GetComponent<PlayerSettings>();
@@ -313,6 +317,7 @@ namespace FirstGearGames.LobbyAndWorld.Demos.KingOfTheHill
             //NetworkObject gun = Instantiate<NetworkObject>(_gunPrefab[ps.GetGunIndex()], nob.transform.position, Quaternion.identity, nob.transform);
             
             UnitySceneManager.MoveGameObjectToScene(nob.gameObject, gameObject.scene);
+            
 
             _spawnedPlayerObjects.Add(nob);
             //Subscriber to kingtimer so we know when a player reaches 0.

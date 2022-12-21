@@ -4,6 +4,8 @@ using FirstGearGames.LobbyAndWorld.Global.Canvases;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
+
 
 namespace FirstGearGames.LobbyAndWorld.Lobbies.SignInCanvases
 {
@@ -50,7 +52,7 @@ namespace FirstGearGames.LobbyAndWorld.Lobbies.SignInCanvases
         /// <summary>
         /// Called when SignIn button is pressed.
         /// </summary>
-        public void OnClick_SignIn(Animator anim)
+        public void OnClick_SignIn()
         {
             string username = _usernameText.text.Trim();
             string failedReason = string.Empty;            
@@ -62,8 +64,8 @@ namespace FirstGearGames.LobbyAndWorld.Lobbies.SignInCanvases
             //Try to login through server.
             else
             {
-                anim.SetTrigger("click");
-                Invoke(nameof(SignIn), 0.4f);
+                //Invoke(nameof(SignIn), 0f);
+                SignIn();
             }
         }
 
@@ -98,10 +100,11 @@ namespace FirstGearGames.LobbyAndWorld.Lobbies.SignInCanvases
         /// <summary>
         /// Called after successfully signing in.
         /// </summary>
-        public void SignInSuccess()
+        public IEnumerator SignInSuccess()
         {
-            _canvasGroup.SetActive(false, true);
             SetSignInLocked(false);
+            yield return new WaitForSeconds(0.5f);
+            _canvasGroup.SetActive(false, true);
         }
 
         /// <summary>

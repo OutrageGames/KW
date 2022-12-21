@@ -21,6 +21,9 @@ public class Ak : Gun
                 float bulletRot = transform.eulerAngles.z + Random.Range(-spread, spread);
                 Vector2 bulletPos = spawnPoint.position;
                 int bulletID = GetComponentInParent<PlayerVariables>().playerID;
+
+                GetComponentInParent<PlayerCameraController>().CameraShake(DamageMultiplier, 0.1f);
+
                 Shoot(bulletPos, bulletRot, DamageMultiplier, transform.parent.gameObject);
                 ServerShoot(bulletPos, bulletRot, DamageMultiplier, transform.parent.gameObject);
 

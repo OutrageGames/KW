@@ -19,6 +19,7 @@ public class Bullet : MonoBehaviour
     public float Damage { get => _damage; set => _damage = value; }
     private bool _stop = false;
     public GameObject Shooter;
+    [SerializeField] private GameObject _blood;
 
 
     void Update()
@@ -36,6 +37,42 @@ public class Bullet : MonoBehaviour
                 {
                     _speed = 0f;
                     transform.position += (transform.right * hit.distance);
+                    
+                    if(hit.collider.tag == "Player")
+                    {
+                        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+                        var enemyHealth = hit.collider.gameObject.GetComponent<PlayerHealth>();
+                        if(!enemyHealth.IsImmune)
+                        {
+                            if(enemyHealth.gameObject.GetComponent<PlayerVariables>().playerID != Shooter.GetComponent<PlayerVariables>().playerID)
+                            {
+                                enemyHealth.BulletDmg(enemyHealth, -_damage);
+                                enemyHealth.DamagedBy = Shooter;
+                                GameObject blood = Instantiate(_blood, transform.position, Quaternion.identity);
+                                blood.GetComponent<PassId>().id = Shooter.GetComponent<PlayerVariables>().playerID;
+                                //blood sound
+                                for (int i = 0; i < players.Length; i++)
+                                {
+                                    if (players[i].GetComponent<PlayerVariables>().IsOwner && players[i].GetComponent<PlayerVariables>().playerID == blood.GetComponent<PassId>().id)
+                                    {
+                                        blood.GetComponent<AudioSource>().Play();
+                                    }
+                                }
+                            }
+
+                            //xp
+                            for (int i = 0; i < players.Length; i++)
+                            {
+                                if (players[i].GetComponent<PlayerVariables>().playerID == Shooter.GetComponent<PlayerVariables>().playerID)
+                                {
+                                    var playerExperience = players[i].GetComponent<PlayerExperience>();
+                                    playerExperience.UpdateXP(playerExperience, _damage * 2f);
+                                }
+                            }
+                        }
+
+                        _stop = true;
+                    }
                 }
                 else
                 {
@@ -52,37 +89,11 @@ public class Bullet : MonoBehaviour
 
     private bool CheckHit(Collider2D collider)
     {
-        if (collider.tag == "Ground")
+        if (collider.tag == "Ground" || collider.tag == "Player")
         {
             return true;
         }
-        else if ((collider.tag == "Player"))
-        {
-            var enemyHealth = collider.gameObject.GetComponent<PlayerHealth>();
-            if(!enemyHealth.IsImmune)
-            {
-                if(enemyHealth.gameObject.GetComponent<PlayerVariables>().playerID != Shooter.GetComponent<PlayerVariables>().playerID)
-                {
-                    enemyHealth.BulletDmg(enemyHealth, -_damage);
-                    enemyHealth.DamagedBy = Shooter;
-                }
 
-                //xp
-                var players = GameObject.FindGameObjectsWithTag("Player");
-                for (int i = 0; i < players.Length; i++)
-                {
-                    if (players[i].GetComponent<PlayerVariables>().playerID == Shooter.GetComponent<PlayerVariables>().playerID)
-                    {
-                        var playerExperience = players[i].GetComponent<PlayerExperience>();
-                        playerExperience.UpdateXP(playerExperience, _damage * 2f);
-                    }
-                }
-            }
-
-            _stop = true;
-            //Destroy(gameObject);
-            return true;
-        }
         // else if (collider.tag == "Enemy" || collider.tag == "Player")
         // {
         //     //var statsController = collider.GetComponent<PlayerStatsController>();

@@ -67,7 +67,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1216
   _damage: 5
-  BulletID: 0
+  Shooter: {fileID: 0}
+  _blood: {fileID: 1085937133714829146, guid: 7d5c2102da7298e40bd03c78897f5336, type: 3}
 --- !u!96 &3778698965525919245
 TrailRenderer:
   serializedVersion: 2
@@ -107,8 +108,8 @@ TrailRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -764618653
+  m_SortingLayer: 2
   m_SortingOrder: 5000
   m_Time: 0.2
   m_Parameters:

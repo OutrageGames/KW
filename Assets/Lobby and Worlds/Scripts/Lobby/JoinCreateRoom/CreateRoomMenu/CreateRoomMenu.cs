@@ -54,6 +54,7 @@ namespace FirstGearGames.LobbyAndWorld.Lobbies.JoinCreateRoomCanvases
         /// True if awaiting a create response from the server.
         /// </summary>
         private bool _awaitingCreateResponse = false;
+
         #endregion
 
         /// <summary>
@@ -135,6 +136,7 @@ namespace FirstGearGames.LobbyAndWorld.Lobbies.JoinCreateRoomCanvases
             _awaitingCreateResponse = false;
             _canvasGroup.SetActive(false, true);
         }
+
         /// <summary>
         /// Shows canvases for a failed room creation.
         /// </summary>

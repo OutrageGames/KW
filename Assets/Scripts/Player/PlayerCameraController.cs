@@ -11,8 +11,7 @@ public class PlayerCameraController : NetworkBehaviour
     private CinemachineBrain _mainCamera;
     private CinemachineBasicMultiChannelPerlin _cameraPerlin;
 
-    [SerializeField]
-    private GameObject _headUI, _fow;
+    // [SerializeField] private GameObject _headUI, _fow;
 
     private Coroutine _stopShakeCoroutine;
 

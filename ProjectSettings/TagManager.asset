@@ -39,9 +39,9 @@ TagManager:
   - 
   - 
   - Skills
+  - DonttouchPlayer
   - 
-  - 
-  - 
+  - UI2
   - 
   - 
   - 
@@ -49,9 +49,18 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Backgrounds
+    uniqueID: 796930169
+    locked: 0
   - name: Player
     uniqueID: 3530348643
     locked: 0
   - name: Skills
     uniqueID: 1023760755
+    locked: 0
+  - name: Frontground
+    uniqueID: 2659493279
+    locked: 0
+  - name: UI
+    uniqueID: 354269173
     locked: 0

@@ -160,6 +160,7 @@ public class NetworkHudCanvases : MonoBehaviour
             OnClick_Client();
 
         enabled = false;
+        // gameObject.SetActive(false);
     }
 
 

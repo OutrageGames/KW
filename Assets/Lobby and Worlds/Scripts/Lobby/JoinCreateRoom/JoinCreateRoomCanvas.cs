@@ -1,5 +1,6 @@
 ﻿using FirstGearGames.LobbyAndWorld.Extensions;
 using UnityEngine;
+using System.Collections;
 
 namespace FirstGearGames.LobbyAndWorld.Lobbies.JoinCreateRoomCanvases
 {
@@ -48,6 +49,8 @@ namespace FirstGearGames.LobbyAndWorld.Lobbies.JoinCreateRoomCanvases
         /// CanvasGroup on this object.
         /// </summary>
         private CanvasGroup _canvasGroup;
+
+        [SerializeField] private Animator _createRoomAnimator;
         #endregion
 
         /// <summary>
@@ -80,6 +83,12 @@ namespace FirstGearGames.LobbyAndWorld.Lobbies.JoinCreateRoomCanvases
         /// </summary>
         public void SignInSuccess()
         {
+            StartCoroutine(WaitAndSignInSuccess());
+        }
+
+        IEnumerator WaitAndSignInSuccess()
+        {
+            yield return new WaitForSeconds(0.5f);
             _canvasGroup.SetActive(true, true);
         }
         /// <summary>
@@ -96,10 +105,18 @@ namespace FirstGearGames.LobbyAndWorld.Lobbies.JoinCreateRoomCanvases
         /// <param name="show"></param>
         public void ShowRoomCreatedSuccess(RoomDetails roomDetails)
         {
+            StartCoroutine(WaitAndShowRoomCreatedSuccess(roomDetails));
+            _createRoomAnimator.SetTrigger("show");
+        }
+
+        IEnumerator WaitAndShowRoomCreatedSuccess(RoomDetails roomDetails)
+        {
+            yield return new WaitForSeconds(0.5f);
             JoinRoomMenu.ShowRoomCreatedSuccess();
             _createRoomMenu.ShowRoomCreatedSuccess();
             CurrentRoomMenu.ShowRoomCreatedSuccess(roomDetails);
         }
+
         /// <summary>
         /// Shows canvases for a failed room creation.
         /// </summary>
@@ -117,6 +134,13 @@ namespace FirstGearGames.LobbyAndWorld.Lobbies.JoinCreateRoomCanvases
         /// <param name="show"></param>
         public void ShowRoomJoinedSuccess(RoomDetails roomDetails)
         {
+            StartCoroutine(WaitAndShowRoomJoinedSuccess(roomDetails));
+            _createRoomAnimator.SetTrigger("show");
+        }
+
+        IEnumerator WaitAndShowRoomJoinedSuccess(RoomDetails roomDetails)
+        {
+            yield return new WaitForSeconds(0.5f);
             JoinRoomMenu.ShowRoomJoinedSuccess();
             _createRoomMenu.ShowRoomJoinedSuccess();
             CurrentRoomMenu.ShowRoomJoinedSuccess(roomDetails);

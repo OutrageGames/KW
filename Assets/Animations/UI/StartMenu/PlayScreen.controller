@@ -56,7 +56,7 @@ AnimatorController:
   m_Name: PlayScreen
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: click
+  - m_Name: show
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -111,7 +111,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: click
+    m_ConditionEvent: show
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 8484061604547512870}

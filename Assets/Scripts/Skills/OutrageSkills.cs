@@ -13,7 +13,7 @@ public class OutrageSkills : Skills
 
         float dmg = PlayerVariables.Warrior.skillDamages1[PlayerVariables.skillLevel1 - 1];
         //Debug.Log("gab?");
-        int playerID = GetComponent<NetworkObject>().OwnerId;
+        int playerID = GetComponent<PlayerVariables>().playerID;
 
         ServerAb1(mousePos, dmg, PlayerVariables.WarriorColor, playerID);
         Ab1(mousePos, dmg, PlayerVariables.WarriorColor, playerID);
@@ -37,9 +37,9 @@ public class OutrageSkills : Skills
     void Ab1(Vector2 pos, float dmg, Color color, int playerID)
     {
         GameObject skill = Instantiate(PlayerVariables.Warrior.skillObjects[0], new Vector2(pos.x, pos.y), Quaternion.identity);
-        skill.GetComponentInChildren<damager>().Damage = dmg;
+        skill.GetComponentInChildren<Damager>().Damage = dmg;
         skill.GetComponentInChildren<SpriteRenderer>().color = color;
-        skill.GetComponentInChildren<damager>().DamagerID = playerID;
+        skill.GetComponentInChildren<Damager>().DamagerID = playerID;
         
         ParticleSystem ps = skill.GetComponentInChildren<ParticleSystem>();
         ps.Stop();

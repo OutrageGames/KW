@@ -1,5 +1,6 @@
 ﻿using FirstGearGames.LobbyAndWorld.Global;
 using UnityEngine;
+using System.Collections;
 
 
 namespace FirstGearGames.LobbyAndWorld.Lobbies.SignInCanvases
@@ -24,6 +25,7 @@ namespace FirstGearGames.LobbyAndWorld.Lobbies.SignInCanvases
         /// SignInMenu reference.
         /// </summary>
         public SignInMenu SignInMenu { get { return _signInMenu; } }
+        [SerializeField] private Animator _playScreenAnimator;
 
 
         /// <summary>
@@ -68,8 +70,16 @@ namespace FirstGearGames.LobbyAndWorld.Lobbies.SignInCanvases
         /// <param name="signedIn"></param>
         public void SignInSuccess(string username)
         {
-            SignInMenu.SignInSuccess();
-            GlobalManager.CanvasesManager.UserActionsCanvas.SignInSuccess(username);
+            StartCoroutine(SignInMenu.SignInSuccess());
+            StartCoroutine(GlobalManager.CanvasesManager.UserActionsCanvas.SignInSuccess(username));
+            _playScreenAnimator.SetTrigger("show");
+            
+        }
+
+        IEnumerator WaitAndSign(string username)
+        {
+            yield return new WaitForSeconds(5f);
+            
         }
 
         /// <summary>

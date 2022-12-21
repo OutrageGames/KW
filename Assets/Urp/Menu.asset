@@ -18,16 +18,16 @@ MonoBehaviour:
     m_Value: 0.9
   intensity:
     m_OverrideState: 1
-    m_Value: 3
+    m_Value: 0.5
   scatter:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 0.1
   clamp:
     m_OverrideState: 0
     m_Value: 65472
   tint:
-    m_OverrideState: 0
-    m_Value: {r: 1, g: 1, b: 1, a: 1}
+    m_OverrideState: 1
+    m_Value: {r: 0, g: 1, b: 0.043819427, a: 1}
   highQualityFiltering:
     m_OverrideState: 1
     m_Value: 1
@@ -279,7 +279,7 @@ MonoBehaviour:
   active: 1
   intensity:
     m_OverrideState: 1
-    m_Value: 0.2
+    m_Value: 0.162
   xMultiplier:
     m_OverrideState: 1
     m_Value: 1
@@ -375,7 +375,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81180773991d8724ab7f2d216912b564, type: 3}
   m_Name: ChromaticAberration
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   intensity:
     m_OverrideState: 1
     m_Value: 0.15
@@ -400,10 +400,10 @@ MonoBehaviour:
     m_Value: {x: 0.5, y: 0.5}
   intensity:
     m_OverrideState: 1
-    m_Value: 0.219
+    m_Value: 0.221
   smoothness:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0.35
   rounded:
     m_OverrideState: 0
     m_Value: 0
@@ -417,7 +417,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d7fd9488000d3734a9e00ee676215985, type: 3}
-  m_Name: Global Volume Profile
+  m_Name: Menu
   m_EditorClassIdentifier: 
   components:
   - {fileID: -9074954652966729860}
@@ -455,7 +455,7 @@ MonoBehaviour:
     m_Value: 15.23
   contrast:
     m_OverrideState: 1
-    m_Value: 0.1
+    m_Value: -2.8
   colorFilter:
     m_OverrideState: 0
     m_Value: {r: 1, g: 1, b: 1, a: 1}
@@ -496,7 +496,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70afe9e12c7a7ed47911bb608a23a8ff, type: 3}
   m_Name: SplitToning
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   shadows:
     m_OverrideState: 1
     m_Value: {r: 0.09433961, g: 0, b: 0, a: 1}
@@ -505,7 +505,7 @@ MonoBehaviour:
     m_Value: {r: 1, g: 1, b: 1, a: 1}
   balance:
     m_OverrideState: 1
-    m_Value: 20
+    m_Value: 5.8
 --- !u!114 &3863642496870175811
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -599,13 +599,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb60a22f311433c4c962b888d1393f88, type: 3}
   m_Name: PaniniProjection
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   distance:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 0.143
   cropToFit:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 1
 --- !u!114 &9121857103942576655
 MonoBehaviour:
   m_ObjectHideFlags: 3

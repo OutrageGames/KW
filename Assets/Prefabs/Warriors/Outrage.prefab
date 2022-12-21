@@ -655,10 +655,11 @@ GameObject:
   - component: {fileID: 918081279647885209}
   - component: {fileID: 7947371392377551223}
   - component: {fileID: 8056585155754955769}
-  - component: {fileID: 4653312742341633359}
   - component: {fileID: 6183840802615194584}
   - component: {fileID: 1699196123224675626}
   - component: {fileID: 4996072635907010022}
+  - component: {fileID: 4653312742341633359}
+  - component: {fileID: 200514554133874701}
   m_Layer: 10
   m_Name: Outrage
   m_TagString: Player
@@ -705,10 +706,10 @@ MonoBehaviour:
   - {fileID: 793421296944063529}
   - {fileID: 918081279647885209}
   - {fileID: 8056585155754955769}
-  - {fileID: 4653312742341633359}
   - {fileID: 6183840802615194584}
   - {fileID: 1699196123224675626}
   - {fileID: 4996072635907010022}
+  - {fileID: 4653312742341633359}
   - {fileID: 2093514203700350266}
   - {fileID: 2884450143770647609}
   - {fileID: 7865018365471252421}
@@ -718,7 +719,7 @@ MonoBehaviour:
   _isGlobal: 0
   _defaultDespawnType: 0
   NetworkObserver: {fileID: 0}
-  <PrefabId>k__BackingField: 9
+  <PrefabId>k__BackingField: 12
   _scenePathHash: 0
   <SceneId>k__BackingField: 0
   <AssetPathHash>k__BackingField: 13569510044820073381
@@ -825,6 +826,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 7515cca1-da61-4fe7-8bf9-260267328d63
     m_ActionName: Player/Escape[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b7fc0cef-1883-4765-a7a9-0255bb48bb78
+    m_ActionName: Player/Reload[/Keyboard/r]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -1020,30 +1025,6 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 7825201556846537441}
   _networkObjectCache: {fileID: 7825201556846537441}
   _cmCam: {fileID: 3706944347753075680}
-  _headUI: {fileID: 0}
-  _fow: {fileID: 0}
---- !u!114 &4653312742341633359
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3168379132310689486}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a82fa297df09729488ad56fd36fe4182, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _componentIndexCache: 5
-  _addedNetworkObject: {fileID: 7825201556846537441}
-  _networkObjectCache: {fileID: 7825201556846537441}
-  cooldown1: 0
-  cooldown2: 0
-  duration1: 0
-  duration2: 0
-  active1: 0
-  active2: 0
-  PlayerVariables: {fileID: 0}
 --- !u!114 &6183840802615194584
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1056,7 +1037,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fee1e59df514fb54ebb6f7cc31821d34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 6
+  _componentIndexCache: 5
   _addedNetworkObject: {fileID: 7825201556846537441}
   _networkObjectCache: {fileID: 7825201556846537441}
   HealthBar: {fileID: 1687051875277373284}
@@ -1084,7 +1065,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 451ceeaf646e8984cb6ead6d0f603005, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 7
+  _componentIndexCache: 6
   _addedNetworkObject: {fileID: 7825201556846537441}
   _networkObjectCache: {fileID: 7825201556846537441}
   Level: 1
@@ -1103,7 +1084,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20670662cd638884da2a0594f0eb71ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 8
+  _componentIndexCache: 7
   _addedNetworkObject: {fileID: 7825201556846537441}
   _networkObjectCache: {fileID: 7825201556846537441}
   Health: 100
@@ -1112,6 +1093,37 @@ MonoBehaviour:
   DamagedBy: {fileID: 0}
   _gameplayManager: {fileID: 0}
   _playerVariables: {fileID: 0}
+  _deathParticle: {fileID: 6209751906048965898, guid: dff755d532df21e46aaa0b141a822099, type: 3}
+--- !u!114 &4653312742341633359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3168379132310689486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a82fa297df09729488ad56fd36fe4182, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _componentIndexCache: 8
+  _addedNetworkObject: {fileID: 7825201556846537441}
+  _networkObjectCache: {fileID: 7825201556846537441}
+  cooldown1: 0
+  cooldown2: 0
+  duration1: 0
+  duration2: 0
+  active1: 0
+  active2: 0
+  PlayerVariables: {fileID: 0}
+--- !u!81 &200514554133874701
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3168379132310689486}
+  m_Enabled: 1
 --- !u!1 &4033203044090951127
 GameObject:
   m_ObjectHideFlags: 0
@@ -1446,6 +1458,7 @@ GameObject:
   - component: {fileID: 6986575201858480908}
   - component: {fileID: 8064847734255094333}
   - component: {fileID: 2681135624107252356}
+  - component: {fileID: 8220407012119089640}
   m_Layer: 10
   m_Name: cm
   m_TagString: Untagged
@@ -1523,6 +1536,23 @@ MonoBehaviour:
   m_MaximumFOV: 60
   m_MinimumOrthoSize: 1
   m_MaximumOrthoSize: 5000
+--- !u!114 &8220407012119089640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5868807861471793304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68bb026fafb42b14791938953eaace77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_NoiseProfile: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
+  m_PivotOffset: {x: 0, y: 0, z: 0}
+  m_AmplitudeGain: 0
+  m_FrequencyGain: 1
+  mNoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!1 &6452472537503536117
 GameObject:
   m_ObjectHideFlags: 0
@@ -1980,12 +2010,12 @@ MonoBehaviour:
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 2774856416948166785}
   m_Lens:
-    FieldOfView: 60
-    OrthographicSize: 6
+    FieldOfView: 80
+    OrthographicSize: 8
     NearClipPlane: 0.3
     FarClipPlane: 500
     Dutch: 0
-    ModeOverride: 0
+    ModeOverride: 1
     LensShift: {x: 0, y: 0}
     GateFit: 2
     m_SensorSize: {x: 1, y: 1}

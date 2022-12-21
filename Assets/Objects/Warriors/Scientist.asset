@@ -55,20 +55,20 @@ MonoBehaviour:
   - 18
   - 15
   skillDamages1:
-  - 0
-  - 0
-  - 0
+  - 20
+  - 30
+  - 40
   skillDamages2:
   - 0
   - 0
   - 0
   startDuration1:
-  - 2
-  - 3
-  - 5
+  - 0
+  - 0
+  - 0
   startDuration2:
   - 4
   - 5
   - 8
   skillObjects:
-  - {fileID: 6034800426969745478, guid: 92b22894e1f04cc4db8044ec046d0f08, type: 3}
+  - {fileID: 691143749485470388, guid: a49b19e1821118f449ee688140d91ff6, type: 3}

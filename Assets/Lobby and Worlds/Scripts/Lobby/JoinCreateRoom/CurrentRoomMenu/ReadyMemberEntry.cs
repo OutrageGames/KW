@@ -18,13 +18,13 @@ namespace FirstGearGames.LobbyAndWorld.Lobbies.JoinCreateRoomCanvases
         /// </summary>
         [Tooltip("Icon to show if member is currently ready.")]
         [SerializeField]
-        private Image _readyIcon = null;
+        private TMP_Text _readyIcon = null;
         /// <summary>
         /// Ready button image to change color on.
         /// </summary>
         [Tooltip("Ready button image to change color on.")]
         [SerializeField]
-        private Image _readyButtonImage = null;
+        private TMP_Text _readyButtonImage = null;
         /// <summary>
         /// Color to show when ready.
         /// </summary>
@@ -36,7 +36,7 @@ namespace FirstGearGames.LobbyAndWorld.Lobbies.JoinCreateRoomCanvases
         /// </summary>
         [Tooltip("Color to show when not ready.")]
         [SerializeField]
-        private Color _unreadyColor = Color.white;
+        private Color _unreadyColor = Color.red;
         #endregion
 
         #region Private.
@@ -85,7 +85,7 @@ namespace FirstGearGames.LobbyAndWorld.Lobbies.JoinCreateRoomCanvases
             else
             {
                 _readyButtonImage.gameObject.SetActive(false);
-                _readyIcon.gameObject.SetActive(false);
+                // _readyIcon.gameObject.SetActive(false);
             }
         }
 
@@ -115,6 +115,7 @@ namespace FirstGearGames.LobbyAndWorld.Lobbies.JoinCreateRoomCanvases
                 Color c = (ready) ? _readyColor : _unreadyColor;
                 _readyButtonImage.color = c;
                 _ready = ready;
+                _readyIcon.gameObject.SetActive(ready);
             }
             //For another player.
             else

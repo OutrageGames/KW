@@ -260,7 +260,7 @@ namespace FirstGearGames.LobbyAndWorld.Lobbies.JoinCreateRoomCanvases
         private void UpdateStartButton()
         {
             string startFailedString = string.Empty;
-            _startButton.interactable = LobbyNetwork.CanUseStartButton(LobbyNetwork.CurrentRoom, InstanceFinder.ClientManager.Connection.FirstObject);
+            _startButton.gameObject.SetActive(LobbyNetwork.CanUseStartButton(LobbyNetwork.CurrentRoom, InstanceFinder.ClientManager.Connection.FirstObject));
         }
 
         /// <summary>
@@ -290,7 +290,7 @@ namespace FirstGearGames.LobbyAndWorld.Lobbies.JoinCreateRoomCanvases
         /// <summary>
         /// Received when Start Game is pressed.
         /// </summary>
-        public void OnClick_StartGame()
+        public void OnClick_StartGame(Animator anim)
         {
             //Still waiting for a server response.
             if (_awaitingStartResponse)
@@ -304,10 +304,16 @@ namespace FirstGearGames.LobbyAndWorld.Lobbies.JoinCreateRoomCanvases
             }
             else
             {
-                _awaitingStartResponse = true;
-                _startButton.interactable = false;
-                LobbyNetwork.StartGame();
+                anim.SetTrigger("show");
+                Invoke(nameof(Startgame), 0.5f);
             }
+        }
+
+        void Startgame()
+        {
+            _awaitingStartResponse = true;
+            //_startButton.interactable = false;
+            LobbyNetwork.StartGame();
         }
 
         /// <summary>
@@ -344,11 +350,16 @@ namespace FirstGearGames.LobbyAndWorld.Lobbies.JoinCreateRoomCanvases
                 GlobalManager.CanvasesManager.MessagesCanvas.InfoMessages.ShowTimedMessage(failedReason, Color.red);
         }
 
-        public void OnClick_Leave()
+        public void OnClick_Leave(Animator anim)
+        {
+            anim.SetTrigger("show");
+            Invoke(nameof(leave), 0.5f);
+        }
+
+        public void leave()
         {
             //Hide current room.
             LobbyNetwork.LeaveRoom();
-            
         }
 
     }
