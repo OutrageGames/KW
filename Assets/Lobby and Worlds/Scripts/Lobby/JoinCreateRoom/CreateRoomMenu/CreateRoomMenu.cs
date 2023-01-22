@@ -67,8 +67,10 @@ namespace FirstGearGames.LobbyAndWorld.Lobbies.JoinCreateRoomCanvases
             //Rebuild player count.
             _playerCount.ClearOptions();
             List<string> options = new List<string>();
-            int minimum = LobbyNetwork.ReturnMinimumPlayers();
-            int maximum = LobbyNetwork.ReturnMaximumPlayers();
+            // int minimum = LobbyNetwork.ReturnMinimumPlayers();
+            // int maximum = LobbyNetwork.ReturnMaximumPlayers();
+            int minimum = 5;
+            int maximum = 11;
             for (int i = minimum; i < maximum; i++)
                 options.Add(i.ToString());
 

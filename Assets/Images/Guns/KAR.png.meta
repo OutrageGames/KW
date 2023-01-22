@@ -197,7 +197,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: karReload_0
+      name: KAR_0
       rect:
         serializedVersion: 2
         x: 0
@@ -205,20 +205,20 @@ TextureImporter:
         width: 123
         height: 60
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 62e86c8f73975cb40800000000000000
-      internalID: 954377588520673193
+      spriteID: d390337280b262242b747de767a7d266
+      internalID: 1951114581
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: karReload_1
+      name: KAR_1
       rect:
         serializedVersion: 2
         x: 123
@@ -226,20 +226,20 @@ TextureImporter:
         width: 123
         height: 60
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b6127d304dac033c0800000000000000
-      internalID: -146257070371481572
+      spriteID: a6643fd0247c9ba428a416d3a4e1daae
+      internalID: 2036884208
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: karReload_2
+      name: KAR_2
       rect:
         serializedVersion: 2
         x: 246
@@ -247,20 +247,20 @@ TextureImporter:
         width: 123
         height: 60
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a4995d6f8978f5430800000000000000
-      internalID: 7388046062190321155
+      spriteID: 49c4992890885d6409394e114cac0940
+      internalID: -948007263
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: karReload_3
+      name: KAR_3
       rect:
         serializedVersion: 2
         x: 369
@@ -268,20 +268,20 @@ TextureImporter:
         width: 123
         height: 60
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4d6eafc723417ea50800000000000000
-      internalID: -6971806629000050349
+      spriteID: 80b68148b4cd4be4c8e383a0ea355fac
+      internalID: -24727967
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: karReload_4
+      name: KAR_4
       rect:
         serializedVersion: 2
         x: 492
@@ -289,20 +289,20 @@ TextureImporter:
         width: 123
         height: 60
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 041f68b033df1e7a0800000000000000
-      internalID: 1891477214347545713
+      spriteID: de6fad92dd03e5e4891fb0f325711d5f
+      internalID: -459702146
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: karReload_5
+      name: KAR_5
       rect:
         serializedVersion: 2
         x: 615
@@ -310,20 +310,20 @@ TextureImporter:
         width: 123
         height: 60
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8b0def2c4fd7886a0800000000000000
-      internalID: 3631001337029953772
+      spriteID: 560b949e445889e478202449b96a2c12
+      internalID: 150287861
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: karReload_6
+      name: KAR_6
       rect:
         serializedVersion: 2
         x: 738
@@ -331,20 +331,20 @@ TextureImporter:
         width: 123
         height: 60
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5536276d6ada12ab0800000000000000
-      internalID: -31138309703041996
+      spriteID: c252eb9eb9d86ed40b4ec0a21d4e6f6f
+      internalID: -418419042
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: karReload_7
+      name: KAR_7
       rect:
         serializedVersion: 2
         x: 861
@@ -352,20 +352,20 @@ TextureImporter:
         width: 123
         height: 60
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6da81e914a36dd130800000000000000
-      internalID: -244338406173253582
+      spriteID: 77405a52005694548909e6e1ecec6a77
+      internalID: 410026341
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: karReload_8
+      name: KAR_8
       rect:
         serializedVersion: 2
         x: 984
@@ -373,20 +373,20 @@ TextureImporter:
         width: 123
         height: 60
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 43555de9d95a7fb10800000000000000
-      internalID: 4088426535652879296
+      spriteID: 3a78d5c8e17a2f74c928f2016ffcbb2f
+      internalID: 2064617267
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: karReload_9
+      name: KAR_9
       rect:
         serializedVersion: 2
         x: 1107
@@ -394,20 +394,20 @@ TextureImporter:
         width: 123
         height: 60
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 40b2b06dc607f7850800000000000000
-      internalID: 5616887812957717208
+      spriteID: 5f411c0ae65b9a34eb51b7cca31b56c7
+      internalID: 695386099
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: karReload_10
+      name: KAR_10
       rect:
         serializedVersion: 2
         x: 1230
@@ -415,20 +415,20 @@ TextureImporter:
         width: 123
         height: 60
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 79ba3053954d70710800000000000000
-      internalID: -4952485964565952204
+      spriteID: 8e2930ac3db615a41b5dbf5fc3188a7f
+      internalID: -1505418838
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: karReload_11
+      name: KAR_11
       rect:
         serializedVersion: 2
         x: 1353
@@ -436,20 +436,20 @@ TextureImporter:
         width: 123
         height: 60
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0fbb8d05b535a0df0800000000000000
-      internalID: -4591656749660825396
+      spriteID: 0746ce2ecda4c83439085ae78de153a8
+      internalID: 305180283
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: karReload_12
+      name: KAR_12
       rect:
         serializedVersion: 2
         x: 1476
@@ -457,20 +457,20 @@ TextureImporter:
         width: 123
         height: 60
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 92d181d847dbb2400800000000000000
-      internalID: 6015383576994026471
+      spriteID: 61d34dac707957b409e5c630d0fd7de5
+      internalID: -2104274724
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: karReload_13
+      name: KAR_13
       rect:
         serializedVersion: 2
         x: 1599
@@ -478,20 +478,20 @@ TextureImporter:
         width: 123
         height: 60
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f774a8cf17245d530800000000000000
-      internalID: -7316363085019203839
+      spriteID: adce1b3434f35ca41b15cf8cb71ce442
+      internalID: -1836420537
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: karReload_14
+      name: KAR_14
       rect:
         serializedVersion: 2
         x: 1722
@@ -499,20 +499,20 @@ TextureImporter:
         width: 123
         height: 60
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3ede155efcd993540800000000000000
-      internalID: -1180462687645123126
+      spriteID: 11687b538d323d2459e0f694c8ff3e9f
+      internalID: 85704776
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: karReload_15
+      name: KAR_15
       rect:
         serializedVersion: 2
         x: 1845
@@ -520,14 +520,14 @@ TextureImporter:
         width: 123
         height: 60
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3a9b4f3af58129000800000000000000
-      internalID: -4244837338866941198
+      spriteID: e0897bb2a56ad5042a5b9296510ebaa7
+      internalID: 246875859
       vertices: []
       indices: 
       edges: []
@@ -543,22 +543,22 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      karReload_2: 7388046062190321155
-      karReload_10: -4952485964565952204
-      karReload_15: -4244837338866941198
-      karReload_0: 954377588520673193
-      karReload_1: -146257070371481572
-      karReload_14: -1180462687645123126
-      karReload_3: -6971806629000050349
-      karReload_9: 5616887812957717208
-      karReload_12: 6015383576994026471
-      karReload_6: -31138309703041996
-      karReload_5: 3631001337029953772
-      karReload_8: 4088426535652879296
-      karReload_11: -4591656749660825396
-      karReload_13: -7316363085019203839
-      karReload_7: -244338406173253582
-      karReload_4: 1891477214347545713
+      KAR_3: -24727967
+      KAR_11: 305180283
+      KAR_10: -1505418838
+      KAR_6: -418419042
+      KAR_14: 85704776
+      KAR_9: 695386099
+      KAR_12: -2104274724
+      KAR_1: 2036884208
+      KAR_4: -459702146
+      KAR_13: -1836420537
+      KAR_5: 150287861
+      KAR_0: 1951114581
+      KAR_15: 246875859
+      KAR_2: -948007263
+      KAR_8: 2064617267
+      KAR_7: 410026341
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -59,9 +59,9 @@ MonoBehaviour:
   - 50
   - 80
   skillDamages2:
-  - 7
-  - 10
-  - 15
+  - 1.25
+  - 1.5
+  - 2
   startDuration1:
   - 4
   - 6

@@ -480,7 +480,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: asdasdasdasdasda
+  m_text: 16_chars_maximum
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a6d46918b43944f498951da846229156, type: 2}
   m_sharedMaterial: {fileID: 7840830287200000601, guid: a6d46918b43944f498951da846229156, type: 2}
@@ -658,8 +658,9 @@ GameObject:
   - component: {fileID: 6183840802615194584}
   - component: {fileID: 1699196123224675626}
   - component: {fileID: 4996072635907010022}
-  - component: {fileID: 6930267245512296468}
-  - component: {fileID: 8473344288064301232}
+  - component: {fileID: 200514554133874701}
+  - component: {fileID: 3930631536231296122}
+  - component: {fileID: 1835991320687664603}
   m_Layer: 10
   m_Name: Loker
   m_TagString: Player
@@ -709,7 +710,7 @@ MonoBehaviour:
   - {fileID: 6183840802615194584}
   - {fileID: 1699196123224675626}
   - {fileID: 4996072635907010022}
-  - {fileID: 6930267245512296468}
+  - {fileID: 3930631536231296122}
   - {fileID: 2093514203700350266}
   - {fileID: 2884450143770647609}
   - {fileID: 7865018365471252421}
@@ -719,7 +720,7 @@ MonoBehaviour:
   _isGlobal: 0
   _defaultDespawnType: 0
   NetworkObserver: {fileID: 0}
-  <PrefabId>k__BackingField: 9
+  <PrefabId>k__BackingField: 12
   _scenePathHash: 0
   <SceneId>k__BackingField: 0
   <AssetPathHash>k__BackingField: 435383063458329649
@@ -826,6 +827,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 7515cca1-da61-4fe7-8bf9-260267328d63
     m_ActionName: Player/Escape[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b7fc0cef-1883-4765-a7a9-0255bb48bb78
+    m_ActionName: Player/Reload[/Keyboard/r]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -980,8 +985,8 @@ MonoBehaviour:
   Warrior: {fileID: 0}
   WarriorColor: {r: 0, g: 0, b: 0, a: 0}
   Gun: {fileID: 0}
-  skillLevel1: 0
-  skillLevel2: 0
+  skillLevel1: 3
+  skillLevel2: 3
   playerID: 0
   Username: 
   _playerLight: {fileID: 7859006549046182040}
@@ -1021,8 +1026,6 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 7825201556846537441}
   _networkObjectCache: {fileID: 7825201556846537441}
   _cmCam: {fileID: 3706944347753075680}
-  _headUI: {fileID: 0}
-  _fow: {fileID: 0}
 --- !u!114 &6183840802615194584
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1091,7 +1094,16 @@ MonoBehaviour:
   DamagedBy: {fileID: 0}
   _gameplayManager: {fileID: 0}
   _playerVariables: {fileID: 0}
---- !u!114 &6930267245512296468
+  _deathParticle: {fileID: 6209751906048965898, guid: dff755d532df21e46aaa0b141a822099, type: 3}
+--- !u!81 &200514554133874701
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3168379132310689486}
+  m_Enabled: 1
+--- !u!114 &3930631536231296122
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1113,7 +1125,7 @@ MonoBehaviour:
   active1: 0
   active2: 0
   PlayerVariables: {fileID: 0}
---- !u!96 &8473344288064301232
+--- !u!96 &1835991320687664603
 TrailRenderer:
   serializedVersion: 2
   m_ObjectHideFlags: 0
@@ -1164,22 +1176,13 @@ TrailRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0
+        value: 1
         inSlope: 0
         outSlope: 0
         tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.14563897
-        value: 0.8219589
-        inSlope: 0.09264996
-        outSlope: 0.09264996
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0.17183483
-        outWeight: 0.109177835
       - serializedVersion: 3
         time: 1
         value: 0
@@ -1194,8 +1197,8 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.23529413, g: 0.7960785, b: 0.2627451, a: 0.5686275}
-      key1: {r: 0.23529413, g: 0.7960785, b: 0.2627451, a: 0}
+      key0: {r: 1, g: 1, b: 1, a: 1}
+      key1: {r: 1, g: 1, b: 1, a: 0}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -1212,7 +1215,7 @@ TrailRenderer:
       ctime7: 0
       atime0: 0
       atime1: 65535
-      atime2: 65535
+      atime2: 0
       atime3: 0
       atime4: 0
       atime5: 0
@@ -1312,7 +1315,7 @@ SpriteRenderer:
   m_Size: {x: 3.8125, y: 0.125}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!210 &7133127885003350921
@@ -1564,6 +1567,7 @@ GameObject:
   - component: {fileID: 6986575201858480908}
   - component: {fileID: 8064847734255094333}
   - component: {fileID: 2681135624107252356}
+  - component: {fileID: 8220407012119089640}
   m_Layer: 10
   m_Name: cm
   m_TagString: Untagged
@@ -1641,6 +1645,23 @@ MonoBehaviour:
   m_MaximumFOV: 60
   m_MinimumOrthoSize: 1
   m_MaximumOrthoSize: 5000
+--- !u!114 &8220407012119089640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5868807861471793304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68bb026fafb42b14791938953eaace77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_NoiseProfile: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
+  m_PivotOffset: {x: 0, y: 0, z: 0}
+  m_AmplitudeGain: 0
+  m_FrequencyGain: 1
+  mNoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!1 &6452472537503536117
 GameObject:
   m_ObjectHideFlags: 0
@@ -2098,12 +2119,12 @@ MonoBehaviour:
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 2774856416948166785}
   m_Lens:
-    FieldOfView: 60
-    OrthographicSize: 6
+    FieldOfView: 80
+    OrthographicSize: 8
     NearClipPlane: 0.3
     FarClipPlane: 500
     Dutch: 0
-    ModeOverride: 0
+    ModeOverride: 1
     LensShift: {x: 0, y: 0}
     GateFit: 2
     m_SensorSize: {x: 1, y: 1}

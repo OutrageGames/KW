@@ -12,7 +12,7 @@ public class KosasSkills : Skills
     public GameObject invParticle;
     private Animator anim;
     [SerializeField] private GameObject _headUI;
-    // public bool IsInsideMask;
+    public bool IsInsideMask;
 
     public override void Skill1()
     {
@@ -57,23 +57,28 @@ public class KosasSkills : Skills
         // StartCoroutine(Shrink(duration - 0.3f));        
     }
 
-    // IEnumerator Shrink(float time)
-    // {
-    //     yield return new WaitForSeconds(time);
-    //     anim.SetTrigger("goto");
-    // }
+    IEnumerator Shrink(float time)
+    {
+        yield return new WaitForSeconds(time);
+        anim.SetTrigger("goto");
+    }
 
     public override void Skill2()
     {
-        ServerBecomeInvisible();
-        
+        // ServerBecomeInvisible();
+        Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        float duration = PlayerVariables.Warrior.startDuration2[PlayerVariables.skillLevel2 - 1];
+        int id = GetComponent<PlayerVariables>().playerID;
 
-        TMP_Text dmgText = GameObject.Find("Skill2Text").GetComponent<TMP_Text>();
-        dmgText.text = "invisible";
-        StartCoroutine(ResetText());
+        ServerAb2(pos, duration, PlayerVariables.WarriorColor, id);
+        Ab2(pos, duration, PlayerVariables.WarriorColor, id);
+
+        // TMP_Text dmgText = GameObject.Find("Skill2Text").GetComponent<TMP_Text>();
+        // dmgText.text = "invisible";
+        // StartCoroutine(ResetText());
 
         //Invoke(nameof(ServerBecomeVisible), PlayerVariables.Warrior.startDuration2[PlayerVariables.skillLevel2 - 1]);
-        StartCoroutine(RunVisible());
+        // StartCoroutine(RunVisible());
 
         // GameObject fire = Instantiate(PlayerVariables.Warrior.skillObjects[2], transform.position, Quaternion.identity, transform);
         // ParticleSystem ps = fire.GetComponent<ParticleSystem>();
@@ -82,6 +87,30 @@ public class KosasSkills : Skills
         // main.duration = PlayerVariables.Warrior.startDuration2[PlayerVariables.skillLevel2 - 1];
         // main.startColor = PlayerVariables.WarriorColor;
         // ps.Play();
+    }
+
+    [ServerRpc]
+    void ServerAb2(Vector2 pos, float duration, Color color, int id)
+    {
+        ClientAb2(pos, duration, color, id);
+    }
+    [ObserversRpc]
+    void ClientAb2(Vector2 pos, float duration, Color color, int id)
+    {
+        if(!IsOwner)
+        {
+            Ab2(pos, duration, color, id);
+        }
+    }
+    void Ab2(Vector2 pos, float duration, Color color, int id)
+    {
+        GameObject skill = Instantiate(PlayerVariables.Warrior.skillObjects[1], new Vector3(pos.x, pos.y, 0f), Quaternion.identity);
+        skill.GetComponent<DestroyAfterDelay>().Delay = duration;
+        skill.GetComponent<SpriteRenderer>().color = color;
+        skill.GetComponent<PassId>().id = id;
+
+        anim = skill.GetComponent<Animator>();
+        StartCoroutine(Shrink(duration - 0.7f));        
     }
 
     public IEnumerator ResetText()
@@ -112,11 +141,11 @@ public class KosasSkills : Skills
         }
     }
 
-    IEnumerator RunVisible()
-    {
-        yield return new WaitForSeconds(PlayerVariables.Warrior.startDuration2[PlayerVariables.skillLevel2 - 1]);
-        ServerBecomeVisible();
-    }
+    // IEnumerator RunVisible()
+    // {
+    //     yield return new WaitForSeconds(PlayerVariables.Warrior.startDuration2[PlayerVariables.skillLevel2 - 1]);
+    //     ServerBecomeVisible();
+    // }
 
     [ServerRpc]
     void ServerBecomeVisible()
@@ -129,55 +158,46 @@ public class KosasSkills : Skills
     {
         if(!IsOwner)
         {
-            BecomeVisible();
+            foreach(Transform child in GetComponentInChildren<Animator>().gameObject.transform)
+            {
+                child.GetComponent<SpriteRenderer>().enabled = true;
+            }
+            _headUI.gameObject.SetActive(true);
+            GetComponentInChildren<Gun>().gameObject.GetComponentInChildren<SpriteRenderer>().enabled = true;
         }
     }
 
-    void BecomeVisible()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        foreach(Transform child in GetComponentInChildren<Animator>().gameObject.transform)
+        if (IsOwner && collision.gameObject.name == "KosasMask(Clone)" && collision.gameObject.GetComponent<PassId>().id == GetComponent<PlayerVariables>().playerID)
         {
-            child.GetComponent<SpriteRenderer>().enabled = true;
+            //invParticle = Instantiate(playerVars.playerObject.skillObjects[2], transform.position, Quaternion.identity, transform);
+            //ParticleSystem ps = invParticle.GetComponent<ParticleSystem>();
+            //ps.Stop();
+            //var main = ps.main;
+            //main.duration = playerVars.playerObject.startDuration1[playerVars.skillLevel1 - 1];
+            //ps.Play();
+            IsInsideMask = true;
+
+            TMP_Text dmgText = GameObject.Find("Skill2Text").GetComponent<TMP_Text>();
+            dmgText.text = "invisible";
+            
+            ServerBecomeInvisible();
         }
-        _headUI.gameObject.SetActive(true);
-        GetComponentInChildren<Gun>().gameObject.GetComponentInChildren<SpriteRenderer>().enabled = true;
     }
 
-    // private void OnTriggerEnter2D(Collider2D collision)
-    // {
-    //     if (IsOwner && collision.gameObject.name == "KosasMask(Clone)" && collision.gameObject.GetComponent<PassId>().id == OwnerId)
-    //     {
-    //         //invParticle = Instantiate(playerVars.playerObject.skillObjects[2], transform.position, Quaternion.identity, transform);
-    //         //ParticleSystem ps = invParticle.GetComponent<ParticleSystem>();
-    //         //ps.Stop();
-    //         //var main = ps.main;
-    //         //main.duration = playerVars.playerObject.startDuration1[playerVars.skillLevel1 - 1];
-    //         //ps.Play();
-    //         IsInsideMask = true;
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (IsOwner && collision.gameObject.name == "KosasMask(Clone)" && collision.gameObject.GetComponent<PassId>().id == GetComponent<PlayerVariables>().playerID)
+        {
+            //Destroy(invParticle);
 
-    //         TMP_Text dmgText = GameObject.Find("Skill1Text").GetComponent<TMP_Text>();
-    //         dmgText.text = "invisible";
+            TMP_Text dmgText = GameObject.Find("Skill2Text").GetComponent<TMP_Text>();
+            dmgText.text = "";
+
+            IsInsideMask = false;
             
-    //         ServerBecomeInvisible();
-    //     }
-    // }
-
-    // private void OnTriggerExit2D(Collider2D collision)
-    // {
-    //     if (IsOwner && collision.gameObject.name == "KosasMask(Clone)" && collision.gameObject.GetComponent<PassId>().id == OwnerId)
-    //     {
-    //         //Destroy(invParticle);
-
-    //         TMP_Text dmgText = GameObject.Find("Skill1Text").GetComponent<TMP_Text>();
-    //         dmgText.text = "";
-
-    //         IsInsideMask = false;
-            
-    //         if(!active2)
-    //         {
-    //             ServerBecomeVisible();
-    //         }
-    //         // BecomeVisible();
-    //     }
-    // }
+            ServerBecomeVisible();
+        }
+    }
 }

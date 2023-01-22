@@ -22,6 +22,7 @@ public class Kar : Gun
                 int bulletID = GetComponentInParent<NetworkObject>().OwnerId;
                 ServerShoot(bulletPos, bulletRot, DamageMultiplier, transform.parent.gameObject);
                 Shoot(bulletPos, bulletRot, DamageMultiplier, transform.parent.gameObject);
+                GetComponentInParent<PlayerCameraController>().CameraShake(DamageMultiplier, 1f);
 
                 //b.GetComponent<TrailRenderer>().startColor = GetComponentInChildren<SpriteRenderer>().color;
                 //Instantiate(particleEffect, efePoint.position, Quaternion.identity, transform);

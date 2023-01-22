@@ -7,15 +7,15 @@ using UnityEngine.InputSystem;
 
 public class LokerSkills : Skills
 {
-    private float _normalSpeed, _normalJumpSpeed;
+    private float _normalSpeed, _normalJumpSpeed, _normalFirerate, _normalReloadStarttime, _normalReloadtime;
     private PlayerMovement playerMovement;
 
     public override void Skill1()
     {
-        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        //Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-        ServerAb1(mousePos, PlayerVariables.WarriorColor);
-        Ab1(mousePos, PlayerVariables.WarriorColor);
+        ServerAb1(PlayerVariables.WarriorColor);
+        Ab1(PlayerVariables.WarriorColor);
     }
     IEnumerator Shrink(Animator anim, float time)
     {
@@ -23,21 +23,21 @@ public class LokerSkills : Skills
         anim.SetTrigger("goto");
     }
     [ServerRpc]
-    void ServerAb1(Vector2 pos, Color color)
+    void ServerAb1(Color color)
     {
-        ClientAb1(pos, color);
+        ClientAb1(color);
     }
     [ObserversRpc]
-    void ClientAb1(Vector2 pos, Color color)
+    void ClientAb1(Color color)
     {
         if(!IsOwner)
         {
-            Ab1(pos, color);
+            Ab1(color);
         }
     }
-    void Ab1(Vector2 pos, Color color)
+    void Ab1(Color color)
     {
-        GameObject skill = Instantiate(PlayerVariables.Warrior.skillObjects[0], new Vector2(pos.x, pos.y), Quaternion.identity);
+        GameObject skill = Instantiate(PlayerVariables.Warrior.skillObjects[0], new Vector2(transform.position.x, transform.position.y), Quaternion.identity);
 
         skill.GetComponent<Trampoline>().jumpSpeed = PlayerVariables.Warrior.skillDamages1[PlayerVariables.skillLevel1 - 1];
         skill.GetComponent<DestroyAfterDelay>().Delay = PlayerVariables.Warrior.startDuration1[PlayerVariables.skillLevel1 - 1];
@@ -49,12 +49,23 @@ public class LokerSkills : Skills
     public override void Skill2()
     {
         playerMovement = GetComponent<PlayerMovement>();
+        Gun gun = GetComponentInChildren<Gun>();
 
         _normalSpeed = playerMovement.MoveSpeed;
         _normalJumpSpeed = playerMovement.JumpSpeed;
+        _normalFirerate = gun.fireRate;
+        _normalReloadStarttime = gun.ReloadStartTime;
+        _normalReloadtime = gun.ReloadTime;
 
-        playerMovement.MoveSpeed += PlayerVariables.Warrior.skillDamages2[PlayerVariables.skillLevel2 - 1];
-        playerMovement.JumpSpeed += PlayerVariables.Warrior.skillDamages2[PlayerVariables.skillLevel2 - 1];
+        gun.fireRate /= PlayerVariables.Warrior.skillDamages2[PlayerVariables.skillLevel2 - 1];
+        gun.ReloadStartTime /= PlayerVariables.Warrior.skillDamages2[PlayerVariables.skillLevel2 - 1];
+        gun.ReloadTime /= PlayerVariables.Warrior.skillDamages2[PlayerVariables.skillLevel2 - 1];
+        gun.GetComponentInChildren<Animator>().speed *= PlayerVariables.Warrior.skillDamages2[PlayerVariables.skillLevel2 - 1];
+        playerMovement.MoveSpeed *= PlayerVariables.Warrior.skillDamages2[PlayerVariables.skillLevel2 - 1];
+        playerMovement.JumpSpeed *= PlayerVariables.Warrior.skillDamages2[PlayerVariables.skillLevel2 - 1];
+
+        // playerMovement.MoveSpeed += PlayerVariables.Warrior.skillDamages2[PlayerVariables.skillLevel2 - 1];
+        // playerMovement.JumpSpeed += PlayerVariables.Warrior.skillDamages2[PlayerVariables.skillLevel2 - 1];
 
         StartCoroutine(NormalSpeed(PlayerVariables.Warrior.startDuration2[PlayerVariables.skillLevel2 - 1]));
 
@@ -69,6 +80,21 @@ public class LokerSkills : Skills
             dmgText.text = "faster";
         else
             dmgText.text = "the fasterestest";
+    }
+
+    IEnumerator NormalSpeed(float timer)
+    {
+        yield return new WaitForSeconds(timer);
+        playerMovement = GetComponent<PlayerMovement>();
+        Gun gun = GetComponentInChildren<Gun>();
+        playerMovement.MoveSpeed = _normalSpeed;
+        playerMovement.JumpSpeed = _normalJumpSpeed;
+        gun.fireRate = _normalFirerate;
+        gun.ReloadStartTime = _normalReloadStarttime;
+        gun.ReloadTime = _normalReloadtime;
+        gun.GetComponentInChildren<Animator>().speed = 1f;
+        ServerTrail(0.1f);
+        Trail(0.1f);
     }
 
     [ServerRpc]
@@ -90,15 +116,7 @@ public class LokerSkills : Skills
         GetComponent<TrailRenderer>().time = time;
     }
 
-    IEnumerator NormalSpeed(float timer)
-    {
-        yield return new WaitForSeconds(timer);
-        playerMovement = GetComponent<PlayerMovement>();
-        playerMovement.MoveSpeed = _normalSpeed;
-        playerMovement.JumpSpeed = _normalJumpSpeed;
-        ServerTrail(0.1f);
-        Trail(0.1f);
-    }
+    
 
     IEnumerator ResetText()
     {

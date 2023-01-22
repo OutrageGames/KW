@@ -108,9 +108,9 @@ TrailRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 8000
+  m_SortingLayerID: -764618653
+  m_SortingLayer: 2
+  m_SortingOrder: 5000
   m_Time: 0.5
   m_Parameters:
     serializedVersion: 3
